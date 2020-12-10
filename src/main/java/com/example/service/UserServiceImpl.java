@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService{
 
         if (selectUser != null && BCrypt.checkpw(user.getPassword(), selectUser.getPassword())) {
 
-            //redis 대신 user클래스의 칼럼으로 구현
+            //redis 대신 user의 칼럼으로 구현
             String getToken = userMapper.getJwtTokenByAccountId(user.getAccount_id());
             if (getToken.equals("") || jwtUtil.isExpired(getToken)) {
                 getToken = jwtUtil.generate(user.getAccount_id());
