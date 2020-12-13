@@ -1,21 +1,14 @@
 package com.example.util;
-
-import com.example.domain.User;
-import com.example.repository.UserMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
-
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,11 +17,10 @@ import java.util.Map;
 @Component
 public class JwtUtil {
 
-    @Autowired
-    private UserMapper userMapper;
 
     @Value("${JWT_SECRET_KEY}")
     private String myKey;
+
     private Key key;
 
     public JwtUtil() {
@@ -36,10 +28,10 @@ public class JwtUtil {
 
     @PostConstruct
     public void JwtUtil() {
-        this.key = Keys.hmacShaKeyFor(myKey.getBytes());
+        this.key = Keys.hmacShaKeyFor((myKey+myKey).getBytes());
     }
-
-    public String generate(String id) {
+    public String generate(Long id) { // TOKEN 생성
+        //FIX 정수현 ::  token은 로그인한 아이디보단 id키 값이 더 좋을 것 같습니다.
         // header
         Map<String, Object> headers = new HashMap<>();
         headers.put("typ", "JWT");
@@ -60,8 +52,9 @@ public class JwtUtil {
         return token;
     }
 
-    public boolean isExpired(String token){
-        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(token).getBody();
+    public boolean isExpired(String header){ // TOKEN VALID CHECK
+        String authToken = header.substring(7); // "Bearer " 제거
+        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody(); // 윗 라인 주석해제 시 authToken
         Date exp = claims .get("exp", Date.class);
         Date now = new Date();
         if( exp.getTime() < now.getTime()){
@@ -71,30 +64,15 @@ public class JwtUtil {
             return false;
     }
 
-    public User getUserByHeader(){
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-        String header = request.getHeader("Authorization");
-        return getUserByToken(header);
+    //token에서 id를 추출하는 method :: 정수현
+    public Long getTokenById(){
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest(); // request 추출
+        String header = request.getHeader("Authorization"); // header추출
+        String authToken = header.substring(7); // "Bearer " 제거
+        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody(); // 윗 라인 주석해제 시 authToken
+        Long id = claims.get("sub", Long.class);
+        return id;
     }
-
-    public User getUserByToken(String header){
-        if (header == null || !header.startsWith("Bearer "))
-            return null;
-
-        String authToken = header.substring(7);
-
-        if(isExpired(authToken)==false){
-            Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody();
-            String account_id = claims.getSubject();
-            User user = userMapper.getUserByAccountId(account_id);
-            return user;
-        }
-        else
-            return null;
-
-    }
-
-
-
-
+    //FIX 정수현 :: DELETE DATABASE LOGIC TO ACCESS TOKEN
+    //          :: UserMapper 접근 로직
 }

@@ -9,15 +9,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
-//    @Autowired
-//    private JwtUtil jwtUtil;
-//
-//    @Override
-//    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        if (jwtUtil.getUserByToken(request.getHeader("Authorization")) == null) {
-//            response.sendRedirect("/user/login");
-//            return false;
-//        } else
-//            return true;
-//    }
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        String token = request.getHeader("Authorization");
+        if ( token == null || ("".equals(token) && token.isEmpty()) ) { // 토큰이 없는경우
+            throw new Exception();
+        }
+        if ( token.length() < 10 ){
+            throw new Exception();
+        }
+
+        else if  (!token.startsWith("Bearer ")){
+            throw new Exception();
+        }
+        else { //FIX 정수현 :: header Authorization을 가지고 있는 경우 valid를 체크한다.
+            if ( jwtUtil.isExpired(token) ) {
+                throw new Exception();
+            }
+            return true;
+        }
+    }
 }

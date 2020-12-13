@@ -30,20 +30,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Map<String, Object> login(User user) {
-        User selectUser = userMapper.getUserByAccountId(user.getAccount_id());
-
-        if (selectUser != null && BCrypt.checkpw(user.getPassword(), selectUser.getPassword())) {
-
-            //redis 대신 user의 칼럼으로 구현
-            String getToken = userMapper.getJwtTokenByAccountId(user.getAccount_id());
-            if (getToken.equals("") || jwtUtil.isExpired(getToken)) {
-                getToken = jwtUtil.generate(user.getAccount_id());
-                userMapper.setJwtTokenByAccountId(getToken, user.getAccount_id());
-            }
-
+        User selectUser = userMapper.getUserByAccountId(user.getAccount_id()); // 아이디로 User를 가져옴
+        if (selectUser != null && BCrypt.checkpw(user.getPassword(), selectUser.getPassword())) { // User의 비밀번호 검사
+            //login을 한 경우 token을 반환해줌
+            String token = jwtUtil.generate(selectUser.getId());
             Map<String,Object> map = new HashMap<String, Object>();
             map.put("userId", user.getAccount_id());
-            map.put("token", getToken);
+            map.put("token",token);
             return map;
         }
         else

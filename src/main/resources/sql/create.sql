@@ -17,8 +17,8 @@ create table user(
     password varchar(100) not null,
     name varchar(50) not null,
     nickname varchar(50) not null,
-    jwt_token varchar(255) default "",
     created_at timestamp default CURRENT_TIMESTAMP(),
     updated_at timestamp default CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
     constraint user_PK primary key (id)
 );
+<!-- FIX 정수현 :: token sql 삭제-->

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -40,6 +41,13 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value="/user/login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity login(@RequestBody User user){
-        return new ResponseEntity<Map<String, Object>>(userService.login(user), HttpStatus.OK);
+        Map<String,Object> result =  userService.login(user);
+        if ( result!= null) { // login 성공
+            return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
+        }
+        else{ // login 실패
+            return new ResponseEntity<String>("login Fail", HttpStatus.BAD_REQUEST);
+        }
     }
+
 }
