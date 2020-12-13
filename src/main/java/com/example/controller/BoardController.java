@@ -38,18 +38,18 @@ public class BoardController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/board/{id}", method=RequestMethod.GET)
+    @RequestMapping(value = "/api/board/{id}", method=RequestMethod.GET)
     public ResponseEntity<Board> read(@PathVariable("id") Long id) {
         return new ResponseEntity<>(boardService.getBoard(id), HttpStatus.OK);
     }
 
     @ApiOperation(value = "게시글작성", authorizations = {@Authorization(value="Authorization")})
     @ResponseBody
-    @RequestMapping(value="/board",  method =  RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value="/api/board",  method =  RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<String> write(@ApiParam(value = "(required: title, content)", required = true) @RequestBody Board board){
+
         return boardService.createBoard(board) ? new ResponseEntity<>("success", HttpStatus.OK)
                 : new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
     }
-
 
 }

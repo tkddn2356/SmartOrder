@@ -4,10 +4,14 @@ package com.example.service;
 import com.example.domain.Board;
 import com.example.domain.User;
 import com.example.repository.BoardMapper;
+import com.example.repository.UserMapper;
 import com.example.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -17,6 +21,9 @@ public class BoardServiceImpl implements BoardService {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public List<Board> getList() {
@@ -30,8 +37,7 @@ public class BoardServiceImpl implements BoardService {
 
     @Override
     public boolean createBoard(Board board) {
-        User user = jwtUtil.getUserByHeader();
-
+        User user = userMapper.getUserById( jwtUtil.getTokenById() );
         board.setUser_id(user.getId());
         board.setNickname(user.getNickname());
 

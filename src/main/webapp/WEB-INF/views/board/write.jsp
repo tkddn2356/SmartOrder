@@ -89,11 +89,10 @@
             });
         });
     });
-
     function write(board, callback, error) {
         $.ajax({
             type: 'post',
-            url: '/board',
+            url: '/api/board',
             data: JSON.stringify(board),
             contentType: "application/json; charset=utf-8",
             beforeSend: function (xhr) {
@@ -105,11 +104,10 @@
                 }
             },
             error: function (xhr, status, er) {
-                if (error) {
-                    error(er);
-                }
+                location.href ="/user/login";
             }
         });
     }
+
 
 </script>

@@ -87,6 +87,7 @@
         var id = ${id};
         console.log(id);
         showBoard();
+
         function showBoard() {
             read(id, function (board) {
                 board_info.find("input[name='nickname']").val(board.nickname);
@@ -97,7 +98,9 @@
     });
 
     function read(id, callback, error) {
+
         $.get("/board/" + id, function (result) {
+
             if (callback) {
                 callback(result);
             }
@@ -107,7 +110,24 @@
             }
         });
     }
-
+    function read(id, callback, error) {
+        $.ajax({
+            type: 'get',
+            url: '/api/board/' + id,
+            contentType: "application/json; charset=utf-8",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem("token"))
+            },
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                location.href ="/user/login";
+            }
+        });
+    }
 </script>
 
 

@@ -13,7 +13,7 @@
 	</select>
 
 	<insert id="createBoard">
-		insert into board (title, content, user_id, nickname) values( #{title}, #{title}, #{user_id}, #{nickname})
+		insert into board (title, content, user_id, nickname) values( #{title}, #{content}, #{user_id}, #{nickname})
 	</insert>
 
 

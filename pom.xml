@@ -92,14 +92,14 @@
             <version>2.10.2</version>
         </dependency>
 
-<!--        비크립트-->
+        <!--        비크립트-->
         <dependency>
             <groupId>org.mindrot</groupId>
             <artifactId>jbcrypt</artifactId>
             <version>0.4</version>
         </dependency>
 
-<!--        jwt-->
+        <!--        jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -160,7 +160,6 @@
 
 
     </dependencies>
-
 
 
 

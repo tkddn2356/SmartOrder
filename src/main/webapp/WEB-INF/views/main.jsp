@@ -51,7 +51,7 @@
                     </tbody>
                 </table>
                 <div class="text-right">
-                    <a href="/board/write" class="btn btn-secondary">글쓰기</a>
+                    <a href="/board/write"  class="btn btn-secondary">글쓰기</a>
                 </div>
                 <div>
                     <div class='d-flex justify-content-center'>
@@ -109,11 +109,15 @@
 </html>
 
 <script>
+
     function getList(callback, error) {
         $.ajax({
             type: 'get',
             url: '/board/list/',
             contentType: "application/json; charset=utf-8",
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + sessionStorage.getItem("token"))
+            },
             success: function (result, status, xhr) {
                 if (callback) {
                     callback(result);

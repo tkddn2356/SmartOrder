@@ -9,19 +9,11 @@
 	</insert>
 
 	<select id="getUserByAccountId" resultType="com.example.domain.User">
-		 select account_id, password, name, nickname from user where account_id= #{account_id}
+		 select * from user where account_id = #{account_id}
 	</select>
-
-	<select id="getJwtTokenByAccountId" resultType="String">
-		select jwt_token from user where account_id = #{account_id}
+	<select id="getUserById" resultType="com.example.domain.User">
+		SELECT * FROM user WHERE id = #{id}
 	</select>
-
-	<update id="setJwtTokenByAccountId">
-		update user
-        set jwt_token = #{jwt_token}
-        where account_id = #{account_id}
-	</update>
-
 
 
 

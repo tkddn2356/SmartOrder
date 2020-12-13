@@ -1,6 +1,7 @@
 package com.example.domain;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
 
 public class User {
     private Long id;
@@ -8,17 +9,8 @@ public class User {
     private String password;
     private String name;
     private String nickname;
-    private Timestamp created_at;
-    private Timestamp updated_at;
-    private String jwt_token;
-
-    public String getJwt_token() {
-        return jwt_token;
-    }
-
-    public void setJwt_token(String jwt_token) {
-        this.jwt_token = jwt_token;
-    }
+    private Date created_at;
+    private Date updated_at;
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
@@ -44,11 +36,11 @@ public class User {
         return name;
     }
 
-    public Timestamp getCreated_at() {
+    public Date getCreated_at() {
         return created_at;
     }
 
-    public Timestamp getUpdated_at() {
+    public Date getUpdated_at() {
         return updated_at;
     }
 
@@ -68,11 +60,11 @@ public class User {
         this.name = name;
     }
 
-    public void setCreated_at(Timestamp created_at) {
+    public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
 
-    public void setUpdated_at(Timestamp updated_at) {
+    public void setUpdated_at(Date updated_at) {
         this.updated_at = updated_at;
     }
 }
