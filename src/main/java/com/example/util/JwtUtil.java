@@ -54,7 +54,7 @@ public class JwtUtil {
 
     public boolean isExpired(String header){ // TOKEN VALID CHECK
         String authToken = header.substring(7); // "Bearer " 제거
-        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody(); // 윗 라인 주석해제 시 authToken
+        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody();
         Date exp = claims .get("exp", Date.class);
         Date now = new Date();
         if( exp.getTime() < now.getTime()){
@@ -69,7 +69,7 @@ public class JwtUtil {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest(); // request 추출
         String header = request.getHeader("Authorization"); // header추출
         String authToken = header.substring(7); // "Bearer " 제거
-        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody(); // 윗 라인 주석해제 시 authToken
+        Claims claims  = Jwts.parser().setSigningKey(this.key).parseClaimsJws(authToken).getBody();
         Long id = claims.get("sub", Long.class);
         return id;
     }
