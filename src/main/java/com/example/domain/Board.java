@@ -1,6 +1,8 @@
 package com.example.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Board {
@@ -9,6 +11,8 @@ public class Board {
     private String content;
     private Long user_id;
     private String nickname;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date created_at;
     private Date updated_at;
 
