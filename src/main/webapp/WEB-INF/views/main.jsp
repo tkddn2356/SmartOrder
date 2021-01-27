@@ -136,6 +136,7 @@
         showBoardList();
         function showBoardList() {
             getList(function (list) {
+                console.log(list);
                 var board_tbody = $('#board_tbody');
                 var str = "";
                 for (var i = 0, len = list.length; i < len; i++) {

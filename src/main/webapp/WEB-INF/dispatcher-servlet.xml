@@ -20,16 +20,18 @@
         <property name="suffix" value=".jsp"/>
         <property name="contentType" value="text/html; charset=UTF-8"/>
     </bean>
-    <mvc:interceptors>
-        <mvc:interceptor>
-            <mvc:mapping path="/api/*" />
-            <mvc:mapping path="/api/*/*" />
-            <bean class="com.example.interceptor.AuthInterceptor" />
-        </mvc:interceptor>
-    </mvc:interceptors>
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--            <mvc:mapping path="/api/*" />-->
+<!--            <mvc:mapping path="/api/*/*" />-->
+<!--            <bean class="com.example.interceptor.AuthInterceptor" />-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
 
     <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"></mvc:resources>
     <mvc:resources location="classpath:/META-INF/resources/webjars/"  mapping="/webjars/**"></mvc:resources>
+
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
 
 
 </beans>

@@ -12,6 +12,4 @@ public interface BoardMapper {
     public List<Board> getList();
     public Board getBoard(Long id);
     public int createBoard(Board board);
-
-
 }
