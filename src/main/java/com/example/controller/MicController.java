@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Board;
+import com.example.service.DetectIntentServiceImpl;
 import com.example.util.DetectIntentTexts;
 import com.example.util.InfiniteStreamRecognize;
 import com.example.util.StreamingMic;
@@ -25,7 +26,7 @@ public class MicController {
     private InfiniteStreamRecognize infiniteStreamRecognize;
 
     @Autowired
-    private DetectIntentTexts detectIntentTexts;
+    private DetectIntentServiceImpl detectIntentService;
 
     @RequestMapping(value = "/mic2", method = RequestMethod.GET)
     public String main() throws Exception {
@@ -37,12 +38,11 @@ public class MicController {
     @ResponseBody
     @RequestMapping(value = "/api/mic/{word}", method=RequestMethod.GET)
     public ResponseEntity requestMic(@PathVariable("word") String word) throws IOException {
-        List<String> testList = new ArrayList<>();
-        testList.add(word);
+//        List<String> testList = new ArrayList<>();
+//        testList.add(word);
 //        Map<String, Object> result = detectIntentTexts.detectIntentTexts("smartorder-klwg", testList, "12345", "ko-kr");
-        Map<String, Object> result = detectIntentTexts.detectIntentTexts("smartordersystem-fnvd", testList, "12345", "ko-kr");
-
-        return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
+//        Map<String, Object> result = detectIntentTexts.detectIntentTexts("smartordersystem-fnvd", testList, "12345", "ko-kr");
+        return new ResponseEntity<Map<String, Object>>(detectIntentService.getDetectIntentTexts(word), HttpStatus.OK);
     }
 
 

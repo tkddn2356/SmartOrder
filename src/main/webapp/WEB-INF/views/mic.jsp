@@ -71,7 +71,6 @@
 <script>
     $(document).ready(function () {
 
-
         $("#mic_btn").on("click", function (e) {
 
         });
