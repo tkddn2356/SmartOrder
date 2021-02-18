@@ -40,7 +40,6 @@
 
         /*body{ -ms-overflow-style: none; }*/
         /*::-webkit-scrollbar { display: none; }*/
-
     </style>
 
 </head>
@@ -114,103 +113,26 @@
     <div class="tab-pane fade show active" id="burgerSetList">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-lg-3">
-                    <div class="card menu-class" style="width: 14rem; margin-top:50px;" id="testMenu">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text menu-name">싸이버거 세트</p>
-                            <p class="card-text menu-content">싸이버거 세트입니다.</p>
-                            <p class="card-text menu-price">가격은 5,600원 입니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card menu-class" style="width: 14rem; margin-top:50px;" id="testMenu2">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text menu-name">인크레더블 세트</p>
-                            <p class="card-text menu-content">인크레더블 세트입니다.</p>
-                            <p class="card-text menu-price">가격은 7,600원 입니다.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3">
-                    <div class="card" style="width: 14rem; margin-top:50px;">
-                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <p class="card-text">Some quick example text to build on the card title and
-                                make
-                                up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
-                </div>
+                <%--                <div class="col-md-4 col-lg-3">--%>
+                <%--                    <div class="card menu-class" style="width: 14rem; margin-top:50px;" id="testMenu">--%>
+                <%--                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">--%>
+                <%--                        <div class="card-body">--%>
+                <%--                            <p class="card-text menu-name">싸이버거 세트</p>--%>
+                <%--                            <p class="card-text menu-content">싸이버거 세트입니다.</p>--%>
+                <%--                            <p class="card-text menu-price">가격은 5,600원 입니다.</p>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
+                <%--                <div class="col-md-4 col-lg-3">--%>
+                <%--                    <div class="card menu-class" style="width: 14rem; margin-top:50px;" id="testMenu2">--%>
+                <%--                        <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">--%>
+                <%--                        <div class="card-body">--%>
+                <%--                            <p class="card-text menu-name">인크레더블 세트</p>--%>
+                <%--                            <p class="card-text menu-content">인크레더블 세트입니다.</p>--%>
+                <%--                            <p class="card-text menu-price">가격은 7,600원 입니다.</p>--%>
+                <%--                        </div>--%>
+                <%--                    </div>--%>
+                <%--                </div>--%>
             </div>
         </div>
     </div>
@@ -232,33 +154,8 @@
 <%--<p class="card-text" id="middleResult"></p>--%>
 <%--<p class="card-text" id="DetectedIntent"></p>--%>
 
-<!-- Button trigger modal -->
-
-
-<!-- Modal -->
-<%--<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"--%>
-<%--     data-backdrop="false">--%>
-<%--    &lt;%&ndash;    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">&ndash;%&gt;--%>
-<%--    <div class="modal-dialog" role="document">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h5 class="modal-title" id="exampleModalLabel">검색하신 "xxxxx" 입니다</h5>--%>
-<%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                    <span aria-hidden="true">&times;</span>--%>
-<%--                </button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                대충 메뉴 설명들--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
-<%--                <button type="button" class="btn btn-primary">Save changes</button>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-
-<div class="modal" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:1050">
+<div class="modal" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="z-index:1050">
     <%--        <div class="modal-dialog" role="document" style="max-width: none;>--%>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -282,7 +179,8 @@
     </div>
 </div>
 
-<div class="modal" id="toppingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index:1060">
+<div class="modal" id="toppingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="z-index:1060">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -340,61 +238,28 @@
             <div class="modal-body">
                 <div class="container" style="height: 500px; overflow: auto;">
                     <div class="row" id="searchModalMenuList">
-                        <div class="col-md-4 col-lg-3">
-                            <div class="card" style="width: 14rem; margin-top:50px;">
-                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make
-                                        up the bulk
-                                        of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-lg-3">
-                            <div class="card" style="width: 14rem; margin-top:50px;">
-                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make
-                                        up the bulk
-                                        of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-lg-3">
-                            <div class="card" style="width: 14rem; margin-top:50px;">
-                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make
-                                        up the bulk
-                                        of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-lg-3">
-                            <div class="card" style="width: 14rem; margin-top:50px;">
-                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make
-                                        up the bulk
-                                        of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-lg-3">
-                            <div class="card" style="width: 14rem; margin-top:50px;">
-                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make
-                                        up the bulk
-                                        of the card's content.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <%--                        <div class="col-md-4 col-lg-3">--%>
+                        <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
+                        <%--                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">--%>
+                        <%--                                <div class="card-body">--%>
+                        <%--                                    <p class="card-text">Some quick example text to build on the card title and--%>
+                        <%--                                        make--%>
+                        <%--                                        up the bulk--%>
+                        <%--                                        of the card's content.</p>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="col-md-4 col-lg-3">--%>
+                        <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
+                        <%--                                <img class="card-img-top" src="/resources/img/DetailImage.jpg" alt="Card image cap">--%>
+                        <%--                                <div class="card-body">--%>
+                        <%--                                    <p class="card-text">Some quick example text to build on the card title and--%>
+                        <%--                                        make--%>
+                        <%--                                        up the bulk--%>
+                        <%--                                        of the card's content.</p>--%>
+                        <%--                                </div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
                     </div>
                 </div>
             </div>
@@ -405,6 +270,140 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal" id="numberInputModal" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="numberInputModalTitle">전화번호 입력</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="margin: auto">
+                <div class="btn-group-vertical" role="group" aria-label="Basic example">
+                    <div class="btn-group">
+                        <input class="text-center form-control-lg mb-2" id="code">
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '1';">
+                            1
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '2';">
+                            2
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '3';">
+                            3
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '4';">
+                            4
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '5';">
+                            5
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '6';">
+                            6
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '7';">
+                            7
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '8';">
+                            8
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '9';">
+                            9
+                        </button>
+                    </div>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '0';"></button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value + '0';">
+                            0
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary py-3"
+                                onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1);">
+                            &lt;
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="z-index:1060" data-backdrop="false">
+    <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
+    <div class="modal-dialog" role="document" style="margin-top:230px">
+        <div class="modal-content">
+<%--            <div class="modal-header">--%>
+<%--                <div class="d-flex">--%>
+<%--                    <h5 class="modal-title" id="ratingModalTitle">메뉴 평가</h5>--%>
+<%--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+<%--                        <span aria-hidden="true">&times;</span>--%>
+<%--                    </button>--%>
+<%--                </div>--%>
+<%--                <h7 class="modal-title mb-2 text-muted">메뉴를 5개 이상 선택하여 별점을 주세요.--%>
+<%--                    해당 별점은 추천시스템을 이용하실때 반영이 됩니다.--%>
+<%--                </h7>--%>
+<%--            </div>--%>
+            <div class="modal-header d-block">
+                <div class="d-flex">
+                    <h3 class="modal-title" id="ratingModalTitle">메뉴 평가</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h7 class="modal-title mb-2 text-muted">메뉴를 5개 이상 선택하여 별점을 주세요.
+                    해당 별점은 추천시스템을 이용하실때 반영이 됩니다.</h7>
+            </div>
+            <div class="modal-body" style="height: 580px; overflow: auto;">
+
+                <div style="font-size:20px; text-align: center; margin-bottom: 8px"><strong>햄버거세트</strong></div>
+                <div id="burgerSetRatingList">
+
+                </div>
+                <div style="font-size:20px; text-align: center; margin-bottom: 8px"><strong>치킨</strong></div>
+                <div id="chickenRatingList">
+
+                </div>
+                <div style="font-size:20px; text-align: center; margin-bottom: 8px"><strong>사이드</strong></div>
+                <div id="sideRatingList">
+
+                </div>
+                <div style="font-size:20px; text-align: center; margin-bottom: 8px"><strong>드링크</strong></div>
+                <div id="drinkRatingList">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary">제출</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </body>
 
@@ -459,50 +458,6 @@
                         <%--                                <button class="close"><span>X</span></button>--%>
                         <%--                            </div>--%>
                         <%--                        </li>--%>
-                        <%--                        <li id="coreSelectedLi_3">--%>
-                        <%--                            <div class="choose_item">--%>
-                        <%--                                <p class="tit">--%>
-                        <%--                                    <span></span>--%>
-                        <%--                                    <span class="txt_tit">싸이버거 세트</span>--%>
-                        <%--                                    <span class="txt_option" style="float:right">추가 : 베이컨, 에그<br></span>--%>
-                        <%--                                </p>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_calc">--%>
-                        <%--                                <div class="input-group" style="width:30%">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
-                        <%--                                    </button>--%>
-                        <%--                                    <input type="text" class="form-control" placeholder="1">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
-                        <%--                                    </button>--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_result">--%>
-                        <%--                                <strong>9,100<span>원</span></strong>--%>
-                        <%--                                <button class="close"><span>X</span></button>--%>
-                        <%--                            </div>--%>
-                        <%--                        </li>--%>
-                        <%--                        <li id="coreSelectedLi_4">--%>
-                        <%--                            <div class="choose_item">--%>
-                        <%--                                <p class="tit">--%>
-                        <%--                                    <span></span>--%>
-                        <%--                                    <span class="txt_tit">싸이버거 세트</span>--%>
-                        <%--                                    <span class="txt_option" style="float:right">추가 : 베이컨, 에그<br></span>--%>
-                        <%--                                </p>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_calc">--%>
-                        <%--                                <div class="input-group" style="width:30%">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
-                        <%--                                    </button>--%>
-                        <%--                                    <input type="text" class="form-control" placeholder="1">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
-                        <%--                                    </button>--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_result">--%>
-                        <%--                                <strong>9,100<span>원</span></strong>--%>
-                        <%--                                <button class="close"><span>X</span></button>--%>
-                        <%--                            </div>--%>
-                        <%--                        </li>--%>
                     </ul>
                 </div>
             </div>
@@ -530,22 +485,25 @@
     </div>
 </footer>
 
-
 </html>
-
 
 <script src='/resources/js/annyang.js'></script>
 <script src="/resources/js/menu.js"></script>
 <script>
 
     $(document).ready(function () {
+        // $('#numberInputModal').modal('show');
+
         $('#mic_img').hide();
         $('#mic_btn').on("click", function (e) {
             speech("안녕하세요. 음성인식 서비스를 시작하겠습니다. 원하시는 메뉴를 말씀하세요");
+            // 기본적으로 speech발동되고 말이 끝나면 micTest() 실행됨.
             // micTest();
         });
         // $('#chickenSetTab').trigger("click");
-        getMenuList();
+        getMenuList(); // 버거세트, 치킨, 사이드, 드링크의 리스트들을 디비에서 불러옴.
+        getRatingList();
+        $('#ratingModal').modal('show');
     });
 
     function micTest() {
@@ -564,8 +522,8 @@
                     $('#finalResult').html(final_transcript);
                     result2 = final_transcript;
                     console.log(result2);
-                    annyang.abort();
-                    requestMic(result2, function (result) {
+                    annyang.abort(); // 마이크 중단하고
+                    requestMic(result2, function (result) { // 마이크 입력값 처리함.
                         // $('#middleResult').hide();
                         // $('#finalResult').hide();
                         $('#DetectedIntent').html(result.DetectedIntent);
@@ -573,10 +531,7 @@
                         // speech(result.FulfillmentText);
                         if (result.endOfConversation == true) { // 만약 대화의 끝일경우 처리함수 실행
                             handlingResult(result);
-                            speech(result.FulfillmentText, true);
-                            // speech("원하시는 메뉴를 말씀하세요");
-                            // speech(result.FulfillmentText + "원하시는 메뉴를 말씀하세요");
-                            // $('#FulfillmentText').html("원하시는 메뉴를 말씀하세요");
+                            speech(result.FulfillmentText, true); //대화의 끝인경우 대답 후 원하는 메뉴 선택하라고 나옴
                         } else {
                             speech(result.FulfillmentText);
                         }
@@ -591,7 +546,6 @@
         };
     }
 
-
     function requestMic(word, callback, error) {
         $.ajax({
             type: 'get',
@@ -603,8 +557,6 @@
                 }
             },
             error: function (xhr, status, er) {
-
-
             }
         });
     }
@@ -623,8 +575,6 @@
     function speech(txt, endOfConversation = false) {
         $('#FulfillmentText').html(txt);
 
-        // $('#DetectedIntent').hide();
-        // $('#FulfillmentText').hide();
         if (!window.speechSynthesis) {
             alert("음성 재생을 지원하지 않는 브라우저입니다. 크롬, 파이어폭스 등의 최신 브라우저를 이용하세요");
             return;
@@ -634,11 +584,10 @@
         if (endOfConversation == true) {
             utterThis.onend = function (event) {
                 console.log('end');
-                // $('#middleResult').show();
-                // $('#finalResult').show();
-                // micTest();
                 speech("원하시는 메뉴를 말씀하세요");
-                // $('#FulfillmentText').html(txt);
+                // 이부분은 나중에 intent값 받아와서 원하는 메뉴 묻는거 말고 다른 말이 나올 수 있게 수정할 예정
+
+
             };
         } else {
             utterThis.onend = function (event) {
@@ -709,23 +658,16 @@
         calculateMenu();
     }
 
-    // addSelectedLi("싸이버거", "9,900", "베이컨, 토마토", 3);
+    // 음식추가 함수 ex) addSelectedLi("싸이버거", "9,900", "베이컨, 토마토", 3);
 
     function handlingResult(result) {
-        // if(result.DetectedIntent == "PizzaOrder"){
-        //     for (var i = 0, len = result.Parameters.PIZZA_NAME.length; i < len; i++){
-        //         addSelectedLi(result.Parameters.PIZZA_NAME[i], 9900, result.Parameters.PIZZA_TOPPING[i], result.Parameters.PIZZA_NUMBER[i]);
-        //         console.log("토핑" + result.Parameters.PIZZA_TOPPING[i]);
-        //
-        //         //디비에서 이름으로 메뉴에 대한 정보 가져오고 개수랑 price곱해서 가격으로 넣어버리면됨.
-        //     }
-        // }
         if (result.DetectedIntent == "Burger_set_order") {
             for (var i = 0, len = result.Parameters.burger_set_menu.length; i < len; i++) {
                 menuService.getMenuByName(result.Parameters.burger_set_menu[i], function (menu) {
                     addSelectedLi(result.Parameters.burger_set_menu[i], menu.price * result.Parameters.kor_num[i], "",
                         result.Parameters.kor_num[i]) // 아직 토핑없어서 걍 "" 처리해놨음
-                })
+                }) // result값 가져오는건 비동기->동기로 바꿔서 해결했음. 현재 토핑기능은 없고
+                // 토핑 2개이상 추가하는건 힘들거같음.
             }
         }
         if (result.DetectedIntent == "Chicken_order") {
@@ -776,9 +718,9 @@
             }
         }
 
-        if(result.DetectedIntent == "Search_by_isspicy"){
-            if(result.Parameters.Is_spicy[0] == "매운 메뉴"){
-                menuService.getListByIs_spicy(true, function(list){
+        if (result.DetectedIntent == "Search_by_isspicy") {
+            if (result.Parameters.Is_spicy[0] == "매운 메뉴") {
+                menuService.getListByIs_spicy(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
                         str += " <div class='col-md-4 col-lg-3'>";
@@ -793,8 +735,8 @@
                     $('#searchModalMenuList').html(str);
                 })
             }
-            if(result.Parameters.Is_spicy[0] == "안매운 메뉴"){
-                menuService.getListByIs_spicy(false, function(list){
+            if (result.Parameters.Is_spicy[0] == "안매운 메뉴") {
+                menuService.getListByIs_spicy(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
                         str += " <div class='col-md-4 col-lg-3'>";
@@ -809,10 +751,25 @@
                     $('#searchModalMenuList').html(str);
                 })
             }
-
             $('#searchModalTitle').html("검색하신\"" + result.Parameters.Is_spicy[0] + "\"리스트입니다");
             $('#searchModal').modal('show');
         }
+        if (result.DetectedIntent == "Search_by_ishot") {
+
+        }
+        if (result.DetectedIntent == "Search_by_howmuch") {
+
+        }
+        if (result.DetectedIntent == "Search_by_recentrelease") {
+
+        }
+        //이걸로 검색기능은 마무리하고 추가로 만들어야 하는게.. 전체취소, 결제, 추천
+        // ifresult.DetectedIntent == "Search_by_isspicy"){
+        //
+        // }
+        // if(result.DetectedIntent == "Search_by_isspicy"){
+        //
+        // }
     }
 
 
@@ -904,9 +861,99 @@
         calculateMenu();
     });
 
-
     function openPop() {
-        var popup = window.open('/main', '테스트팝업', 'width=700px,height=800px,scrollbars=yes');
+        var popup = window.open('/user/rating', '테스트팝업', 'width=700px,height=800px,scrollbars=yes');
+    }
+
+
+    function getRatingList() {
+        menuService.getListByCategory("burgerSet", function (list) {
+            var str = "";
+            for (var i = 0, len = list.length; i < len; i++) {
+                str += "<div style='margin-bottom:8px'>";
+                str += "<span>" + list[i].name + "</span>";
+                str += "<span style='float:right'>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=1></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=2></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=3></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=4></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=5></label>";
+                str += "</span>";
+                str += "</div>";
+            }
+            $('#burgerSetRatingList').html(str);
+        });
+        menuService.getListByCategory("chicken", function (list) {
+            var str = "";
+            for (var i = 0, len = list.length; i < len; i++) {
+                str += "<div style='margin-bottom:8px'>";
+                str += "<span>" + list[i].name + "</span>";
+                str += "<span style='float:right'>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=1></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=2></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=3></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=4></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=5></label>";
+                str += "</span>";
+                str += "</div>";
+            }
+            $('#chickenRatingList').html(str);
+        });
+        menuService.getListByCategory("side", function (list) {
+            var str = "";
+            for (var i = 0, len = list.length; i < len; i++) {
+                str += "<div style='margin-bottom:8px'>";
+                str += "<span>" + list[i].name + "</span>";
+                str += "<span style='float:right'>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=1></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=2></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=3></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=4></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=5></label>";
+                str += "</span>";
+                str += "</div>";
+            }
+            $('#sideRatingList').html(str);
+        });
+        menuService.getListByCategory("drink", function (list) {
+            var str = "";
+            for (var i = 0, len = list.length; i < len; i++) {
+                str += "<div style='margin-bottom:8px'>";
+                str += "<span>" + list[i].name + "</span>";
+                str += "<span style='float:right'>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=1></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=2></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=3></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=4></label>";
+                str += "<label style='margin-left:5px'><input type='radio' name='" + list[i].name + "' value=5></label>";
+                str += "</span>";
+                str += "</div>";
+            }
+            $('#drinkRatingList').html(str);
+        });
+    }
+
+    //제출 버튼 누르면 ajax로 최근아이디+1값 가져옴. 그리고 requestRating에 넣어서 추천이력 갱신
+    //그리고 갱신이 다 되고 (동기로 해야됨) 해당 id에 대한 추천리스트를 가져옴 끝.
+
+    function requestRating(user_id, ratings, callback, error) {
+        console.log("ratings = " + ratings);
+        $.ajax({
+            type: 'post',
+            url: '/user/rating/' + user_id,
+            data: JSON.stringify(ratings),
+            contentType: "application/json; charset=utf-8",
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if (error) {
+                    error(er);
+                }
+            }
+        });
     }
 
 

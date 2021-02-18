@@ -1,7 +1,6 @@
 package com.example.controller;
 
 
-import com.example.domain.Board;
 import com.example.domain.Menu;
 import com.example.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class MenuController {
 
     @ResponseBody
     @RequestMapping(value = "/menus/search/is_spicy/{is_spicy}", method= RequestMethod.GET)
-    public ResponseEntity<List<Menu>> getMenuListByIs_spicy(@PathVariable("is_spicy") Boolean is_spicy) throws IOException {
+    public ResponseEntity<List<Menu>> getMenuListByIs_spicy(@PathVariable("is_spicy") int is_spicy) throws IOException {
         return new ResponseEntity<List<Menu>>(menuService.getListByIs_spicy(is_spicy), HttpStatus.OK);
     }
 

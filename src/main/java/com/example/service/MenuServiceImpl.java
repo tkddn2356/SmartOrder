@@ -1,6 +1,5 @@
 package com.example.service;
 
-import com.example.domain.Board;
 import com.example.domain.Menu;
 import com.example.repository.MenuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class MenuServiceImpl implements MenuService{
     }
 
     @Override
-    public List<Menu> getListByIs_spicy(Boolean is_spicy) {
+    public List<Menu> getListByIs_spicy(int is_spicy) {
         return menuMapper.getListByIs_spicy(is_spicy);
     }
 }

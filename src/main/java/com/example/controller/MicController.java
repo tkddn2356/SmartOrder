@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.domain.Board;
 import com.example.service.DetectIntentServiceImpl;
 import com.example.util.DetectIntentTexts;
 import com.example.util.InfiniteStreamRecognize;

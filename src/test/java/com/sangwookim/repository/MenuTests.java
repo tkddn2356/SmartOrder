@@ -1,9 +1,7 @@
 //package com.sangwookim.repository;
 //
 //
-//import com.sangwookim.domain.Board;
-//import com.sangwookim.domain.Criteria;
-//import lombok.extern.log4j.Log4j;
+//import com.example.repository.MenuMapper;
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
 //import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +10,15 @@
 //import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 //
 //@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(locations = {"file:web/WEB-INF/dispatcher-servlet.xml", "classpath*:common/*.xml"})
-//@Log4j
+//@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/dispatcher-servlet.xml", "classpath*:common/*.xml"})
 //@Repository
-//public class BoardMapperTests {
+//public class MenuTests {
 //    @Autowired
-//    private BoardMapper mapper;
+//    private MenuMapper mapper;
 //
 //    @Test
 //    public void testGetList() {
-//        mapper.getList("자유게시판").forEach(board -> log.info(board));
+//        System.out.println(mapper.getMenuByName("싸이버거세트").getName());
 //    }
 //
 ////    @Test

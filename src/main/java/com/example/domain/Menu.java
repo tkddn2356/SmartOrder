@@ -8,8 +8,8 @@ public class Menu {
     private String information;
     private String category;
     private int price;
-    private boolean is_spicy;
-    private boolean is_hot;
+    private int is_spicy;
+    private int is_hot;
     private Timestamp released_at;
     private Timestamp created_at;
     private Timestamp updated_at;
@@ -51,13 +51,6 @@ public class Menu {
         return information;
     }
 
-    public boolean isIs_spicy() {
-        return is_spicy;
-    }
-
-    public boolean isIs_hot() {
-        return is_hot;
-    }
 
     public Timestamp getReleased_at() {
         return released_at;
@@ -83,14 +76,6 @@ public class Menu {
         this.information = information;
     }
 
-    public void setIs_spicy(boolean is_spicy) {
-        this.is_spicy = is_spicy;
-    }
-
-    public void setIs_hot(boolean is_hot) {
-        this.is_hot = is_hot;
-    }
-
     public void setReleased_at(Timestamp released_at) {
         this.released_at = released_at;
     }
@@ -101,6 +86,22 @@ public class Menu {
 
     public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
+    }
+
+    public int getIs_spicy() {
+        return is_spicy;
+    }
+
+    public int getIs_hot() {
+        return is_hot;
+    }
+
+    public void setIs_spicy(int is_spicy) {
+        this.is_spicy = is_spicy;
+    }
+
+    public void setIs_hot(int is_hot) {
+        this.is_hot = is_hot;
     }
 }
 
