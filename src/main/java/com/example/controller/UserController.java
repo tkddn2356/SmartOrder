@@ -1,6 +1,5 @@
 package com.example.controller;
 
-import com.example.domain.Rating;
 import com.example.domain.User;
 import com.example.repository.UserMapper;
 import com.example.service.UserServiceImpl;
