@@ -16,5 +16,16 @@
         select * from menu where is_spicy = #{is_spicy}
     </select>
 
+    <select id="getListByHow_muchOver" resultType="com.example.domain.Menu">
+        select * from menu where price <![CDATA[ > ]]> #{number};
+    </select>
+
+    <select id="getListByHow_muchUnder" resultType="com.example.domain.Menu">
+        select * from menu where price <![CDATA[ < ]]> #{number};
+    </select>
+
+    <select id="getListByIs_hot" resultType="com.example.domain.Menu">
+        select * from menu where is_hot = #{is_hot}
+    </select>
 
 </mapper>

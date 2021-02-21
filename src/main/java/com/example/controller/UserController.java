@@ -86,18 +86,34 @@ public class UserController {
         }
     }
 
+//    @ResponseBody
+//    @RequestMapping(value="/user/rating/{id}", method = RequestMethod.POST, consumes = "application/json")
+//    public String getRatings(@RequestBody String param, @PathVariable("id") Long id){
+//        ObjectMapper mapper = new ObjectMapper();
+//        String json = param;
+//        try {
+//            Map<String, Integer> map = mapper.readValue(json, Map.class);
+//            userService.registerRating(id, map);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        return "success";
+//        // 예외처리 및 레이어 구분 막장임.. 나중에 추가할꺼.
+//    }
+
     @ResponseBody
-    @RequestMapping(value="/user/rating/{id}", method = RequestMethod.POST, consumes = "application/json")
-    public String getRatings(@RequestBody String param, @PathVariable("id") Long id){
+    @RequestMapping(value="/user/rating", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<Long> getRatings(@RequestBody String param){
         ObjectMapper mapper = new ObjectMapper();
         String json = param;
         try {
             Map<String, Integer> map = mapper.readValue(json, Map.class);
-            userService.registerRating(id, map);
+            return new ResponseEntity<>(userService.registerRating(map), HttpStatus.OK);
+            // 반환값은 평가 등록한 user_id가 반환됨
         } catch (IOException e) {
             e.printStackTrace();
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return "success";
         // 예외처리 및 레이어 구분 막장임.. 나중에 추가할꺼.
     }
 

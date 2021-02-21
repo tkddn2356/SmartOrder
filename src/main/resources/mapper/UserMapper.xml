@@ -24,6 +24,12 @@
 		insert into user_menu_rating(user_id, menu_id, rating) values(#{user_id}, #{menu_id}, #{rating})
 	</insert>
 
+	<select id="getRecentUserId" resultType="_long">
+		select user_id from user_menu_rating order by user_id desc limit 1;
+	</select>
+
+
+
 
 
 

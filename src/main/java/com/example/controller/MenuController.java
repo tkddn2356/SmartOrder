@@ -39,6 +39,26 @@ public class MenuController {
         return new ResponseEntity<List<Menu>>(menuService.getListByIs_spicy(is_spicy), HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/menus/search/is_hot/{is_hot}", method= RequestMethod.GET)
+    public ResponseEntity<List<Menu>> getMenuListByIs_hot(@PathVariable("is_hot") int is_hot) throws IOException {
+        return new ResponseEntity<List<Menu>>(menuService.getListByIs_hot(is_hot), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/menus/search/how_much/under/{number}", method= RequestMethod.GET)
+    public ResponseEntity<List<Menu>> getMenuListByHow_muchUnder(@PathVariable("number") int number) throws IOException {
+        return new ResponseEntity<List<Menu>>(menuService.getListByHow_muchUnder(number), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/menus/search/how_much/over/{number}", method= RequestMethod.GET)
+    public ResponseEntity<List<Menu>> getMenuListByHow_muchOver(@PathVariable("number") int number) throws IOException {
+        return new ResponseEntity<List<Menu>>(menuService.getListByHow_muchOver(number), HttpStatus.OK);
+    }
+
+
+
 
 
 }

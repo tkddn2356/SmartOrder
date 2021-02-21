@@ -355,17 +355,6 @@
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
     <div class="modal-dialog" role="document" style="margin-top:230px">
         <div class="modal-content">
-<%--            <div class="modal-header">--%>
-<%--                <div class="d-flex">--%>
-<%--                    <h5 class="modal-title" id="ratingModalTitle">메뉴 평가</h5>--%>
-<%--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-<%--                        <span aria-hidden="true">&times;</span>--%>
-<%--                    </button>--%>
-<%--                </div>--%>
-<%--                <h7 class="modal-title mb-2 text-muted">메뉴를 5개 이상 선택하여 별점을 주세요.--%>
-<%--                    해당 별점은 추천시스템을 이용하실때 반영이 됩니다.--%>
-<%--                </h7>--%>
-<%--            </div>--%>
             <div class="modal-header d-block">
                 <div class="d-flex">
                     <h3 class="modal-title" id="ratingModalTitle">메뉴 평가</h3>
@@ -374,7 +363,8 @@
                     </button>
                 </div>
                 <h7 class="modal-title mb-2 text-muted">메뉴를 5개 이상 선택하여 별점을 주세요.
-                    해당 별점은 추천시스템을 이용하실때 반영이 됩니다.</h7>
+                    해당 별점은 추천시스템을 이용하실때 반영이 됩니다.
+                </h7>
             </div>
             <div class="modal-body" style="height: 580px; overflow: auto;">
 
@@ -397,7 +387,29 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">제출</button>
+                <button type="button" id="ratingModalSubmit" class="btn btn-primary">제출</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="ChoosePayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+     style="z-index:1060">
+    <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ChoosePayModalTitle">주문확인</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                <button type="button" class="btn btn-primary">결제</button>
             </div>
         </div>
     </div>
@@ -465,17 +477,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <p style="margin-bottom: 0px">주문수량: <span id="totalPayCount">0</span>개 / 주문금액: <span
+                        <p style="margin-bottom: 0px">주문한 종류: <span id="totalPayCount">0</span>개 / 주문금액: <span
                                 id="totalPayPrice">0</span>원</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card">
+                    <div class="card" id="allCancel">
                         전체취소
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card">
+                    <div class="card" id="choosePay">
                         주문하기
                     </div>
                 </div>
@@ -502,7 +514,7 @@
         // $('#chickenSetTab').trigger("click");
         getMenuList(); // 버거세트, 치킨, 사이드, 드링크의 리스트들을 디비에서 불러옴.
         getRatingList();
-        $('#ratingModal').modal('show');
+        // $('#ratingModal').modal('show');
     });
 
     function micTest() {
@@ -530,7 +542,7 @@
                         // speech(result.FulfillmentText);
                         if (result.endOfConversation == true) { // 만약 대화의 끝일경우 처리함수 실행
                             handlingResult(result);
-                            speech(result.FulfillmentText, true); //대화의 끝인경우 대답 후 원하는 메뉴 선택하라고 나옴
+                            speech(result.FulfillmentText, true, result.DetectedIntent); //대화의 끝인경우 대답 후 원하는 메뉴 선택하라고 나옴
                         } else {
                             speech(result.FulfillmentText);
                         }
@@ -571,30 +583,28 @@
         window.speechSynthesis.onvoiceschanged = setVoiceList;
     }
 
-    function speech(txt, endOfConversation = false) {
+    function speech(txt, endOfConversation = false, intent = "") {
         $('#FulfillmentText').html(txt);
-
         if (!window.speechSynthesis) {
             alert("음성 재생을 지원하지 않는 브라우저입니다. 크롬, 파이어폭스 등의 최신 브라우저를 이용하세요");
             return;
         }
         var lang = 'ko-KR';
         var utterThis = new SpeechSynthesisUtterance(txt);
-        if (endOfConversation == true) {
+        if (endOfConversation == true && isSearchOrOrder(intent)) {
             utterThis.onend = function (event) {
                 console.log('end');
                 speech("원하시는 메뉴를 말씀하세요");
                 // 이부분은 나중에 intent값 받아와서 원하는 메뉴 묻는거 말고 다른 말이 나올 수 있게 수정할 예정
-
-
+            };
+        } else if (endOfConversation == true && isSearchOrOrder(intent) == false && intent == "Recommend_menu") {
+            utterThis.onend = function (event) {
+                console.log('end');
+                speech("메뉴를 5개 이상 선택하여 별점을 주세요.");
             };
         } else {
             utterThis.onend = function (event) {
                 console.log('end');
-                // $('#middleResult').show();
-                // $('#finalResult').show();
-                // $('#FulfillmentText').html(txt);
-                // $('#FulfillmentText').html(txt);
                 micTest();
             };
         }
@@ -624,6 +634,17 @@
         window.speechSynthesis.speak(utterThis);
     }
 
+    function isSearchOrOrder(inputString) {
+        var strArray = inputString.split('_');
+        for (var i = 0, len = strArray.length; i < len; i++) {
+            if (strArray[i] == "order" || strArray[i] == "Search") {
+                console.log(strArray[i]);
+                return true;
+            }
+        }
+        return false;
+    }
+
     // 음식 클릭시 modal 생성
     $(document).on('click', '.menu-class', function () {
         console.log($(this).attr('id'));
@@ -638,6 +659,7 @@
     });
 
 
+
     function addSelectedLi(name, price, topping = "", quantity) {
         var str = "";
         str += "<li class='choose-item-li'>"
@@ -648,7 +670,7 @@
         str += "<div class='choose_calc'>";
         str += "<div class='input-group' style='width:30%'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>+</button>";
-        str += "<input type='text' class='form-control' value='" + quantity + "'>";
+        str += "<input type='text' class='form-control choose_quantity' value='" + quantity + "'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>-</button></div></div>";
         str += "<div class='choose_result'>";
         str += "<span class='txt_price'>" + price + "</span><span>원</span>";
@@ -754,21 +776,87 @@
             $('#searchModal').modal('show');
         }
         if (result.DetectedIntent == "Search_by_ishot") {
-
+            if (result.Parameters.Is_hot[0] == "따뜻한 메뉴") {
+                menuService.getListByIs_hot(2, function (list) {
+                    var str = "";
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        str += " <div class='col-md-4 col-lg-3'>";
+                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
+                        str += "<div class='card-body'>";
+                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "</div></div></div>";
+                    }
+                    $('#searchModalMenuList').html(str);
+                })
+            }
+            if (result.Parameters.Is_hot[0] == "시원한 메뉴") {
+                menuService.getListByIs_hot(1, function (list) {
+                    var str = "";
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        str += " <div class='col-md-4 col-lg-3'>";
+                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
+                        str += "<div class='card-body'>";
+                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "</div></div></div>";
+                    }
+                    $('#searchModalMenuList').html(str);
+                })
+            }
+            $('#searchModalTitle').html("검색하신\"" + result.Parameters.Is_hot[0] + "\"리스트입니다");
+            $('#searchModal').modal('show');
         }
         if (result.DetectedIntent == "Search_by_howmuch") {
-
+            if (result.Parameters.How_much[0] == "이상") {
+                menuService.getListByHow_muchOver(result.Parameters.number[0], function (list) {
+                    var str = "";
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        str += " <div class='col-md-4 col-lg-3'>";
+                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
+                        str += "<div class='card-body'>";
+                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "</div></div></div>";
+                    }
+                    $('#searchModalMenuList').html(str);
+                })
+            }
+            if (result.Parameters.How_much[0] == "이하") {
+                menuService.getListByHow_muchUnder(result.Parameters.number[0], function (list) {
+                    var str = "";
+                    for (var i = 0, len = list.length; i < len; i++) {
+                        str += " <div class='col-md-4 col-lg-3'>";
+                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
+                        str += "<div class='card-body'>";
+                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "</div></div></div>";
+                    }
+                    $('#searchModalMenuList').html(str);
+                })
+            }
+            $('#searchModalTitle').html("검색하신\"" + result.Parameters.number[0] + "원 " + result.Parameters.How_much[0] + "\"메뉴 리스트입니다");
+            $('#searchModal').modal('show');
         }
         if (result.DetectedIntent == "Search_by_recentrelease") {
 
         }
         //이걸로 검색기능은 마무리하고 추가로 만들어야 하는게.. 전체취소, 결제, 추천
-        // ifresult.DetectedIntent == "Search_by_isspicy"){
-        //
-        // }
-        // if(result.DetectedIntent == "Search_by_isspicy"){
-        //
-        // }
+        if(result.DetectedIntent =="All_cancel"){
+            $('#allCancel').trigger("click");
+        }
+        if (result.DetectedIntent == "Recommend_menu") {
+            $('#ratingModal').modal('show');
+        }
     }
 
 
@@ -932,14 +1020,94 @@
         });
     }
 
-    //제출 버튼 누르면 ajax로 최근아이디+1값 가져옴. 그리고 requestRating에 넣어서 추천이력 갱신
-    //그리고 갱신이 다 되고 (동기로 해야됨) 해당 id에 대한 추천리스트를 가져옴 끝.
+    $(document).on('click', '#ratingModalSubmit', function () {
+        var ratingData = {
+            "에그불고기버거세트": $('input[name="에그불고기버거세트"]:checked').val(),
+            "리얼비프버거세트": $('input[name="리얼비프버거세트"]:checked').val(),
+            "내슈빌핫치킨버거세트": $('input[name="내슈빌핫치킨버거세트"]:checked').val(),
+            "할라피뇨통살버거세트": $('input[name="할라피뇨통살버거세트"]:checked').val(),
+            "살사리코버거세트": $('input[name="살사리코버거세트"]:checked').val(),
+            "언빌리버블버거세트": $('input[name="언빌리버블버거세트"]:checked').val(),
+            "인크레더블버거세트": $('input[name="인크레더블버거세트"]:checked').val(),
+            "치즈베이컨버거세트": $('input[name="치즈베이컨버거세트"]:checked').val(),
+            "딥치즈버거세트": $('input[name="딥치즈버거세트"]:checked').val(),
+            "불싸이버거세트": $('input[name="불싸이버거세트"]:checked').val(),
+            "화이트갈릭버거세트": $('input[name="화이트갈릭버거세트"]:checked').val(),
+            "디럭스불고기버거세트": $('input[name="디럭스불고기버거세트"]:checked').val(),
+            "통새우버거세트": $('input[name="통새우버거세트"]:checked').val(),
+            "불고기버거세트": $('input[name="불고기버거세트"]:checked').val(),
+            "싸이버거세트": $('input[name="싸이버거세트"]:checked').val(),
+            "휠렛버거세트": $('input[name="휠렛버거세트"]:checked').val(),
+            "햄치즈휠렛버거": $('input[name="햄치즈휠렛버거"]:checked').val(),
+            "닭강정트리오A": $('input[name="닭강정트리오A"]:checked').val(),
+            "닭강정트리오B": $('input[name="닭강정트리오B"]:checked').val(),
+            "간장마늘떡강정": $('input[name="간장마늘떡강정"]:checked').val(),
+            "치파오떡강정": $('input[name="치파오떡강정"]:checked').val(),
+            "케이준떡강정": $('input[name="케이준떡강정"]:checked').val(),
+            "반반치킨": $('input[name="반반치킨"]:checked').val(),
+            "맘스양념치킨": $('input[name="맘스양념치킨"]:checked').val(),
+            "후라이드통다리": $('input[name="후라이드통다리"]:checked').val(),
+            "내슈빌핫통다리": $('input[name="내슈빌핫통다리"]:checked').val(),
+            "간장마늘치킨": $('input[name="간장마늘치킨"]:checked').val(),
+            "치파오치킨": $('input[name="치파오치킨"]:checked').val(),
+            "치즈뿌치텐더": $('input[name="치즈뿌치텐더"]:checked').val(),
+            "치즈뿌치": $('input[name="치즈뿌치"]:checked').val(),
+            "후라이드치킨": $('input[name="후라이드치킨"]:checked').val(),
+            "후라이드텐더": $('input[name="후라이드텐더"]:checked').val(),
+            "치즈뿌치텐더": $('input[name="치즈뿌치텐더"]:checked').val(),
+            "후라이드텐더(2조각)": $('input[name="후라이드텐더(2조각)"]:checked').val(),
+            "베이컨치즈감자": $('input[name="베이컨치즈감자"]:checked').val(),
+            "코울슬로": $('input[name="코울슬로"]:checked').val(),
+            "바삭크림치즈볼": $('input[name="바삭크림치즈볼"]:checked').val(),
+            "에그랩": $('input[name="에그랩"]:checked').val(),
+            "어니언치즈감자": $('input[name="어니언치즈감자"]:checked').val(),
+            "치즈감자": $('input[name="치즈감자"]:checked').val(),
+            "할라피뇨너겟": $('input[name="할라피뇨너겟"]:checked').val(),
+            "김떡만": $('input[name="김떡만"]:checked').val(),
+            "팝콘만두": $('input[name="팝콘만두"]:checked').val(),
+            "팝콘볼": $('input[name="팝콘볼"]:checked').val(),
+            "케이준양념감자": $('input[name="케이준양념감자"]:checked').val(),
+            "콘샐러드": $('input[name="콘샐러드"]:checked').val(),
+            "치즈스틱": $('input[name="치즈스틱"]:checked').val(),
+            "고구마치즈볼": $('input[name="고구마치즈볼"]:checked').val(),
+            "휠랩": $('input[name="휠랩"]:checked').val(),
+            "핫초코": $('input[name="핫초코"]:checked').val(),
+            "슈퍼베리워터주스": $('input[name="슈퍼베리워터주스"]:checked').val(),
+            "레몬홍차": $('input[name="레몬홍차"]:checked').val(),
+            "홍차": $('input[name="홍차"]:checked').val(),
+            "복숭아망고스무디": $('input[name="복숭아망고스무디"]:checked').val(),
+            "레몬딸기스무디": $('input[name="레몬딸기스무디"]:checked').val(),
+            "레몬에이드": $('input[name="레몬에이드"]:checked').val(),
+            "레몬티": $('input[name="레몬티"]:checked').val(),
+            "허브복숭아티": $('input[name="허브복숭아티"]:checked').val(),
+            "스트로베리밀크": $('input[name="스트로베리밀크"]:checked').val(),
+            "스위트망고": $('input[name="스위트망고"]:checked').val(),
+            "딸기스무디": $('input[name="딸기스무디"]:checked').val(),
+            "망고스무디": $('input[name="망고스무디"]:checked').val(),
+            "카페라떼": $('input[name="카페라떼"]:checked').val(),
+            "콜라": $('input[name="콜라"]:checked').val(),
+            "오렌지쥬스": $('input[name="오렌지쥬스"]:checked').val(),
+            "청포도에이드": $('input[name="청포도에이드"]:checked').val(),
+            "망고에이드": $('input[name="망고에이드"]:checked').val(),
+            "복숭아에이드": $('input[name="복숭아에이드"]:checked').val(),
+            "아메리카노": $('input[name="아메리카노"]:checked').val()
+        }
+        requestRating(ratingData, function (result) {
+            alert("평가등록완료" + result);
+            // 이제 result값에 대해 파이썬 서버에서 추천받은 menu_id들을 가져와서 출력해주면 됨.
+            // 대충 SearchModal이용해서 출력해주면 될듯.
 
-    function requestRating(user_id, ratings, callback, error) {
+            $('#ratingModal').modal('hide');
+        });
+    });
+
+
+    function requestRating(ratings, callback, error) {
         console.log("ratings = " + ratings);
         $.ajax({
             type: 'post',
-            url: '/user/rating/' + user_id,
+            url: '/user/rating',
+            async: false, // 얘는 동기방식으로 해야 반환된 user_id를 활용할 수 있음.
             data: JSON.stringify(ratings),
             contentType: "application/json; charset=utf-8",
             success: function (result, status, xhr) {
@@ -954,6 +1122,20 @@
             }
         });
     }
+
+    $(document).on('click', '#allCancel', function () {
+        $('#selectedList').empty();
+        calculateMenu();
+    });
+
+    $(document).on('click', '#choosePay', function () {
+        $('.choose-item-li').each(function () {
+            alert("주문한 메뉴 : " + $(this).find('.txt_tit').text() +
+                "수량 : " + $(this).find('.choose_quantity').val() +
+                "가격 : " + Number($(this).find('.txt_price').text()));
+        })
+
+    });
 
 
 </script>

@@ -10,6 +10,6 @@ public interface UserService {
     public Map<String, Object> loginById(User user);
     public Map<String, Object> loginByPhone_number(String phone_number);
 
-    public boolean registerRating(Long user_id, Map<String, Integer> ratingMap);
+    public Long registerRating(Map<String, Integer> ratingMap);
 
 }

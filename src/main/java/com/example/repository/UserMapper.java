@@ -13,5 +13,5 @@ public interface UserMapper {
     public User getUserByPhone_number(String phone_number); // 요거는 키오스크에서 간단 로그인할때
 
     public int createRating(@Param("user_id")Long user_id, @Param("menu_id")Long menu_id, @Param("rating")int rating);
-
+    public Long getRecentUserId();
 }

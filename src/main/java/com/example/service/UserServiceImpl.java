@@ -67,15 +67,34 @@ public class UserServiceImpl implements UserService{
         }
     }
 
+//    @Override
+//    public boolean registerRating(Long user_id, Map<String, Integer> ratingMap) {
+//        for(String key : ratingMap.keySet()){
+//            Long menu_id = menuMapper.getMenuByName(key).getId();
+//            System.out.println("menu_id : " + menu_id);
+//            int rating = Integer.parseInt(String.valueOf(ratingMap.get(key)));
+//            userMapper.createRating(user_id, menu_id, rating);
+//        }
+//        return true;
+//    }
+
     @Override
-    public boolean registerRating(Long user_id, Map<String, Integer> ratingMap) {
-        for(String key : ratingMap.keySet()){
-            Long menu_id = menuMapper.getMenuByName(key).getId();
-            System.out.println("menu_id : " + menu_id);
-            int rating = Integer.parseInt(String.valueOf(ratingMap.get(key)));
-            userMapper.createRating(user_id, menu_id, rating);
+    public Long registerRating(Map<String, Integer> ratingMap) {
+        Long user_id = null;
+        try{
+            user_id = userMapper.getRecentUserId() + 1;
+            for(String key : ratingMap.keySet()){
+                Long menu_id = menuMapper.getMenuByName(key).getId();
+                System.out.println("menu_id : " + menu_id);
+                int rating = Integer.parseInt(String.valueOf(ratingMap.get(key)));
+                userMapper.createRating(user_id, menu_id, rating);
+            }
+        }catch(Exception e){
+            System.out.println("평점 등록중 에러가 발생했습니다!");
+            System.out.println("에러 내용 : " + e.toString());
+            return null;
         }
-        return true;
+        return user_id;
     }
 
 

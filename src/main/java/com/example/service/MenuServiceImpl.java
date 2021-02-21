@@ -27,4 +27,19 @@ public class MenuServiceImpl implements MenuService{
     public List<Menu> getListByIs_spicy(int is_spicy) {
         return menuMapper.getListByIs_spicy(is_spicy);
     }
+
+    @Override
+    public List<Menu> getListByIs_hot(int is_hot) {
+        return menuMapper.getListByIs_hot(is_hot);
+    }
+
+    @Override
+    public List<Menu> getListByHow_muchUnder(int number) {
+        return menuMapper.getListByHow_muchUnder(number);
+    }
+
+    @Override
+    public List<Menu> getListByHow_muchOver(int number) {
+        return menuMapper.getListByHow_muchOver(number);
+    }
 }
