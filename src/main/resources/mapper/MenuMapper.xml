@@ -28,4 +28,12 @@
         select * from menu where is_hot = #{is_hot}
     </select>
 
+<!--    <select id="getListByRelease" resultType="com.example.domain.Menu">-->
+<!--        select * from menu where {time} > '2021-02-16 15:00:00'-->
+<!--    </select>-->
+
+    <select id="getMenuById" resultType="com.example.domain.Menu">
+        select * from menu where id = #{id}
+    </select>
+
 </mapper>

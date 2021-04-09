@@ -14,4 +14,6 @@ public interface UserMapper {
 
     public int createRating(@Param("user_id")Long user_id, @Param("menu_id")Long menu_id, @Param("rating")int rating);
     public Long getRecentUserId();
+
+
 }

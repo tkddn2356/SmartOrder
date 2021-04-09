@@ -3,6 +3,7 @@ package com.example.repository;
 import com.example.domain.Menu;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
@@ -13,4 +14,7 @@ public interface MenuMapper {
     public List<Menu> getListByIs_hot(int is_hot);
     public List<Menu> getListByHow_muchUnder(int number);
     public List<Menu> getListByHow_muchOver(int number);
+    public Menu getMenuById(Long id);
+
+//    public List<Menu> getListByRelease(Timestamp time);
 }

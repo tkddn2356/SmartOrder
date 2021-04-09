@@ -2,6 +2,7 @@ package com.example.controller;
 
 
 import com.example.domain.Menu;
+import com.example.repository.MenuMapper;
 import com.example.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,9 @@ public class MenuController {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private MenuMapper menuMapper;
+
     @ResponseBody
     @RequestMapping(value = "/menus/{category}", method= RequestMethod.GET)
     public ResponseEntity<List<Menu>> getMenuList(@PathVariable("category") String category) throws IOException {
@@ -31,6 +35,12 @@ public class MenuController {
     @RequestMapping(value = "/menu/{name}", method= RequestMethod.GET)
     public ResponseEntity<Menu> getMenu(@PathVariable("name") String name) throws IOException {
         return new ResponseEntity<Menu>(menuService.getMenuByName(name), HttpStatus.OK);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/menu/id/{id}", method= RequestMethod.GET)
+    public ResponseEntity<Menu> getMenuById(@PathVariable("id") Long id) throws IOException {
+        return new ResponseEntity<Menu>(menuMapper.getMenuById(id), HttpStatus.OK);
     }
 
     @ResponseBody

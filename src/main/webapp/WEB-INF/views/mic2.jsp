@@ -37,8 +37,14 @@
             }
         }
 
-        /*body{ -ms-overflow-style: none; }*/
-        /*::-webkit-scrollbar { display: none; }*/
+        body {
+            -ms-overflow-style: none;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
     </style>
 
 </head>
@@ -46,16 +52,22 @@
 <nav class="navbar navbar-expand-md  navbar-dark fixed-top shadow-lg bg-dark">
     <a class="navbar-brand" href="#">맘스터치</a>
     <ul class="navbar-nav">
-        <a href='/' onclick="javascript:event.target.port=5000" class='nav-link' style="color:white">처음으로</a>
+        <a href='http://localhost:5000/' class='nav-link' style="color:white">처음으로</a>
         <a href='#' class='nav-link' style="color:white">직원호출</a>
-        <a href="#none" class='nav-link' target="_blank" onclick="openPop()" style="color:white">팝업테스트</a>
+        <%--        <a href="#none" class='nav-link' target="_blank" onclick="openPop()" style="color:white">팝업테스트</a>--%>
     </ul>
     <ul class="navbar-nav ml-auto">
         <%--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">--%>
         <%--            Launch demo modal--%>
         <%--        </button>--%>
-        <button class="btn btn-primary" id="mic_btn">
-            마이크테스트
+        <button class="btn btn-primary" id="micBtn">
+            음성인식시작
+        </button>
+        <button class="btn btn-primary" id="micBtn2">
+            마이크ON
+        </button>
+        <button class="btn btn-primary" id="micStopBtn">
+            마이크OFF
         </button>
     </ul>
 </nav>
@@ -76,9 +88,9 @@
                         </div>
                         <div class="col-md-2" style="text-align: right">
 
-                            <img class="card-img" id="mic_img" src="/resources/img/마이크.gif" style="width:100px"
+                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100px"
                                  alt="Card image"/>
-                            <img class="card-img" id="mic_stop" src="resources/img/micstop.gif" style="width:100px"
+                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100px"
                                  alt="Card image"/>
                         </div>
                     </div>
@@ -96,9 +108,9 @@
     <li class="nav-item">
         <a class="nav-link" id="chickenTab" data-toggle="tab" href="#chickenList">치킨</a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" id="burgerTab" data-toggle="tab" href="#burgerList">버거단품</a>
-    </li>
+    <%--    <li class="nav-item">--%>
+    <%--        <a class="nav-link" id="burgerTab" data-toggle="tab" href="#burgerList">버거단품</a>--%>
+    <%--    </li>--%>
     <li class="nav-item">
         <a class="nav-link" id="sideTab" data-toggle="tab" href="#sideList">사이드</a>
     </li>
@@ -393,23 +405,51 @@
     </div>
 </div>
 
-<div class="modal" id="ChoosePayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<div class="modal" id="choosePayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
      style="z-index:1060">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="ChoosePayModalTitle">주문확인</h5>
+                <h5 class="modal-title" id="choosePayModalTitle">주문확인</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" id="choosePayModalList">
 
             </div>
             <div class="modal-footer">
+                <span>총 주문 금액: </span><span id="choosePayModalPayment"></span><span>원</span>
+            </div>
+            <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">결제</button>
+                <button type="button" class="btn btn-primary" id="choosePayModalBtn">결제</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="maskDetectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+     style="z-index:1060">
+    <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="maskDetectModalTitle">마스크확인</h5>
+                <%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+                <%--                    <span aria-hidden="true">&times;</span>--%>
+                <%--                </button>--%>
+            </div>
+            <div class="modal-body">
+                <div id="maskDetectModalBody">
+                    <p>마스크를 착용해주세요.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="maskDetectModalBtn" data-dismiss="modal">확인</button>
             </div>
         </div>
     </div>
@@ -477,7 +517,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <p style="margin-bottom: 0px">주문한 종류: <span id="totalPayCount">0</span>개 / 주문금액: <span
+                        <p style="margin-bottom: 0px">주문한 종류: <span id="totalPayCount">0</span>개 / 총 주문금액: <span
                                 id="totalPayPrice">0</span>원</p>
                     </div>
                 </div>
@@ -488,7 +528,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="card" id="choosePay">
-                        주문하기
+                        결제하기
                     </div>
                 </div>
             </div>
@@ -504,21 +544,41 @@
 
     $(document).ready(function () {
         // $('#numberInputModal').modal('show');
+        // testCamera();
 
-        $('#mic_img').hide();
-        $('#mic_btn').on("click", function (e) {
-            speech("안녕하세요. 음성인식 서비스를 시작하겠습니다. 원하시는 메뉴를 말씀하세요");
+        $('#micOnImg').hide();
+        $('#micBtn').on("click", function (e) {
+            speech("음성인식 서비스를 시작하겠습니다. 원하시는 메뉴를 말씀하세요");
             // 기본적으로 speech발동되고 말이 끝나면 micTest() 실행됨.
             // micTest();
         });
-        // $('#chickenSetTab').trigger("click");
+
+        $('#micBtn2').on("click", function (e) {
+            micTest()
+        });
+
+        $('#micStopBtn').on("click", function (e) {
+            annyang.abort(); // 마이크 중단
+        });
+
+
         getMenuList(); // 버거세트, 치킨, 사이드, 드링크의 리스트들을 디비에서 불러옴.
         getRatingList();
-        // $('#ratingModal').modal('show');
+
     });
 
     function micTest() {
         annyang.start({autoRestart: false, continuous: true});
+        // let count = 0;
+        // setInterval(function(){
+        //     count++;
+        //     console.log(count);
+        //     if(count == 7){
+        //         console.log("마이크초기화");
+        //         micTest();
+        //     }
+        // },1000);
+
         var result2 = "";
         var recognition = annyang.getSpeechRecognizer();
         var final_transcript = '';
@@ -584,6 +644,7 @@
     }
 
     function speech(txt, endOfConversation = false, intent = "") {
+        console.log("intent : " + intent);
         $('#FulfillmentText').html(txt);
         if (!window.speechSynthesis) {
             alert("음성 재생을 지원하지 않는 브라우저입니다. 크롬, 파이어폭스 등의 최신 브라우저를 이용하세요");
@@ -597,10 +658,16 @@
                 speech("원하시는 메뉴를 말씀하세요");
                 // 이부분은 나중에 intent값 받아와서 원하는 메뉴 묻는거 말고 다른 말이 나올 수 있게 수정할 예정
             };
-        } else if (endOfConversation == true && isSearchOrOrder(intent) == false && intent == "Recommend_menu") {
+
+        } else if (endOfConversation == true && intent == "end") {
+            utterThis.onend = function (event) {
+                console.log('키오스크끝');
+                location.href = "/main";
+            };
+        } else if (endOfConversation == true) {
             utterThis.onend = function (event) {
                 console.log('end');
-                speech("메뉴를 5개 이상 선택하여 별점을 주세요.");
+                micTest();
             };
         } else {
             utterThis.onend = function (event) {
@@ -657,7 +724,6 @@
     $(document).on('click', 'button.menu-topping', function () {
         $('#toppingModal').modal('show');
     });
-
 
 
     function addSelectedLi(name, price, topping = "", quantity) {
@@ -851,12 +917,16 @@
 
         }
         //이걸로 검색기능은 마무리하고 추가로 만들어야 하는게.. 전체취소, 결제, 추천
-        if(result.DetectedIntent =="All_cancel"){
+        if (result.DetectedIntent == "All_cancel") {
             $('#allCancel').trigger("click");
         }
         if (result.DetectedIntent == "Recommend_menu") {
             $('#ratingModal').modal('show');
         }
+        if (result.DetectedIntent == "Choose_pay") {
+            $('#choosePay').trigger("click");
+        }
+
     }
 
 
@@ -948,10 +1018,9 @@
         calculateMenu();
     });
 
-    function openPop() {
-        var popup = window.open('/user/rating', '테스트팝업', 'width=700px,height=800px,scrollbars=yes');
-    }
-
+    // function openPop() {
+    //     var popup = window.open('/user/rating', '테스트팝업', 'width=700px,height=800px,scrollbars=yes');
+    // }
 
     function getRatingList() {
         menuService.getListByCategory("burgerSet", function (list) {
@@ -1021,6 +1090,7 @@
     }
 
     $(document).on('click', '#ratingModalSubmit', function () {
+
         var ratingData = {
             "에그불고기버거세트": $('input[name="에그불고기버거세트"]:checked').val(),
             "리얼비프버거세트": $('input[name="리얼비프버거세트"]:checked').val(),
@@ -1092,15 +1162,32 @@
             "복숭아에이드": $('input[name="복숭아에이드"]:checked').val(),
             "아메리카노": $('input[name="아메리카노"]:checked').val()
         }
+        var user_id = 0;
         requestRating(ratingData, function (result) {
-            alert("평가등록완료" + result);
-            // 이제 result값에 대해 파이썬 서버에서 추천받은 menu_id들을 가져와서 출력해주면 됨.
-            // 대충 SearchModal이용해서 출력해주면 될듯.
-
+            user_id = result;
             $('#ratingModal').modal('hide');
         });
+        requestRecommend(user_id, function (list) {
+            var str = "";
+            for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
+                menuService.getMenuById(list.recommend_menus[i], function (result) {
+                    str += " <div class='col-md-4 col-lg-3'>";
+                    str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                    str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
+                    str += "<div class='card-body'>";
+                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    str += "<p class='card-text menu-content'>" + result.information + "</p>";
+                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    str += "</div></div></div>";
+                });
+            }
+            $('#searchModalMenuList').html(str);
+            $('#searchModalTitle').html("추천메뉴");
+            annyang.abort();
+            speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
+            $('#searchModal').modal('show');
+        });
     });
-
 
     function requestRating(ratings, callback, error) {
         console.log("ratings = " + ratings);
@@ -1123,19 +1210,126 @@
         });
     }
 
+    function requestRecommend(user_id, callback, error) {
+        console.log("user_id = " + user_id);
+        $.ajax({
+            type: 'get',
+            url: 'http://15.164.103.28:5000/' + user_id,
+            async: false, // 얘는 동기방식으로 해야 반환된 user_id를 활용할 수 있음.
+            contentType: "application/json; charset=utf-8",
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if (error) {
+                    error(er);
+                }
+            }
+        });
+    }
+
+
     $(document).on('click', '#allCancel', function () {
         $('#selectedList').empty();
         calculateMenu();
     });
 
     $(document).on('click', '#choosePay', function () {
+        var str = "";
         $('.choose-item-li').each(function () {
-            alert("주문한 메뉴 : " + $(this).find('.txt_tit').text() +
-                "수량 : " + $(this).find('.choose_quantity').val() +
-                "가격 : " + Number($(this).find('.txt_price').text()));
+            var menuName = $(this).find('.txt_tit').text();
+            var menuQuantity = $(this).find('.choose_quantity').val();
+            var totalPay = Number($(this).find('.txt_price').text());
+            str += "<div>";
+            str += "<span>" + menuName + " x " + menuQuantity +
+                "</span><span style='float:right'>" + totalPay +"</span><span>원</span>"
+            str += "</div>";
+            // alert("주문한 메뉴 : " + $(this).find('.txt_tit').text() +
+            //     "수량 : " + $(this).find('.choose_quantity').val() +
+            //     "가격 : " + Number($(this).find('.txt_price').text()));
         })
+        $('#choosePayModalList').html(str);
+        $('#choosePayModalPayment').html($('#totalPayPrice').html());
+        $('#choosePayModal').modal('show');
+    });
 
+    $(document).on('click', '#choosePayModalBtn', function () {
+        annyang.abort(); // 마이크 중단
+        speech("결제가 완료되었습니다. 감사합니다", true, "end");
+        $('#choosePayModal').modal('hide');
+    });
+
+
+    function testCamera() {
+        var count = 0;
+        var maskInterval = setInterval(function () {
+            $.ajax({
+                type: 'get',
+                url: 'http://localhost:5000/get_result',
+                contentType: "text/plain; charset=utf-8",
+                async: false,
+                success: function (result, status, xhr) {
+                    console.log(result);
+                    if (result == "실패") {
+                        count += 1;
+                    }
+                    if (result == "성공") {
+                        count -= 1;
+                    }
+                },
+                error: function (xhr, status, er) {
+                    location.reload(true);
+                }
+            });
+            console.log(count);
+            if (count == 5) {
+                maskModal();
+            }
+        }, 2000); // 2초에 한번씩 받아온다.
+
+        function maskModal() {
+            clearInterval(maskInterval);
+            $('#maskDetectModal').modal('show');
+            // var maskIntervalModal = setInterval(function () {
+            //     $.ajax({
+            //         type: 'get',
+            //         url: 'http://localhost:5000/get_result',
+            //         contentType: "text/plain; charset=utf-8",
+            //         async: false,
+            //         success: function (result, status, xhr) {
+            //             console.log(result);
+            //             if (result == "실패") {
+            //                 count += 1;
+            //             }
+            //         },
+            //         error: function (xhr, status, er) {
+            //             location.reload(true);
+            //         }
+            //     });
+            //     console.log(count);
+            //     if (count == 5) {
+            //         maskModal();
+            //     }
+            // }, 2000); // 30초에 한번씩 받아온다.
+            // testCamera();
+        }
+    }
+
+    $(document).on('click', '#maskDetectModalBtn', function () {
+        $('#maskDetectModal').modal('hide');
+        testCamera();
     });
 
 
 </script>
+
+
+
+<%--상운이 피드백 : 메뉴 스크롤을 없애고 페이지네이션을 해서 메뉴 넘기는것도 음성인식으로?--%>
+<%--아이템협업 필터링으로 특정 메뉴와 비슷한 메뉴 찾는거? (근데 비슷하다는 기준 정하기가 어려울듯)--%>
+<%--메뉴 추천을 모든 메뉴를 보여주기보다는 랜덤으로 몇몇개를 보여줘서 별점 메기가 하는게 좋을수도--%>
+<%--https://www.youtube.com/watch?v=Guc0s62mdcA&t=99s 얘들처럼..?--%>
+
+<%--개인 생각 : 마스크인식은 첫페이지에서 하는게 맞는거같음. 왜냐하면 마스크를 썼는지 안썼는지 --%>

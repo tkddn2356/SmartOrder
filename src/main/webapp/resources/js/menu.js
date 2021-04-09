@@ -36,6 +36,24 @@ var menuService = (function () {
         });
     }
 
+    function getMenuById(id, callback, error) {
+        console.log("id = " + id);
+        $.ajax({
+            type: 'get',
+            url: '/menu/id/' + id,
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+
+            }
+        });
+    }
+
     function getListByIs_spicy(is_spicy, callback, error) {
         console.log("is_spicy = " + is_spicy);
         $.ajax({
@@ -109,6 +127,7 @@ var menuService = (function () {
     return {
         getListByCategory:getListByCategory,
         getMenuByName:getMenuByName,
+        getMenuById:getMenuById,
         getListByIs_spicy:getListByIs_spicy,
         getListByIs_hot: getListByIs_hot,
         getListByHow_muchUnder: getListByHow_muchUnder,
