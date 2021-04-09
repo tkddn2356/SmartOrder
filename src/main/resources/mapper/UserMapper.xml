@@ -5,15 +5,29 @@
 <mapper namespace="com.example.repository.UserMapper">
 
     <insert id="createUser">
-		insert into user (account_id, password, name, nickname) values(#{account_id}, #{password}, #{name}, #{nickname})
+		insert into user (account_id, password, name, phone_number)
+		values(#{account_id}, #{password}, #{name}, #{phone_number})
 	</insert>
 
-	<select id="getUserByAccountId" resultType="com.example.domain.User">
-		 select * from user where account_id = #{account_id}
-	</select>
+	<insert id="createRandomRating">
+		insert into user_menu_rating(user_id, menu_id, rating) values(#{user_id}, #{menu_id}, #{rating})
+	</insert>
+
 	<select id="getUserById" resultType="com.example.domain.User">
-		SELECT * FROM user WHERE id = #{id}
+		select * from user where account_id = #{account_id}
 	</select>
+
+	<select id="getUserByPhone_number" resultType="com.example.domain.User">
+		select * from user where phone_number = #{phone_number}
+	</select>
+	<insert id="createRating">
+		insert into user_menu_rating(user_id, menu_id, rating) values(#{user_id}, #{menu_id}, #{rating})
+	</insert>
+
+	<select id="getRecentUserId" resultType="_long">
+		select user_id from user_menu_rating order by user_id desc limit 1;
+	</select>
+
 
 
 

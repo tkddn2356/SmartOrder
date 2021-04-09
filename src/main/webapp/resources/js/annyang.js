@@ -226,6 +226,8 @@
          * @method start
          */
         start: function(options) {
+            $('#micOffImg').hide();
+            $('#micOnImg').show();
             initIfNeeded();
             options = options || {};
             if (options.paused !== undefined) {
@@ -261,6 +263,8 @@
          * @method abort
          */
         abort: function() {
+            $('#micOnImg').hide();
+            $('#micOffImg').show();
             autoRestart = false;
             autoRestartCount = 0;
             if (isInitialized()) {

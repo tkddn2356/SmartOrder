@@ -2,6 +2,7 @@ package com.example.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 
 public class User implements Serializable {
@@ -9,17 +10,9 @@ public class User implements Serializable {
     private String account_id;
     private String password;
     private String name;
-    private String nickname;
-    private Date created_at;
-    private Date updated_at;
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
+    private String phone_number;
+    private Timestamp created_at;
+    private Timestamp updated_at;
 
     public Long getId() {
         return id;
@@ -37,11 +30,15 @@ public class User implements Serializable {
         return name;
     }
 
-    public Date getCreated_at() {
+    public String getPhone_number() {
+        return phone_number;
+    }
+
+    public Timestamp getCreated_at() {
         return created_at;
     }
 
-    public Date getUpdated_at() {
+    public Timestamp getUpdated_at() {
         return updated_at;
     }
 
@@ -61,11 +58,15 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setPhone_number(String phone_number) {
+        this.phone_number = phone_number;
+    }
+
+    public void setCreated_at(Timestamp created_at) {
         this.created_at = created_at;
     }
 
-    public void setUpdated_at(Date updated_at) {
+    public void setUpdated_at(Timestamp updated_at) {
         this.updated_at = updated_at;
     }
 }

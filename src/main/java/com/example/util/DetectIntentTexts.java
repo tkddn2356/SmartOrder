@@ -11,18 +11,24 @@ import com.google.common.collect.Maps;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Component
 public class DetectIntentTexts {
+    private String projectId = "smartordersystem-fnvd";
+    private String sessionId = "1234";
+    private String languageCode = "ko-kr";
 
     // DialogFlow API Detect Intent sample with text inputs.
-    public Map<String, Object> detectIntentTexts(
-            String projectId, List<String> texts, String sessionId, String languageCode)
+    public QueryResult detectIntentTexts(String inputText)
             throws IOException, ApiException {
-        Map<String, Object> queryResults = new HashMap<String, Object>();
+        List<String> texts = new ArrayList<>();
+        texts.add(inputText);
+        QueryResult queryResult = null;
+//        Map<String, Object> queryResults = new HashMap<String, Object>();
         // Instantiates a client
         try (SessionsClient sessionsClient = SessionsClient.create()) {
             // Set the session name using the sessionId (UUID) and projectID (my-project-id)
@@ -42,7 +48,7 @@ public class DetectIntentTexts {
                 DetectIntentResponse response = sessionsClient.detectIntent(session, queryInput);
 
                 // Display the query result
-                QueryResult queryResult = response.getQueryResult();
+                queryResult = response.getQueryResult();
 
                 System.out.println("====================");
                 System.out.format("Query Text: '%s'\n", queryResult.getQueryText());
@@ -50,15 +56,18 @@ public class DetectIntentTexts {
                         "Detected Intent: %s (confidence: %f)\n",
                         queryResult.getIntent().getDisplayName(), queryResult.getIntentDetectionConfidence());
                 System.out.format("Fulfillment Text: '%s'\n", queryResult.getFulfillmentText());
+//                if(queryResult.getDiagnosticInfo()!=null){
+//                    System.out.println(queryResult.getDiagnosticInfo().getFieldsMap().get("end_conversation"));
+//                }
 
-                queryResults.put("QueryText", queryResult.getFulfillmentText());
-                queryResults.put("DetectedIntent", queryResult.getIntent().getDisplayName());
-                queryResults.put("FulfillmentText", queryResult.getFulfillmentText());
+//                queryResults.put("QueryText", queryResult.getFulfillmentText());
+//                queryResults.put("DetectedIntent", queryResult.getIntent().getDisplayName());
+//                queryResults.put("FulfillmentText", queryResult.getFulfillmentText());
 //                System.out.println("피자의 개수:" + queryResult.getParameters().getFieldsMap().get("number").getNumberValue());
 //                System.out.println("피자의 이름 개수:" + queryResult.getParameters().getFieldsMap().get("PIZZA_NAME"));
             }
         }
-        return queryResults;
+        return queryResult;
     }
 }
 
