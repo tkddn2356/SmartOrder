@@ -45,6 +45,14 @@
             display: none;
         }
 
+        @media (min-width: 768px) {
+            .container-test {
+                width: 840px;
+                max-width: 840px;
+            }
+        }
+
+
     </style>
 
 </head>
@@ -933,15 +941,15 @@
     function getMenuList() {
         menuService.getListByCategory("burgerSet", function (list) {
             var str = "";
-            str += "<div class='container'>";
+            str += "<div class='container container-test'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-4 col-lg-3'>";
-                str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                str += " <div class='col-md-3 col-lg-2'>";
+                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
                 str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                 str += "<div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                 str += "</div></div></div>";
             }
