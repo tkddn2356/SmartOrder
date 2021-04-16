@@ -37,19 +37,57 @@
             }
         }
 
+
+        @media (min-width: 768px) {
+            .container-menuList {
+                width: 840px;
+                max-width: 840px;
+            }
+        }
+
+
+        @media (min-width: 992px) {
+            .container-menuList {
+                width: 980px;
+                max-width: 980px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container-menuList {
+                width: 1240px;
+                max-width: 1240px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container-searchModal {
+                width: 800px;
+                max-width: 800px;
+            }
+        }
+
+
+        @media (min-width: 992px) {
+            .container-searchModal {
+                width: 980px;
+                max-width: 980px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container-searchModal {
+                width: 1240px;
+                max-width: 1240px;
+            }
+        }
+
         body {
             -ms-overflow-style: none;
         }
 
         ::-webkit-scrollbar {
             display: none;
-        }
-
-        @media (min-width: 768px) {
-            .container-test {
-                width: 840px;
-                max-width: 840px;
-            }
         }
 
 
@@ -246,7 +284,7 @@
 <div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-backdrop="false" style="z-index:1041">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
-    <div class="modal-dialog" role="document" style="max-width: 95%; margin-top: 300px;">
+    <div class="modal-dialog" role="document" style="max-width: 97%; margin-top: 300px;">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="searchModalTitle">검색하신 "" 결과입니다.</h5>
@@ -255,7 +293,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container" style="height: 500px; overflow: auto;">
+                <div class="container container-searchModal" style="height: 500px; overflow: auto;">
                     <div class="row" id="searchModalMenuList">
                         <%--                        <div class="col-md-4 col-lg-3">--%>
                         <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
@@ -818,12 +856,12 @@
                 menuService.getListByIs_spicy(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-4 col-lg-3'>";
-                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += " <div class='col-md-3 col-lg-2'>";
+                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                         str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                         str += "<div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                         str += "</div></div></div>";
                     }
@@ -834,12 +872,12 @@
                 menuService.getListByIs_spicy(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-4 col-lg-3'>";
-                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += " <div class='col-md-3 col-lg-2'>";
+                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                         str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                         str += "<div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                         str += "</div></div></div>";
                     }
@@ -854,12 +892,12 @@
                 menuService.getListByIs_hot(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-4 col-lg-3'>";
-                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += " <div class='col-md-3 col-lg-2'>";
+                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                         str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                         str += "<div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                         str += "</div></div></div>";
                     }
@@ -870,12 +908,12 @@
                 menuService.getListByIs_hot(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-4 col-lg-3'>";
-                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += " <div class='col-md-3 col-lg-2'>";
+                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                         str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                         str += "<div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                         str += "</div></div></div>";
                     }
@@ -890,12 +928,12 @@
                 menuService.getListByHow_muchOver(result.Parameters.number[0], function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-4 col-lg-3'>";
-                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += " <div class='col-md-3 col-lg-2'>";
+                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                         str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                         str += "<div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                         str += "</div></div></div>";
                     }
@@ -906,12 +944,12 @@
                 menuService.getListByHow_muchUnder(result.Parameters.number[0], function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-4 col-lg-3'>";
-                        str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                        str += " <div class='col-md-3 col-lg-2'>";
+                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                         str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                         str += "<div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                        str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                         str += "</div></div></div>";
                     }
@@ -941,7 +979,7 @@
     function getMenuList() {
         menuService.getListByCategory("burgerSet", function (list) {
             var str = "";
-            str += "<div class='container container-test'>";
+            str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
                 str += " <div class='col-md-3 col-lg-2'>";
@@ -959,15 +997,15 @@
 
         menuService.getListByCategory("chicken", function (list) {
             var str = "";
-            str += "<div class='container'>";
+            str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-4 col-lg-3'>";
-                str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                str += " <div class='col-md-3 col-lg-2'>";
+                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
                 str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                 str += "<div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                 str += "</div></div></div>";
             }
@@ -977,15 +1015,15 @@
 
         menuService.getListByCategory("side", function (list) {
             var str = "";
-            str += "<div class='container'>";
+            str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-4 col-lg-3'>";
-                str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                str += " <div class='col-md-3 col-lg-2'>";
+                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
                 str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                 str += "<div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                 str += "</div></div></div>";
             }
@@ -995,15 +1033,15 @@
 
         menuService.getListByCategory("drink", function (list) {
             var str = "";
-            str += "<div class='container'>";
+            str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-4 col-lg-3'>";
-                str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                str += " <div class='col-md-3 col-lg-2'>";
+                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
                 str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
                 str += "<div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
-                str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
                 str += "</div></div></div>";
             }
