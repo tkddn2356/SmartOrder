@@ -90,6 +90,53 @@
             display: none;
         }
 
+        .review_rating {
+            width: 100%;
+            height: 20px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .rating {
+            display: inline-block;
+        }
+
+        .rating > input {
+            display: none;
+            margin: 0 5px;
+        }
+
+        .rating > label:before {
+            display: inline-block;
+            content: "\f005";
+            background: url('/resources/img/star2.png') 0 0 no-repeat;
+            width: 20px;
+            height: 20px;
+            color: rgba(0, 0, 0, 0);
+            background-size: 20px;
+        }
+
+        .rating > input[type="radio"] + label {
+            color: #999;
+            float: right;
+            margin: 0 5px;
+        }
+
+        .rating > input:checked ~ label {
+            content: "\f005";
+            display: inline-block;
+            background: url('/resources/img/star1.png');
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            background-size: 20px;
+            z-index: 5;
+        }
+
+        .rating > input:checked ~ label:before {
+            background: none;
+        }
+
 
     </style>
 
@@ -114,6 +161,9 @@
         </button>
         <button class="btn btn-primary" id="micStopBtn">
             마이크OFF
+        </button>
+        <button class="btn btn-primary" id="recTestBtn">
+            추천기능테스트
         </button>
     </ul>
 </nav>
@@ -485,9 +535,9 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="maskDetectModalTitle">마스크확인</h5>
-                <%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
-                <%--                    <span aria-hidden="true">&times;</span>--%>
-                <%--                </button>--%>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="modal-body">
                 <div id="maskDetectModalBody">
@@ -496,6 +546,38 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="maskDetectModalBtn" data-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="getRatingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+     style="z-index:1060">
+    <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="getRatingModalTitle">-메뉴이름-</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="getRatingModalModalBody">
+<%--                    <div class="review_rating">--%>
+<%--                        <fieldset class="rating">--%>
+<%--                            <input type="radio" id="rating_1_star5" name="에그불고기버거세트" value="5"><label for="rating_1_star5"></label>--%>
+<%--                            <input type="radio" id="rating_1_star4" name="에그불고기버거세트" value="4"><label for="rating_1_star4"></label>--%>
+<%--                            <input type="radio" id="rating_1_star3" name="에그불고기버거세트" value="3"><label for="rating_1_star3"></label>--%>
+<%--                            <input type="radio" id="rating_1_star2" name="에그불고기버거세트" value="2"><label for="rating_1_star2"></label>--%>
+<%--                            <input type="radio" id="rating_1_star1" name="에그불고기버거세트" value="1"><label for="rating_1_star1"></label>--%>
+<%--                        </fieldset>--%>
+<%--                    </div>--%>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="getRatingModalBtn" data-dismiss="modal">확인</button>
             </div>
         </div>
     </div>
@@ -1216,12 +1298,12 @@
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
                 menuService.getMenuById(list.recommend_menus[i], function (result) {
-                    str += " <div class='col-md-4 col-lg-3'>";
-                    str += "<div class='card menu-class' style='width: 14rem; margin-top:50px;'>";
+                    str += " <div class='col-md-3 col-lg-2'>";
+                    str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
                     str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
                     str += "<div class='card-body'>";
                     str += "<p class='card-text menu-name'>" + result.name + "</p>";
-                    str += "<p class='card-text menu-content'>" + result.information + "</p>";
+                    // str += "<p class='card-text menu-content'>" + result.information + "</p>";
                     str += "<p class='card-text menu-price'>" + result.price + "</p>";
                     str += "</div></div></div>";
                 });
@@ -1289,7 +1371,7 @@
             var totalPay = Number($(this).find('.txt_price').text());
             str += "<div>";
             str += "<span>" + menuName + " x " + menuQuantity +
-                "</span><span style='float:right'>" + totalPay +"</span><span>원</span>"
+                "</span><span style='float:right'>" + totalPay + "</span><span>원</span>"
             str += "</div>";
             // alert("주문한 메뉴 : " + $(this).find('.txt_tit').text() +
             //     "수량 : " + $(this).find('.choose_quantity').val() +
@@ -1367,9 +1449,57 @@
         testCamera();
     });
 
+    var randomMenu = [];
+    $(document).on('click', '#recTestBtn', function () {
+
+        for (var i = 0; i < 5; i ++) {
+            var randomMenuId = Math.floor(Math.random() * 69) + 1;
+            if (randomMenu.indexOf(randomMenuId) === -1) {
+                randomMenu.push(randomMenuId);
+            } else {
+                i--
+            }
+        }
+
+        console.log(randomMenu);
+
+        for (var i = 0, len = randomMenu.length; i < len; i ++) {
+            menuService.getMenuById(randomMenu[i], function (result) {
+            var str ="";
+            str += "<div class='review_rating'>";
+            str += "<fieldset class='rating'>";
+            str += "<input type='radio' id='rating_1_star5' name='"+result.name+"' value='5'><label for='rating_1_star5'></label>";
+            str += "<input type='radio' id='rating_1_star4' name='"+result.name+"' value='4'><label for='rating_1_star4'></label>";
+            str += "<input type='radio' id='rating_1_star3' name='"+result.name+"' value='3'><label for='rating_1_star3'></label>";
+            str += "<input type='radio' id='rating_1_star2' name='"+result.name+"' value='2'><label for='rating_1_star2'></label>";
+            str += "<input type='radio' id='rating_1_star1' name='"+result.name+"' value='1'><label for='rating_1_star1'></label>";
+            str +="</fieldset>";
+            str +="</div>";
+            $('#getRatingModalModalBody').html(str);
+            $('#getRatingModalTitle').html(result.name);
+            $('#getRatingModal').modal('show');
+            });
+        }
+
+
+    });
+
+    $(document).on('click', '#getRatingModalBtn', function () {
+        var testName = $('#rating_1_star5').attr("name");
+        console.log(testName);
+        var rating = $("input[name='"+testName+"']:checked").val();
+        console.log(rating);
+        $('#getRatingModalModalBody').html("");
+        $("input:radio[name='"+testName+"']:radio[value='"+rating+"']").prop('checked', true); // 선택하기
+        $('#getRatingModal').modal('hide');
+
+        // $('#ratingModalSubmit').trigger("click");
+    });
+
+
+
 
 </script>
-
 
 
 <%--상운이 피드백 : 메뉴 스크롤을 없애고 페이지네이션을 해서 메뉴 넘기는것도 음성인식으로?--%>
