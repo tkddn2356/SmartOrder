@@ -1,5 +1,6 @@
 package com.example.repository;
 
+import com.example.domain.Payment;
 import com.example.domain.User;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,9 @@ public interface UserMapper {
 
     public int createRating(@Param("user_id")Long user_id, @Param("menu_id")Long menu_id, @Param("rating")int rating);
     public Long getRecentUserId();
+    public int createPayment(Payment payment);
+
+
 
 
 }

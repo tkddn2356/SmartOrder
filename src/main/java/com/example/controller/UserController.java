@@ -1,6 +1,8 @@
 package com.example.controller;
 
+import com.example.domain.Payment;
 import com.example.domain.User;
+import com.example.repository.MenuMapper;
 import com.example.repository.UserMapper;
 import com.example.service.UserServiceImpl;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +31,9 @@ public class UserController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private MenuMapper menumapper;
 
     @RequestMapping(value = "/user/join", method = RequestMethod.GET)
     public String join() {
@@ -176,6 +182,56 @@ public class UserController {
 //        int random = (int) ((Math.random() * (max - min)) + min);
 //        return random;
 //    }
-
+//
+//    @ResponseBody
+//    @RequestMapping(value = "/create/randomUser", method = RequestMethod.GET)
+//    public String createRandomUser() {
+//        for (int i = 501; i <= 800; i++) {
+////            String randomPhone_number = "010" + Integer.toString(getRandom(1, 99999999));
+//            User randomUser = new User();
+//            randomUser.setAccount_id("test" + i);
+//            randomUser.setPassword("testpwd" + i);
+//            randomUser.setName("유저" + i);
+//            randomUser.setPhone_number("01000000000");
+//            randomUser.setAuth(1);
+//            userService.register(randomUser);
+//        }
+//        return "success";
+//    }
+//
+//    @ResponseBody
+//    @RequestMapping(value = "/create/randomPayment", method = RequestMethod.GET)
+//    public String createRandomPayment() {
+//
+//        for (int i = 501; i <= 800; i++) {
+//            System.out.println("데이터생성중 - " + i);
+//            int random = getRandom(1, 100); // 주문 이력은 1개에서 100개까지
+//            int[] randomMenu = new int[random];
+//            for (int x = 0; x <random; x++) {
+//                randomMenu[x] = (int) (Math.random() * 67 + 1);
+//            }
+//
+//            for(int j=0; j<random; j++){
+//                int price = menumapper.getMenuById(Long.valueOf(randomMenu[j])).getPrice();
+//                int random3 = getRandom(1, 6); // 1~5개를 주문
+//                Payment testPayment = new Payment();
+//                testPayment.setUser_id(Long.valueOf(i));
+//                testPayment.setMenu_id(Long.valueOf(randomMenu[j]));
+//                testPayment.setMenu_count(random3);
+//                testPayment.setTotal_price(price*random3);
+//                userMapper.createPayment(testPayment);
+//            }
+//            List<Integer> list = new ArrayList<>();
+//            for(int z=0; z<randomMenu.length; z++){
+//                if(!list.contains(randomMenu[z]))	// list에 포함되어있는지 아닌지 체크
+//                    list.add(randomMenu[z]);		// 해당 값이 없으면
+//            }
+//            for(int y=0; y<list.size(); y++){
+//                int random3 = getRandom(1, 6); // 1~5점을 부여한다.
+//                userMapper.createRandomRating(Long.valueOf(i), Long.valueOf(list.get(y)), random3);
+//            }
+//        }
+//        return "success";
+//    }
 
 }

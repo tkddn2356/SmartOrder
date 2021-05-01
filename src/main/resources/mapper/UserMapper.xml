@@ -5,8 +5,8 @@
 <mapper namespace="com.example.repository.UserMapper">
 
     <insert id="createUser">
-		insert into user (account_id, password, name, phone_number)
-		values(#{account_id}, #{password}, #{name}, #{phone_number})
+		insert into user (account_id, password, name, phone_number, auth)
+		values(#{account_id}, #{password}, #{name}, #{phone_number}, #{auth})
 	</insert>
 
 	<insert id="createRandomRating">
@@ -27,6 +27,11 @@
 	<select id="getRecentUserId" resultType="_long">
 		select user_id from user_menu_rating order by user_id desc limit 1;
 	</select>
+
+	<insert id="createPayment">
+		insert into payment (user_id, menu_id, menu_count, total_price)
+		values(#{user_id}, #{menu_id}, #{menu_count}, #{total_price})
+	</insert>
 
 
 

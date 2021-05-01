@@ -137,6 +137,7 @@
             background: none;
         }
 
+        
 
     </style>
 
@@ -169,6 +170,7 @@
 </nav>
 
 <body>
+
 
 <div class="container" style="margin-top: 90px">
     <div class="row">
@@ -564,16 +566,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div id="getRatingModalModalBody">
-<%--                    <div class="review_rating">--%>
-<%--                        <fieldset class="rating">--%>
-<%--                            <input type="radio" id="rating_1_star5" name="에그불고기버거세트" value="5"><label for="rating_1_star5"></label>--%>
-<%--                            <input type="radio" id="rating_1_star4" name="에그불고기버거세트" value="4"><label for="rating_1_star4"></label>--%>
-<%--                            <input type="radio" id="rating_1_star3" name="에그불고기버거세트" value="3"><label for="rating_1_star3"></label>--%>
-<%--                            <input type="radio" id="rating_1_star2" name="에그불고기버거세트" value="2"><label for="rating_1_star2"></label>--%>
-<%--                            <input type="radio" id="rating_1_star1" name="에그불고기버거세트" value="1"><label for="rating_1_star1"></label>--%>
-<%--                        </fieldset>--%>
-<%--                    </div>--%>
+                <div id="getRatingModalModalBody" style="text-align: center;">
+
+                    <%--                    <div class="review_rating">--%>
+                    <%--                        <fieldset class="rating">--%>
+                    <%--                            <input type="radio" id="rating_1_star5" name="에그불고기버거세트" value="5"><label for="rating_1_star5"></label>--%>
+                    <%--                            <input type="radio" id="rating_1_star4" name="에그불고기버거세트" value="4"><label for="rating_1_star4"></label>--%>
+                    <%--                            <input type="radio" id="rating_1_star3" name="에그불고기버거세트" value="3"><label for="rating_1_star3"></label>--%>
+                    <%--                            <input type="radio" id="rating_1_star2" name="에그불고기버거세트" value="2"><label for="rating_1_star2"></label>--%>
+                    <%--                            <input type="radio" id="rating_1_star1" name="에그불고기버거세트" value="1"><label for="rating_1_star1"></label>--%>
+                    <%--                        </fieldset>--%>
+                    <%--                    </div>--%>
                 </div>
             </div>
             <div class="modal-footer">
@@ -1313,6 +1316,7 @@
             annyang.abort();
             speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
             $('#searchModal').modal('show');
+            getRatingList(); // RatingList 초기화
         });
     });
 
@@ -1449,10 +1453,12 @@
         testCamera();
     });
 
+
     var randomMenu = [];
+    var randomMenuIndex = 0;
     $(document).on('click', '#recTestBtn', function () {
 
-        for (var i = 0; i < 5; i ++) {
+        for (var i = 0; i < 5; i++) {
             var randomMenuId = Math.floor(Math.random() * 69) + 1;
             if (randomMenu.indexOf(randomMenuId) === -1) {
                 randomMenu.push(randomMenuId);
@@ -1460,43 +1466,46 @@
                 i--
             }
         }
-
         console.log(randomMenu);
+        getRatingModalShow(randomMenu[randomMenuIndex]);
 
-        for (var i = 0, len = randomMenu.length; i < len; i ++) {
-            menuService.getMenuById(randomMenu[i], function (result) {
-            var str ="";
+    });
+
+    function getRatingModalShow(menuId){
+        menuService.getMenuById(menuId, function (result) {
+            var str = "";
+            str += "<img src='/resources/img/"+result.img+"'>"
             str += "<div class='review_rating'>";
             str += "<fieldset class='rating'>";
-            str += "<input type='radio' id='rating_1_star5' name='"+result.name+"' value='5'><label for='rating_1_star5'></label>";
-            str += "<input type='radio' id='rating_1_star4' name='"+result.name+"' value='4'><label for='rating_1_star4'></label>";
-            str += "<input type='radio' id='rating_1_star3' name='"+result.name+"' value='3'><label for='rating_1_star3'></label>";
-            str += "<input type='radio' id='rating_1_star2' name='"+result.name+"' value='2'><label for='rating_1_star2'></label>";
-            str += "<input type='radio' id='rating_1_star1' name='"+result.name+"' value='1'><label for='rating_1_star1'></label>";
-            str +="</fieldset>";
-            str +="</div>";
+            str += "<input type='radio' id='rating_1_star5' name='" + result.name + "' value='5'><label for='rating_1_star5'></label>";
+            str += "<input type='radio' id='rating_1_star4' name='" + result.name + "' value='4'><label for='rating_1_star4'></label>";
+            str += "<input type='radio' id='rating_1_star3' name='" + result.name + "' value='3'><label for='rating_1_star3'></label>";
+            str += "<input type='radio' id='rating_1_star2' name='" + result.name + "' value='2'><label for='rating_1_star2'></label>";
+            str += "<input type='radio' id='rating_1_star1' name='" + result.name + "' value='1'><label for='rating_1_star1'></label>";
+            str += "</fieldset>";
+            str += "</div>";
             $('#getRatingModalModalBody').html(str);
             $('#getRatingModalTitle').html(result.name);
             $('#getRatingModal').modal('show');
-            });
-        }
-
-
-    });
+        });
+    }
 
     $(document).on('click', '#getRatingModalBtn', function () {
         var testName = $('#rating_1_star5').attr("name");
         console.log(testName);
-        var rating = $("input[name='"+testName+"']:checked").val();
+        var rating = $("input[name='" + testName + "']:checked").val();
         console.log(rating);
         $('#getRatingModalModalBody').html("");
-        $("input:radio[name='"+testName+"']:radio[value='"+rating+"']").prop('checked', true); // 선택하기
+        $("input:radio[name='" + testName + "']:radio[value='" + rating + "']").prop('checked', true); // 선택하기
         $('#getRatingModal').modal('hide');
+
+        randomMenuIndex++;
+        if(randomMenuIndex < 5){
+            getRatingModalShow(randomMenu[randomMenuIndex]);
+        }
 
         // $('#ratingModalSubmit').trigger("click");
     });
-
-
 
 
 </script>

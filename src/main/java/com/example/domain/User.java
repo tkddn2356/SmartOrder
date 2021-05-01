@@ -13,6 +13,15 @@ public class User implements Serializable {
     private String phone_number;
     private Timestamp created_at;
     private Timestamp updated_at;
+    private int auth;
+
+    public void setAuth(int auth) {
+        this.auth = auth;
+    }
+
+    public int getAuth() {
+        return auth;
+    }
 
     public Long getId() {
         return id;
