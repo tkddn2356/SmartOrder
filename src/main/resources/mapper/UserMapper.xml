@@ -20,7 +20,7 @@
 	<select id="getUserByPhone_number" resultType="com.example.domain.User">
 		select * from user where phone_number = #{phone_number}
 	</select>
-	<insert id="createRating">
+	<insert id="createRatings">
 		insert into user_menu_rating(user_id, menu_id, rating) values(#{user_id}, #{menu_id}, #{rating})
 	</insert>
 
@@ -31,6 +31,10 @@
 	<insert id="createPayment">
 		insert into payment (user_id, menu_id, menu_count, total_price)
 		values(#{user_id}, #{menu_id}, #{menu_count}, #{total_price})
+	</insert>
+
+	<insert id="createRating">
+		insert into user_menu_rating(user_id, menu_id, rating) values(#{user_id}, #{menu_id}, #{rating})
 	</insert>
 
 

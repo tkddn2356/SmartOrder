@@ -16,19 +16,8 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/main">Beginner_Example</a>
+    <a class="navbar-brand" href="/main">맘스터치</a>
     <%--    화면 작아졌을 때 생기는 아이콘--%>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav">
-            <a href='/board/list' class='nav-link'>메뉴</a>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <a href='/user/login' class='nav-link'>로그인</a>
-        </ul>
-    </div>
 </nav>
 <section>
     <div class="container" style="margin-top:100px">
@@ -47,6 +36,10 @@
                                 <label>비밀번호</label>
                                 <input type="password" name="password" class="form-control"/>
                             </div>
+                            <div class="form-group">
+                                <label>전화번호</label>
+                   
+                            </div>
                             <div class="form-group text-right">
                                 <button class="btn btn-primary" id="login_btn">로그인</button>
                                 <button class="btn btn-primary" id="join_btn">회원가입</button>
@@ -59,16 +52,16 @@
         </div>
     </div>
 </section>
-<footer>
-    <div class="container-fluid text-white"
-         style="margin-top:50px;padding-top:30px;padding-bottom:30px;">
-        <div class="container">
-            <p>비기너 프로젝트 예시자료</p>
-            <a href="https://www.koreatech.ac.kr/kor/Main.do" style="color: white; font-weight: bold">코리아텍 바로가기</a> /
-            <a href="https://portal.koreatech.ac.kr/login.jsp" style="color: white; font-weight: bold">아우누리 바로가기</a>
-        </div>
-    </div>
-</footer>
+<%--<footer>--%>
+<%--    <div class="container-fluid text-white"--%>
+<%--         style="margin-top:50px;padding-top:30px;padding-bottom:30px;">--%>
+<%--        <div class="container">--%>
+<%--            <p>비기너 프로젝트 예시자료</p>--%>
+<%--            <a href="https://www.koreatech.ac.kr/kor/Main.do" style="color: white; font-weight: bold">코리아텍 바로가기</a> /--%>
+<%--            <a href="https://portal.koreatech.ac.kr/login.jsp" style="color: white; font-weight: bold">아우누리 바로가기</a>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</footer>--%>
 </body>
 </html>
 
@@ -78,16 +71,13 @@
 
         $("#login_btn").on("click", function (e) {
             e.preventDefault();
-
             var login_info = {
                 account_id: login_form.find("input[name='account_id']").val(),
                 password: login_form.find("input[name='password']").val(),
             }
             login(login_info, function (result) {
                 alert("success");
-                console.log(result);
-                sessionStorage.setItem("token", result)
-                document.location.href = "/main"
+                document.location.href = "/mic2"
             })
         });
 

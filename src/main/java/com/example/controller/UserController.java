@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import com.example.domain.Payment;
+import com.example.domain.Rating;
 import com.example.domain.User;
 import com.example.repository.MenuMapper;
 import com.example.repository.UserMapper;
@@ -70,26 +71,40 @@ public class UserController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/user/logout", method = RequestMethod.GET)
+    public ResponseEntity logout() {
+        return userService.logout() ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+//    @ResponseBody
+//    @RequestMapping(value="/user/login", method = RequestMethod.POST, consumes = "application/json")
+//    public ResponseEntity login(@RequestBody User user){
+//        if(user.getAccount_id() != null && user.getPhone_number() != null){
+//            Map<String,Object> result = userService.loginByPhone_number(user.getPhone_number());
+//            if ( result!= null) { // login 성공
+//                return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
+//            }
+//            else{ // login 실패
+//                return new ResponseEntity<String>("login Fail", HttpStatus.BAD_REQUEST);
+//            }
+//        }
+//        else{
+//            Map<String,Object> result = userService.loginById(user);
+//            if ( result!= null) { // login 성공
+//                return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
+//            }
+//            else{ // login 실패
+//                return new ResponseEntity<String>("login Fail", HttpStatus.BAD_REQUEST);
+//            }
+//        }
+//    }
+
+    @ResponseBody
     @RequestMapping(value="/user/login", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity login(@RequestBody User user){
-        if(user.getAccount_id() == null && user.getPhone_number() != null){
-            Map<String,Object> result = userService.loginByPhone_number(user.getPhone_number());
-            if ( result!= null) { // login 성공
-                return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
-            }
-            else{ // login 실패
-                return new ResponseEntity<String>("login Fail", HttpStatus.BAD_REQUEST);
-            }
-        }
-        else{
-            Map<String,Object> result = userService.loginById(user);
-            if ( result!= null) { // login 성공
-                return new ResponseEntity<Map<String, Object>>(result, HttpStatus.OK);
-            }
-            else{ // login 실패
-                return new ResponseEntity<String>("login Fail", HttpStatus.BAD_REQUEST);
-            }
-        }
+        return userService.login(user) ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 //    @ResponseBody
@@ -108,19 +123,28 @@ public class UserController {
 //    }
 
     @ResponseBody
-    @RequestMapping(value="/user/rating", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value="/user/ratings", method = RequestMethod.POST, consumes = "application/json")
     public ResponseEntity<Long> getRatings(@RequestBody String param){
         ObjectMapper mapper = new ObjectMapper();
         String json = param;
         try {
             Map<String, Integer> map = mapper.readValue(json, Map.class);
-            return new ResponseEntity<>(userService.registerRating(map), HttpStatus.OK);
+            return new ResponseEntity<>(userService.registerRatings(map), HttpStatus.OK);
             // 반환값은 평가 등록한 user_id가 반환됨
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         // 예외처리 및 레이어 구분 막장임.. 나중에 추가할꺼.
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/user/rating", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity getRating(@RequestBody Rating rating){
+
+        return userService.registerRating(rating) ? new ResponseEntity<>("success", HttpStatus.OK)
+                : new ResponseEntity<>("fail", HttpStatus.INTERNAL_SERVER_ERROR);
+
     }
 
 

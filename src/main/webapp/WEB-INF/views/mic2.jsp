@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -163,9 +164,23 @@
         <button class="btn btn-primary" id="micStopBtn">
             마이크OFF
         </button>
-        <button class="btn btn-primary" id="recTestBtn">
-            추천기능테스트
-        </button>
+<%--        <button class="btn btn-primary" id="recTestBtn">--%>
+<%--            추천기능테스트--%>
+<%--        </button>--%>
+            <c:if test="${loginUser.id == null}">
+                <li class="nav-item">
+                    <a href="/user/login" class="nav-link logout-a">로그인</a>
+                </li>
+            </c:if>
+            <c:if test="${loginUser.id != null}">
+                <li class="nav-item">
+                    <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
+                </li>
+            </c:if>
+
     </ul>
 </nav>
 
@@ -795,23 +810,31 @@
                 console.log('키오스크끝');
                 location.href = "/main";
             };
+        } else if (endOfConversation == true && intent == "Recommend_menu") {
+            utterThis.onend = function (event) {
+                console.log('end');
+                <c:if test="${loginUser.id == null}">
+                    speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 별점을 주세요");
+                    annyang.abort();
+                </c:if>
+                <c:if test="${loginUser.id != null}">
+                    speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
+                </c:if>
+                // 이부분은 나중에 intent값 받아와서 원하는 메뉴 묻는거 말고 다른 말이 나올 수 있게 수정할 예정
+            };
+
         } else if (endOfConversation == true) {
             utterThis.onend = function (event) {
                 console.log('end');
                 micTest();
             };
-        } else {
+        }
+        else {
             utterThis.onend = function (event) {
                 console.log('end');
                 micTest();
             };
         }
-        // utterThis.onend = function (event) {
-        //     console.log('end');
-        //     // $('#middleResult').show();
-        //     // $('#finalResult').show();
-        //     micTest();
-        // };
         utterThis.onerror = function (event) {
             console.log('error', event);
         };
@@ -1052,7 +1075,13 @@
             $('#allCancel').trigger("click");
         }
         if (result.DetectedIntent == "Recommend_menu") {
-            $('#ratingModal').modal('show');
+            // $('#ratingModal').modal('show'); 1버젼(모든메뉴에서 선택)
+            <c:if test="${loginUser.id == null}">
+                getRecommendFromAnonymous();
+            </c:if>
+            <c:if test="${loginUser.id != null}">
+                getRecommendFromLoginUser(${loginUser.id});
+            </c:if>
         }
         if (result.DetectedIntent == "Choose_pay") {
             $('#choosePay').trigger("click");
@@ -1293,7 +1322,7 @@
             "아메리카노": $('input[name="아메리카노"]:checked').val()
         }
         var user_id = 0;
-        requestRating(ratingData, function (result) {
+        requestRatings(ratingData, function (result) {
             user_id = result;
             $('#ratingModal').modal('hide');
         });
@@ -1320,11 +1349,11 @@
         });
     });
 
-    function requestRating(ratings, callback, error) {
+    function requestRatings(ratings, callback, error) {
         console.log("ratings = " + ratings);
         $.ajax({
             type: 'post',
-            url: '/user/rating',
+            url: '/user/ratings',
             async: false, // 얘는 동기방식으로 해야 반환된 user_id를 활용할 수 있음.
             data: JSON.stringify(ratings),
             contentType: "application/json; charset=utf-8",
@@ -1345,7 +1374,7 @@
         console.log("user_id = " + user_id);
         $.ajax({
             type: 'get',
-            url: 'http://15.164.103.28:5000/' + user_id,
+            url: 'http://13.209.19.111:5000/' + user_id,
             async: false, // 얘는 동기방식으로 해야 반환된 user_id를 활용할 수 있음.
             contentType: "application/json; charset=utf-8",
             success: function (result, status, xhr) {
@@ -1393,71 +1422,72 @@
     });
 
 
-    function testCamera() {
-        var count = 0;
-        var maskInterval = setInterval(function () {
-            $.ajax({
-                type: 'get',
-                url: 'http://localhost:5000/get_result',
-                contentType: "text/plain; charset=utf-8",
-                async: false,
-                success: function (result, status, xhr) {
-                    console.log(result);
-                    if (result == "실패") {
-                        count += 1;
-                    }
-                    if (result == "성공") {
-                        count -= 1;
-                    }
-                },
-                error: function (xhr, status, er) {
-                    location.reload(true);
-                }
-            });
-            console.log(count);
-            if (count == 5) {
-                maskModal();
-            }
-        }, 2000); // 2초에 한번씩 받아온다.
+    // function testCamera() {
+    //     var count = 0;
+    //     var maskInterval = setInterval(function () {
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'http://localhost:5000/get_result',
+    //             contentType: "text/plain; charset=utf-8",
+    //             async: false,
+    //             success: function (result, status, xhr) {
+    //                 console.log(result);
+    //                 if (result == "실패") {
+    //                     count += 1;
+    //                 }
+    //                 if (result == "성공") {
+    //                     count -= 1;
+    //                 }
+    //             },
+    //             error: function (xhr, status, er) {
+    //                 location.reload(true);
+    //             }
+    //         });
+    //         console.log(count);
+    //         if (count == 5) {
+    //             maskModal();
+    //         }
+    //     }, 2000); // 2초에 한번씩 받아온다.
+    //
+    //     function maskModal() {
+    //         clearInterval(maskInterval);
+    //         $('#maskDetectModal').modal('show');
+    //         // var maskIntervalModal = setInterval(function () {
+    //         //     $.ajax({
+    //         //         type: 'get',
+    //         //         url: 'http://localhost:5000/get_result',
+    //         //         contentType: "text/plain; charset=utf-8",
+    //         //         async: false,
+    //         //         success: function (result, status, xhr) {
+    //         //             console.log(result);
+    //         //             if (result == "실패") {
+    //         //                 count += 1;
+    //         //             }
+    //         //         },
+    //         //         error: function (xhr, status, er) {
+    //         //             location.reload(true);
+    //         //         }
+    //         //     });
+    //         //     console.log(count);
+    //         //     if (count == 5) {
+    //         //         maskModal();
+    //         //     }
+    //         // }, 2000); // 30초에 한번씩 받아온다.
+    //         // testCamera();
+    //     }
+    // }
 
-        function maskModal() {
-            clearInterval(maskInterval);
-            $('#maskDetectModal').modal('show');
-            // var maskIntervalModal = setInterval(function () {
-            //     $.ajax({
-            //         type: 'get',
-            //         url: 'http://localhost:5000/get_result',
-            //         contentType: "text/plain; charset=utf-8",
-            //         async: false,
-            //         success: function (result, status, xhr) {
-            //             console.log(result);
-            //             if (result == "실패") {
-            //                 count += 1;
-            //             }
-            //         },
-            //         error: function (xhr, status, er) {
-            //             location.reload(true);
-            //         }
-            //     });
-            //     console.log(count);
-            //     if (count == 5) {
-            //         maskModal();
-            //     }
-            // }, 2000); // 30초에 한번씩 받아온다.
-            // testCamera();
-        }
-    }
+    // $(document).on('click', '#maskDetectModalBtn', function () {
+    //     $('#maskDetectModal').modal('hide');
+    //     testCamera();
+    // });
 
-    $(document).on('click', '#maskDetectModalBtn', function () {
-        $('#maskDetectModal').modal('hide');
-        testCamera();
-    });
+    // 마스크검사는 실시간으로 사용자 화면을 띄어주지 못해서 서비스 시작 전에 확인하는걸로 다시 바꿈
 
 
     var randomMenu = [];
     var randomMenuIndex = 0;
     $(document).on('click', '#recTestBtn', function () {
-
         for (var i = 0; i < 5; i++) {
             var randomMenuId = Math.floor(Math.random() * 69) + 1;
             if (randomMenu.indexOf(randomMenuId) === -1) {
@@ -1468,8 +1498,20 @@
         }
         console.log(randomMenu);
         getRatingModalShow(randomMenu[randomMenuIndex]);
+    }); // 테스트용
 
-    });
+    function getRecommendFromAnonymous(){
+        for (var i = 0; i < 5; i++) {
+            var randomMenuId = Math.floor(Math.random() * 69) + 1;
+            if (randomMenu.indexOf(randomMenuId) === -1) {
+                randomMenu.push(randomMenuId);
+            } else {
+                i--
+            }
+        }
+        console.log(randomMenu);
+        getRatingModalShow(randomMenu[randomMenuIndex]);
+    }
 
     function getRatingModalShow(menuId){
         menuService.getMenuById(menuId, function (result) {
@@ -1503,9 +1545,62 @@
         if(randomMenuIndex < 5){
             getRatingModalShow(randomMenu[randomMenuIndex]);
         }
-
+        else{
+            $('#ratingModalSubmit').trigger("click");
+            randomMenuIndex = 0;
+            randomMenu = [];
+        }
         // $('#ratingModalSubmit').trigger("click");
     });
+
+    function getRecommendFromLoginUser(user_id){
+        requestRecommend(user_id, function (list) {
+            var str = "";
+            for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
+                menuService.getMenuById(list.recommend_menus[i], function (result) {
+                    str += " <div class='col-md-3 col-lg-2'>";
+                    str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
+                    str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
+                    str += "<div class='card-body'>";
+                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // str += "<p class='card-text menu-content'>" + result.information + "</p>";
+                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    str += "</div></div></div>";
+                });
+            }
+            $('#searchModalMenuList').html(str);
+            $('#searchModalTitle').html("추천메뉴");
+            annyang.abort();
+            // speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
+            $('#searchModal').modal('show');
+            getRatingList(); // RatingList 초기화
+        });
+    }
+
+    function logout(callback, error) {
+        $.ajax({
+            url: '/user/logout',
+            type: 'get',
+            dataType: 'text',
+            success: function (result, status, xhr) {
+                if(callback){
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if(error){
+                    error(er);
+                }
+            }
+        });
+    }
+
+    $(document).on('click', '#logout', function () {
+        logout(function(result){
+            alert(result);
+        })
+    });
+
 
 
 </script>
