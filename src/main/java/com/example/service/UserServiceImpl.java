@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
             //만약 입력한 값이 이미 등록된 아이디거나 전화번호이면 회원가입 실패함
             return null;
         } else {
+            user.setAuth(1);
             userMapper.createUser(user);
             User selectUser = userMapper.getUserById(user.getAccount_id());
             map.put("is_success", "success");

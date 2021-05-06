@@ -430,7 +430,7 @@
     $(document).on('click', '#ratingNextBtn', function () {
 
         var ratingData = {
-            user_id: getUrlParams().user_id,
+            user_id: getUrlParams().id,
             menu_id: randomMenu[count],
             rating: $("input[name='"+randomMenu[count]+"']:checked").val()
         }
@@ -446,7 +446,7 @@
     $(document).on('click', '#ratingCompleteBtn', function () {
 
         var ratingData = {
-            user_id: getUrlParams().user_id,
+            user_id: getUrlParams().id,
             menu_id: randomMenu[count],
             rating: $("input[name='"+randomMenu[count]+"']:checked").val()
         }
