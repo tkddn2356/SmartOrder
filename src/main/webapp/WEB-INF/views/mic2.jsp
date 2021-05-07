@@ -2,7 +2,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
-<html lang="en">
+<html lang="en" id="menuPage">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -138,7 +138,7 @@
             background: none;
         }
 
-        
+
 
     </style>
 
@@ -164,22 +164,22 @@
         <button class="btn btn-primary" id="micStopBtn">
             마이크OFF
         </button>
-<%--        <button class="btn btn-primary" id="recTestBtn">--%>
-<%--            추천기능테스트--%>
-<%--        </button>--%>
-            <c:if test="${loginUser.id == null}">
-                <li class="nav-item">
-                    <a href="/user/login" class="nav-link logout-a">로그인</a>
-                </li>
-            </c:if>
-            <c:if test="${loginUser.id != null}">
-                <li class="nav-item">
-                    <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
-                </li>
-            </c:if>
+        <%--        <button class="btn btn-primary" id="recTestBtn">--%>
+        <%--            추천기능테스트--%>
+        <%--        </button>--%>
+        <c:if test="${loginUser.id == null}">
+            <li class="nav-item">
+                <a href="/user/login" class="nav-link logout-a">로그인</a>
+            </li>
+        </c:if>
+        <c:if test="${loginUser.id != null}">
+            <li class="nav-item">
+                <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
+            </li>
+        </c:if>
 
     </ul>
 </nav>
@@ -605,8 +605,23 @@
 </body>
 
 <footer>
-    <div class="footer bg-dark" style="bottom:0;">
-        <div class="select-list" style="height: 285px; overflow: auto;">
+    <div class="footer bg-light" style="bottom:0; margin-top: 10px">
+        <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <p style="margin-bottom: 0px">총 주문내역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPayCount">0</span>개</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <p style="margin-bottom: 0px">총 주문금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPayPrice">0</span>원</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="select-list" style="height: 200px; overflow: auto;">
             <div class="container">
                 <div class="section_seleted_list">
                     <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
@@ -659,20 +674,21 @@
                 </div>
             </div>
         </div>
-        <div class="container" style="height: 100px; text-align: center; padding-left:0px; padding-top:30px">
+
+        <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <p style="margin-bottom: 0px">주문한 종류: <span id="totalPayCount">0</span>개 / 총 주문금액: <span
-                                id="totalPayPrice">0</span>원</p>
-                    </div>
+                <div class="col-md-2">
+                    <a href="http://localhost:5000/" class="nav-link" style="font-size: 16px">처음으로</a>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    <a href="#" class="nav-link" style="font-size: 16px">직원호출</a>
+                </div>
+                <div class="col-md-4">
                     <div class="card" id="allCancel">
                         전체취소
                     </div>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card" id="choosePay">
                         결제하기
                     </div>
@@ -814,11 +830,11 @@
             utterThis.onend = function (event) {
                 console.log('end');
                 <c:if test="${loginUser.id == null}">
-                    speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 별점을 주세요");
-                    annyang.abort();
+                speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 별점을 주세요");
+                annyang.abort();
                 </c:if>
                 <c:if test="${loginUser.id != null}">
-                    speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
+                speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
                 </c:if>
                 // 이부분은 나중에 intent값 받아와서 원하는 메뉴 묻는거 말고 다른 말이 나올 수 있게 수정할 예정
             };
@@ -882,17 +898,17 @@
 
     function addSelectedLi(name, price, topping = "", quantity) {
         var str = "";
-        str += "<li class='choose-item-li'>"
-        str += "<div class='choose_item'>";
-        str += "<p class='tit'>";
-        str += "<span class='txt_tit'>" + name + "</span>";
-        str += "<span class='txt_option' style='float:right'>" + topping + "</span></p></div>";
-        str += "<div class='choose_calc'>";
-        str += "<div class='input-group' style='width:30%'>";
+        str += "<li class='row choose-item-li'>"
+        str += "<div class='col-4 choose_item'>";
+        // str += "<p class='tit'>";</p>
+        str += "<div class='txt_tit' style='font-size: 20px;'>" + name + "</div>";
+        str += "<div class='txt_option' style='font-size: 16px; margin-top: 5px'>" + topping + "</div></div>";
+        str += "<div class='col-5 choose_calc' style='margin: 0;'>";
+        str += "<div class='input-group' style='width:60%'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>+</button>";
         str += "<input type='text' class='form-control choose_quantity' value='" + quantity + "'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>-</button></div></div>";
-        str += "<div class='choose_result'>";
+        str += "<div class='col-3 choose_result' style='font-size: 25px;'>";
         str += "<span class='txt_price'>" + price + "</span><span>원</span>";
         str += "<button class='close choose-item-close'><span>X</span></button></div></li>";
         $('#selectedList').append(str);
@@ -1077,10 +1093,10 @@
         if (result.DetectedIntent == "Recommend_menu") {
             // $('#ratingModal').modal('show'); 1버젼(모든메뉴에서 선택)
             <c:if test="${loginUser.id == null}">
-                getRecommendFromAnonymous();
+            getRecommendFromAnonymous();
             </c:if>
             <c:if test="${loginUser.id != null}">
-                getRecommendFromLoginUser(${loginUser.id});
+            getRecommendFromLoginUser(${loginUser.id});
             </c:if>
         }
         if (result.DetectedIntent == "Choose_pay") {
@@ -1096,14 +1112,15 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-3 col-lg-2'>";
-                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
-                str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                str += "<div class='card-body'>";
+                str += "<div class='col-md-6 col-lg-4'>";
+                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                str += "<div class='row menu-class'>";
+                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                str += "<div class='col-6'><div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                str += "</div></div></div>";
+                str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
             $('#burgerSetList').html(str);
@@ -1114,14 +1131,15 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-3 col-lg-2'>";
-                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
-                str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                str += "<div class='card-body'>";
+                str += " <div class='col-md-6 col-lg-4'>";
+                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                str += "<div class='row menu-class'>";
+                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                str += "<div class='col-6'><div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                str += "</div></div></div>";
+                str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
             $('#chickenList').html(str);
@@ -1132,14 +1150,15 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-3 col-lg-2'>";
-                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
-                str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                str += "<div class='card-body'>";
+                str += " <div class='col-md-6 col-lg-4'>";
+                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                str += "<div class='row menu-class'>";
+                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                str += "<div class='col-6'><div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                str += "</div></div></div>";
+                str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
             $('#sideList').html(str);
@@ -1150,14 +1169,15 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-3 col-lg-2'>";
-                str += "<div class='card menu-class' style='width: 11.5rem; margin-top:50px;'>";
-                str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                str += "<div class='card-body'>";
+                str += " <div class='col-md-6 col-lg-4'>";
+                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                str += "<div class='row menu-class'>";
+                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                str += "<div class='col-6'><div class='card-body'>";
                 str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                str += "</div></div></div>";
+                str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
             $('#drinkList').html(str);
