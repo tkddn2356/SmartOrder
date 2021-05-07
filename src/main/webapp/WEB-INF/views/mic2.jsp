@@ -233,7 +233,7 @@
 </ul>
 
 
-<div class="tab-content" style="height: 700px; overflow: auto;">
+<div class="tab-content" style="height: 770px; overflow: auto;">
     <div class="tab-pane fade show active" id="burgerSetList">
         <div class="container">
             <div class="row">
@@ -621,7 +621,7 @@
             </div>
         </div>
 
-        <div class="select-list" style="height: 200px; overflow: auto;">
+        <div class="select-list" style="height: 250px; overflow: auto;">
             <div class="container">
                 <div class="section_seleted_list">
                     <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
@@ -906,11 +906,11 @@
         str += "<div class='col-5 choose_calc' style='margin: 0;'>";
         str += "<div class='input-group' style='width:60%'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>+</button>";
-        str += "<input type='text' class='form-control choose_quantity' value='" + quantity + "'>";
+        str += "<input type='text' class='form-control choose_quantity' style='text-align: center' value='" + quantity + "'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>-</button></div></div>";
         str += "<div class='col-3 choose_result' style='font-size: 25px;'>";
         str += "<span class='txt_price'>" + price + "</span><span>원</span>";
-        str += "<button class='close choose-item-close'><span>X</span></button></div></li>";
+        str += "<button class='close choose-item-close' style='margin-top:6px'><span>X</span></button></div></li>";
         $('#selectedList').append(str);
         calculateMenu();
     }
