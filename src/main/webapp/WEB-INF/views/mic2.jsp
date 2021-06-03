@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en" id="menuPage">
 <head>
@@ -139,49 +139,81 @@
         }
 
 
-
     </style>
 
 </head>
+<nav class="navbar navbar-expand-lg  navbar-dark fixed-top shadow-lg bg-dark">
+    <%--    <a class="navbar-brand" href="#">맘스터치</a>--%>
 
-<nav class="navbar navbar-expand-md  navbar-dark fixed-top shadow-lg bg-dark">
-    <a class="navbar-brand" href="#">맘스터치</a>
-    <ul class="navbar-nav">
-        <a href='http://localhost:5000/' class='nav-link' style="color:white">처음으로</a>
-        <a href='#' class='nav-link' style="color:white">직원호출</a>
-        <%--        <a href="#none" class='nav-link' target="_blank" onclick="openPop()" style="color:white">팝업테스트</a>--%>
+    <ul class="navbar-nav mr-auto">
+        <%--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">--%>
+        <%--            Launch demo modal--%>
+        <%--        </button>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <button class="btn btn-primary" id="micBtn">--%>
+        <%--                음성인식시작--%>
+        <%--            </button>--%>
+        <%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <button class="btn btn-primary" id="micBtn2">--%>
+        <%--                마이크ON--%>
+        <%--            </button>--%>
+        <%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <button class="btn btn-primary" id="micStopBtn">--%>
+        <%--                마이크OFF--%>
+        <%--            </button>--%>
+        <%--        </li>--%>
+
+        <li class="nav-item active">
+            <a class="nav-link" id="micBtn">
+                음성인식시작
+            </a>
+        </li>
+<%--        <li class="nav-item">--%>
+<%--            <a class="nav-link" id="micBtn2">--%>
+<%--                마이크ON--%>
+<%--            </a>--%>
+<%--        </li>--%>
+<%--        <li class="nav-item">--%>
+<%--            <a class="nav-link" id="micStopBtn">--%>
+<%--                마이크OFF--%>
+<%--            </a>--%>
+<%--        </li>--%>
+
+    </ul>
+    <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+            <a class="navbar-brand" href="#">맘스터치</a>
+        </li>
+
+        <%--        <a href='http://localhost:5000/' class='nav-link' style="color:white">처음으로</a>--%>
+        <%--        <a href='#' class='nav-link' style="color:white">직원호출</a>--%>
+        <%--        &lt;%&ndash;        <a href="#none" class='nav-link' target="_blank" onclick="openPop()" style="color:white">팝업테스트</a>&ndash;%&gt;--%>
     </ul>
     <ul class="navbar-nav ml-auto">
         <%--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">--%>
         <%--            Launch demo modal--%>
         <%--        </button>--%>
-        <button class="btn btn-primary" id="micBtn">
-            음성인식시작
-        </button>
-        <button class="btn btn-primary" id="micBtn2">
-            마이크ON
-        </button>
-        <button class="btn btn-primary" id="micStopBtn">
-            마이크OFF
-        </button>
         <%--        <button class="btn btn-primary" id="recTestBtn">--%>
         <%--            추천기능테스트--%>
         <%--        </button>--%>
         <c:if test="${loginUser.id == null}">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="/user/login" class="nav-link logout-a">로그인</a>
             </li>
         </c:if>
         <c:if test="${loginUser.id != null}">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
             </li>
         </c:if>
 
     </ul>
+
 </nav>
 
 <body>
@@ -606,16 +638,19 @@
 
 <footer>
     <div class="footer bg-light" style="bottom:0; margin-top: 10px">
-        <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
+        <div class="container"
+             style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <p style="margin-bottom: 0px">총 주문내역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPayCount">0</span>개</p>
+                        <p style="margin-bottom: 0px">총 주문내역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                id="totalPayCount">0</span>개</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <p style="margin-bottom: 0px">총 주문금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPayPrice">0</span>원</p>
+                        <p style="margin-bottom: 0px">총 주문금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                id="totalPayPrice">0</span>원</p>
                     </div>
                 </div>
             </div>
@@ -675,7 +710,8 @@
             </div>
         </div>
 
-        <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
+        <div class="container"
+             style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
             <div class="row">
                 <div class="col-md-2">
                     <a href="http://localhost:5000/" class="nav-link" style="font-size: 16px">처음으로</a>
@@ -720,6 +756,14 @@
         });
 
         $('#micStopBtn').on("click", function (e) {
+            annyang.abort(); // 마이크 중단
+        });
+
+        $('#micOffImg').on("click", function (e) {
+            micTest()
+        });
+
+        $('#micOnImg').on("click", function (e) {
             annyang.abort(); // 마이크 중단
         });
 
@@ -844,8 +888,7 @@
                 console.log('end');
                 micTest();
             };
-        }
-        else {
+        } else {
             utterThis.onend = function (event) {
                 console.log('end');
                 micTest();
@@ -1394,7 +1437,7 @@
         console.log("user_id = " + user_id);
         $.ajax({
             type: 'get',
-            url: 'http://13.209.19.111:5000/' + user_id,
+            url: 'http://13.125.133.168:5000/' + user_id,
             async: false, // 얘는 동기방식으로 해야 반환된 user_id를 활용할 수 있음.
             contentType: "application/json; charset=utf-8",
             success: function (result, status, xhr) {
@@ -1520,7 +1563,7 @@
         getRatingModalShow(randomMenu[randomMenuIndex]);
     }); // 테스트용
 
-    function getRecommendFromAnonymous(){
+    function getRecommendFromAnonymous() {
         for (var i = 0; i < 5; i++) {
             var randomMenuId = Math.floor(Math.random() * 69) + 1;
             if (randomMenu.indexOf(randomMenuId) === -1) {
@@ -1533,10 +1576,10 @@
         getRatingModalShow(randomMenu[randomMenuIndex]);
     }
 
-    function getRatingModalShow(menuId){
+    function getRatingModalShow(menuId) {
         menuService.getMenuById(menuId, function (result) {
             var str = "";
-            str += "<img src='/resources/img/"+result.img+"'>"
+            str += "<img src='/resources/img/" + result.img + "'>"
             str += "<div class='review_rating'>";
             str += "<fieldset class='rating'>";
             str += "<input type='radio' id='rating_1_star5' name='" + result.name + "' value='5'><label for='rating_1_star5'></label>";
@@ -1562,10 +1605,9 @@
         $('#getRatingModal').modal('hide');
 
         randomMenuIndex++;
-        if(randomMenuIndex < 5){
+        if (randomMenuIndex < 5) {
             getRatingModalShow(randomMenu[randomMenuIndex]);
-        }
-        else{
+        } else {
             $('#ratingModalSubmit').trigger("click");
             randomMenuIndex = 0;
             randomMenu = [];
@@ -1573,7 +1615,7 @@
         // $('#ratingModalSubmit').trigger("click");
     });
 
-    function getRecommendFromLoginUser(user_id){
+    function getRecommendFromLoginUser(user_id) {
         requestRecommend(user_id, function (list) {
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
@@ -1603,12 +1645,12 @@
             type: 'get',
             dataType: 'text',
             success: function (result, status, xhr) {
-                if(callback){
+                if (callback) {
                     callback(result);
                 }
             },
             error: function (xhr, status, er) {
-                if(error){
+                if (error) {
                     error(er);
                 }
             }
@@ -1616,11 +1658,10 @@
     }
 
     $(document).on('click', '#logout', function () {
-        logout(function(result){
+        logout(function (result) {
             alert(result);
         })
     });
-
 
 
 </script>
