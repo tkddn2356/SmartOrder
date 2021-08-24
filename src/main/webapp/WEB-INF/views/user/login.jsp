@@ -29,20 +29,43 @@
                         <h4 class="card-title">로그인</h4>
                         <div id="login_form">
                             <div class="form-group">
-                                <label>아이디</label>
-                                <input type="text" name="account_id" class="form-control"/>
+                                <label>전화번호</label>
+                                <input type="tel" name="password" class="form-control" id="telInput"/>
                             </div>
                             <div class="form-group">
                                 <label>비밀번호</label>
-                                <input type="password" name="password" class="form-control"/>
-                            </div>
-                            <div class="form-group">
-                                <label>전화번호</label>
-                   
+                                <input type="tel" name="password" class="form-control" id="passwordInput"/>
                             </div>
                             <div class="form-group text-right">
                                 <button class="btn btn-primary" id="login_btn">로그인</button>
                                 <button class="btn btn-primary" id="join_btn">회원가입</button>
+                            </div>
+                        </div>
+                        <div style="text-align: center">
+                            <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 400px">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">1</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">2</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">3</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">4</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">5</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">6</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">7</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">8</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">9</button>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn"></button>
+                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">0</button>
+                                    <button type="button" class="btn btn-outline-secondary py-3"
+                                            onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1); changeHyphenTel();">
+                                        &lt;
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -52,16 +75,7 @@
         </div>
     </div>
 </section>
-<%--<footer>--%>
-<%--    <div class="container-fluid text-white"--%>
-<%--         style="margin-top:50px;padding-top:30px;padding-bottom:30px;">--%>
-<%--        <div class="container">--%>
-<%--            <p>비기너 프로젝트 예시자료</p>--%>
-<%--            <a href="https://www.koreatech.ac.kr/kor/Main.do" style="color: white; font-weight: bold">코리아텍 바로가기</a> /--%>
-<%--            <a href="https://portal.koreatech.ac.kr/login.jsp" style="color: white; font-weight: bold">아우누리 바로가기</a>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</footer>--%>
+
 </body>
 </html>
 
@@ -95,15 +109,99 @@
             data: JSON.stringify(user),
             contentType: "application/json; charset=utf-8",
             success: function (result, status, xhr) {
-                if(callback){
+                if (callback) {
                     callback(result);
                 }
             },
             error: function (xhr, status, er) {
-                if(error){
+                if (error) {
                     error(er);
                 }
             }
         });
     }
+
+    function autoHypenTel(str) {
+        str = str.replace(/[^0-9]/g, '');
+        var tmp = '';
+        if (str.substring(0, 2) == 02) {
+            // 서울 전화번호일 경우 10자리까지만 나타나고 그 이상의 자리수는 자동삭제
+            if (str.length < 3) {
+                return str;
+            } else if (str.length < 6) {
+                tmp += str.substr(0, 2);
+                tmp += '-';
+                tmp += str.substr(2);
+                return tmp;
+            } else if (str.length < 10) {
+                tmp += str.substr(0, 2);
+                tmp += '-';
+                tmp += str.substr(2, 3);
+                tmp += '-';
+                tmp += str.substr(5);
+                return tmp;
+            } else {
+                tmp += str.substr(0, 2);
+                tmp += '-';
+                tmp += str.substr(2, 4);
+                tmp += '-';
+                tmp += str.substr(6, 4);
+                return tmp;
+            }
+        } else {
+            // 핸드폰 및 다른 지역 전화번호 일 경우
+            if (str.length < 4) {
+                return str;
+            } else if (str.length < 7) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3);
+                return tmp;
+            } else if (str.length < 11) {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 3);
+                tmp += '-';
+                tmp += str.substr(6);
+                return tmp;
+            } else {
+                tmp += str.substr(0, 3);
+                tmp += '-';
+                tmp += str.substr(3, 4);
+                tmp += '-';
+                tmp += str.substr(7);
+                return tmp;
+            }
+        }
+
+        return str;
+    }
+
+    $('#telInput').keyup(function (event) {
+        event = event || window.event;
+        var _val = this.value.trim();
+        this.value = autoHypenTel(_val);
+    });
+
+    function changeHyphenTel(){
+        var before = $('#telInput').val();
+        $('#telInput').val(autoHypenTel(before));
+    }
+
+    $(document).on('click', '.input-btn', function () {
+        // var inputValue = $('.input-btn').text();
+        var inputValue= $(this).text();
+        if($('#telInput').val().length < 13){
+            $('#telInput').val($('#telInput').val()+inputValue);
+            changeHyphenTel();
+        }
+        else{
+            console.log("inputValue = " + inputValue);
+            console.log("passwordInput = " + $('#passwordInput').val());
+            $('#passwordInput').val($('#passwordInput').val()+inputValue);
+        }
+
+    });
+
+
 </script>
