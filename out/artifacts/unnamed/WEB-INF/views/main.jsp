@@ -22,18 +22,18 @@
 </head>
 <body>
 
-<!-- 메인 페이지 이미지는 다시 만들 것 -->
 <div class="container" style="margin-top: 90px">
     <div class="row">
         <div class="col-md-12">
-            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #FFBC00; text-align: center; display: inline-block;">
-                <img src="/resources/img/logo-1.png" alt="" width="400" class="img-responsive ">
-            </nav>
+            <div class="card">
+                <div class="card-body" style="text-align:center; height: 150px;">
+                    <p class="card-text" style="font-size: 30px;">맘스터치</p>
+                    <p class="card-text">메인페이지 입니다. 화면을 클릭해주세요.</p>
+                </div>
+            </div>
         </div>
     </div>
 
-
-    <!-- 포장, 매장 버튼 모두 이미지로 대체 -->
     <div class="row" style="margin-top: 200px;">
         <div class="col-md-4 offset-2">
             <!-- 텍스트 대신에 이미지 넣기 -->
@@ -53,7 +53,7 @@
         <div>
             <button class="btn btn-link" id="join_btn">
                 <a href="/user/join" class="nav-link logout-a">회원가입</a>
-            </button>
+                </button>
         </div>
     </div>
 </div>
