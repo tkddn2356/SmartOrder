@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html lang="en" id="menuPage">
 <head>
@@ -138,69 +138,121 @@
             background: none;
         }
 
-        
+        .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+            color: #495057;
+            background-color: #ffffff;
+            border-radius: 20px 20px 0 0;
+            border: 1px solid #ffffff;
+
+        }
+
 
     </style>
 
 </head>
+<nav class="navbar navbar-expand-lg  navbar-dark fixed-top shadow-lg" style="background-color: #FFBC00">
+    <%--    <a class="navbar-brand" href="#">맘스터치</a>--%>
 
-<nav class="navbar navbar-expand-md  navbar-dark fixed-top shadow-lg bg-dark">
-    <a class="navbar-brand" href="#">맘스터치</a>
-    <ul class="navbar-nav">
-        <a href='http://localhost:5000/' class='nav-link' style="color:white">처음으로</a>
-        <a href='#' class='nav-link' style="color:white">직원호출</a>
-        <%--        <a href="#none" class='nav-link' target="_blank" onclick="openPop()" style="color:white">팝업테스트</a>--%>
+    <ul class="navbar-nav mr-auto">
+        <%--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">--%>
+        <%--            Launch demo modal--%>
+        <%--        </button>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <button class="btn btn-primary" id="micBtn">--%>
+        <%--                음성인식시작--%>
+        <%--            </button>--%>
+        <%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <button class="btn btn-primary" id="micBtn2">--%>
+        <%--                마이크ON--%>
+        <%--            </button>--%>
+        <%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <button class="btn btn-primary" id="micStopBtn">--%>
+        <%--                마이크OFF--%>
+        <%--            </button>--%>
+        <%--        </li>--%>
+
+        <li class="nav-item active">
+            <a class="nav-link" id="micBtn">
+                음성인식시작
+            </a>
+        </li>
+<%--        <li class="nav-item">--%>
+<%--            <a class="nav-link" id="micBtn2">--%>
+<%--                마이크ON--%>
+<%--            </a>--%>
+<%--        </li>--%>
+<%--        <li class="nav-item">--%>
+<%--            <a class="nav-link" id="micStopBtn">--%>
+<%--                마이크OFF--%>
+<%--            </a>--%>
+<%--        </li>--%>
+
+    </ul>
+    <ul class="navbar-nav justify-content-center">
+        <li class="nav-item">
+            <img src="/resources/img/logo-1.png" alt="" width="400" class="img-responsive center-block">
+            <!--이미지 크기를 화면의 퍼센테이지로 맞추기-->
+            <!--<a class="navbar-brand" href="#">Smart Kiosk</a>-->
+        </li>
+
+        <%--        <a href='http://localhost:5000/' class='nav-link' style="color:white">처음으로</a>--%>
+        <%--        <a href='#' class='nav-link' style="color:white">직원호출</a>--%>
+        <%--        &lt;%&ndash;        <a href="#none" class='nav-link' target="_blank" onclick="openPop()" style="color:white">팝업테스트</a>&ndash;%&gt;--%>
     </ul>
     <ul class="navbar-nav ml-auto">
         <%--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">--%>
         <%--            Launch demo modal--%>
         <%--        </button>--%>
-        <button class="btn btn-primary" id="micBtn">
-            음성인식시작
-        </button>
-        <button class="btn btn-primary" id="micBtn2">
-            마이크ON
-        </button>
-        <button class="btn btn-primary" id="micStopBtn">
-            마이크OFF
-        </button>
-<%--        <button class="btn btn-primary" id="recTestBtn">--%>
-<%--            추천기능테스트--%>
-<%--        </button>--%>
-            <c:if test="${loginUser.id == null}">
-                <li class="nav-item">
-                    <a href="/user/login" class="nav-link logout-a">로그인</a>
-                </li>
-            </c:if>
-            <c:if test="${loginUser.id != null}">
-                <li class="nav-item">
-                    <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
-                </li>
-            </c:if>
+        <%--        <button class="btn btn-primary" id="recTestBtn">--%>
+        <%--            추천기능테스트--%>
+        <%--        </button>--%>
+        <c:if test="${loginUser.id == null}">
+            <li class="nav-item active">
+                <a href="/user/login" class="nav-link logout-a">로그인</a>
+            </li>
+        </c:if>
+        <c:if test="${loginUser.id != null}">
+            <li class="nav-item active">
+                <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
+            </li>
+            <li class="nav-item active">
+                <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
+            </li>
+        </c:if>
 
     </ul>
+
 </nav>
 
-<body>
+<body class="pt-3">
 
 
 <div class="container" style="margin-top: 90px">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2"><img src="/resources/img/Employee-1.png" class="img-circle" style="width:90%"></div>
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-10">
-                            <%--                                    <p class="card-text" id="middleResult"></p>--%>
-                            <p class="card-text" id="finalResult"></p>
                             <%--                                    <p class="card-text" id="DetectedIntent"></p>--%>
-                            <p class="card-text" id="FulfillmentText"></p>
+                            <div class="TextImg"  style="position:relative;">
+                                <img src="/resources/img/TextBalloon_left.png" style="width:80%">
+                                <div class="text_left" style="position: absolute;top: 15%;left: 10%;">
+                                    <p class="card-text" id="FulfillmentText"></p>
+                                </div>
+                            </div>
+                                <p></p>
+                            <div class="TextImg" align="right" >
+                                <img src="/resources/img/TextBalloon_right_2.png" style="width:70%">
+                                <div class="text_right" style="float: right;position: absolute;top: 60%;left: 35%; right: 10%">
+                                    <p class="card-text" id="finalResult"></p></div>
+                            </div>
+                            <%--                                    <p class="card-text" id="middleResult"></p>--%>
                         </div>
                         <div class="col-md-2" style="text-align: right">
-
                             <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100px"
                                  alt="Card image"/>
                             <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100px"
@@ -214,26 +266,26 @@
 </div>
 
 
-<ul class="nav nav-tabs nav-justified" style="margin-top:30px">
-    <li class="nav-item">
+<ul class="nav nav-tabs nav-justified" style="margin-top:30px; color: white;">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link active" id="burgerSetTab" data-toggle="tab" href="#burgerSetList">버거세트</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link" id="chickenTab" data-toggle="tab" href="#chickenList">치킨</a>
     </li>
     <%--    <li class="nav-item">--%>
     <%--        <a class="nav-link" id="burgerTab" data-toggle="tab" href="#burgerList">버거단품</a>--%>
     <%--    </li>--%>
-    <li class="nav-item">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link" id="sideTab" data-toggle="tab" href="#sideList">사이드</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link" id="drinkTab" data-toggle="tab" href="#drinkList">드링크</a>
     </li>
 </ul>
 
 
-<div class="tab-content" style="height: 700px; overflow: auto;">
+<div class="tab-content" style="height: 770px; overflow: auto;">
     <div class="tab-pane fade show active" id="burgerSetList">
         <div class="container">
             <div class="row">
@@ -606,22 +658,25 @@
 
 <footer>
     <div class="footer bg-light" style="bottom:0; margin-top: 10px">
-        <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
+        <div class="container"
+             style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <p style="margin-bottom: 0px">총 주문내역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPayCount">0</span>개</p>
+                        <p style="margin-bottom: 0px">총 주문내역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                id="totalPayCount">0</span>개</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="card">
-                        <p style="margin-bottom: 0px">총 주문금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="totalPayPrice">0</span>원</p>
+                        <p style="margin-bottom: 0px">총 주문금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                                id="totalPayPrice">0</span>원</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="select-list" style="height: 200px; overflow: auto;">
+        <div class="select-list" style="height: 250px; overflow: auto;">
             <div class="container">
                 <div class="section_seleted_list">
                     <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
@@ -675,7 +730,8 @@
             </div>
         </div>
 
-        <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
+        <div class="container"
+             style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
             <div class="row">
                 <div class="col-md-2">
                     <a href="http://localhost:5000/" class="nav-link" style="font-size: 16px">처음으로</a>
@@ -720,6 +776,14 @@
         });
 
         $('#micStopBtn').on("click", function (e) {
+            annyang.abort(); // 마이크 중단
+        });
+
+        $('#micOffImg').on("click", function (e) {
+            micTest()
+        });
+
+        $('#micOnImg').on("click", function (e) {
             annyang.abort(); // 마이크 중단
         });
 
@@ -830,11 +894,11 @@
             utterThis.onend = function (event) {
                 console.log('end');
                 <c:if test="${loginUser.id == null}">
-                    speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 별점을 주세요");
-                    annyang.abort();
+                speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 별점을 주세요");
+                annyang.abort();
                 </c:if>
                 <c:if test="${loginUser.id != null}">
-                    speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
+                speech("추천메뉴는 다음과 같습니다. 원하시는 메뉴를 말씀하세요.")
                 </c:if>
                 // 이부분은 나중에 intent값 받아와서 원하는 메뉴 묻는거 말고 다른 말이 나올 수 있게 수정할 예정
             };
@@ -844,8 +908,7 @@
                 console.log('end');
                 micTest();
             };
-        }
-        else {
+        } else {
             utterThis.onend = function (event) {
                 console.log('end');
                 micTest();
@@ -906,11 +969,11 @@
         str += "<div class='col-5 choose_calc' style='margin: 0;'>";
         str += "<div class='input-group' style='width:60%'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>+</button>";
-        str += "<input type='text' class='form-control choose_quantity' value='" + quantity + "'>";
+        str += "<input type='text' class='form-control choose_quantity' style='text-align: center' value='" + quantity + "'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>-</button></div></div>";
         str += "<div class='col-3 choose_result' style='font-size: 25px;'>";
         str += "<span class='txt_price'>" + price + "</span><span>원</span>";
-        str += "<button class='close choose-item-close'><span>X</span></button></div></li>";
+        str += "<button class='close choose-item-close' style='margin-top:6px'><span>X</span></button></div></li>";
         $('#selectedList').append(str);
         calculateMenu();
     }
@@ -1093,10 +1156,10 @@
         if (result.DetectedIntent == "Recommend_menu") {
             // $('#ratingModal').modal('show'); 1버젼(모든메뉴에서 선택)
             <c:if test="${loginUser.id == null}">
-                getRecommendFromAnonymous();
+            getRecommendFromAnonymous();
             </c:if>
             <c:if test="${loginUser.id != null}">
-                getRecommendFromLoginUser(${loginUser.id});
+            getRecommendFromLoginUser(${loginUser.id});
             </c:if>
         }
         if (result.DetectedIntent == "Choose_pay") {
@@ -1394,7 +1457,7 @@
         console.log("user_id = " + user_id);
         $.ajax({
             type: 'get',
-            url: 'http://13.209.19.111:5000/' + user_id,
+            url: 'http://13.125.133.168:5000/' + user_id,
             async: false, // 얘는 동기방식으로 해야 반환된 user_id를 활용할 수 있음.
             contentType: "application/json; charset=utf-8",
             success: function (result, status, xhr) {
@@ -1520,7 +1583,7 @@
         getRatingModalShow(randomMenu[randomMenuIndex]);
     }); // 테스트용
 
-    function getRecommendFromAnonymous(){
+    function getRecommendFromAnonymous() {
         for (var i = 0; i < 5; i++) {
             var randomMenuId = Math.floor(Math.random() * 69) + 1;
             if (randomMenu.indexOf(randomMenuId) === -1) {
@@ -1533,10 +1596,10 @@
         getRatingModalShow(randomMenu[randomMenuIndex]);
     }
 
-    function getRatingModalShow(menuId){
+    function getRatingModalShow(menuId) {
         menuService.getMenuById(menuId, function (result) {
             var str = "";
-            str += "<img src='/resources/img/"+result.img+"'>"
+            str += "<img src='/resources/img/" + result.img + "'>"
             str += "<div class='review_rating'>";
             str += "<fieldset class='rating'>";
             str += "<input type='radio' id='rating_1_star5' name='" + result.name + "' value='5'><label for='rating_1_star5'></label>";
@@ -1562,10 +1625,9 @@
         $('#getRatingModal').modal('hide');
 
         randomMenuIndex++;
-        if(randomMenuIndex < 5){
+        if (randomMenuIndex < 5) {
             getRatingModalShow(randomMenu[randomMenuIndex]);
-        }
-        else{
+        } else {
             $('#ratingModalSubmit').trigger("click");
             randomMenuIndex = 0;
             randomMenu = [];
@@ -1573,7 +1635,7 @@
         // $('#ratingModalSubmit').trigger("click");
     });
 
-    function getRecommendFromLoginUser(user_id){
+    function getRecommendFromLoginUser(user_id) {
         requestRecommend(user_id, function (list) {
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
@@ -1603,12 +1665,12 @@
             type: 'get',
             dataType: 'text',
             success: function (result, status, xhr) {
-                if(callback){
+                if (callback) {
                     callback(result);
                 }
             },
             error: function (xhr, status, er) {
-                if(error){
+                if (error) {
                     error(er);
                 }
             }
@@ -1616,11 +1678,10 @@
     }
 
     $(document).on('click', '#logout', function () {
-        logout(function(result){
+        logout(function (result) {
             alert(result);
         })
     });
-
 
 
 </script>
