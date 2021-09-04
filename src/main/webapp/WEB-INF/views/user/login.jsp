@@ -29,27 +29,48 @@
                         <h4 class="card-title">로그인</h4>
                         <div id="login_form">
                             <div class="form-group">
-                                <label>아이디</label>
-                                <input type="text" name="account_id" class="form-control"/>
+                                <label>전화번호</label>
+                                <input type="tel" name="phone" class="form-control"/>
                             </div>
                             <div class="form-group">
                                 <label>비밀번호</label>
-                                <input type="password" name="password" class="form-control"/>
+                                <input type="teml" name="password" class="form-control" id="passwordInput"/>
                             </div>
-                            <div class="form-group">
-                                <label>전화번호</label>
-                   
-                            </div>
+                            
                             <div class="form-group text-right">
                                 <button class="btn btn-primary" id="login_btn">로그인</button>
                                 <button class="btn btn-primary" id="join_btn">회원가입</button>
                             </div>
+
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3"></div>
         </div>
+        <div class="row">
+            <div class="col-xl">
+                <div style="text-align: center;">
+                    <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 100%;height: 100%;">
+                        <div class="btn-group" style="height:80px">
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">1</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">2</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">3</button>
+                        </div>
+                        <div class="btn-group" style="height:80px">
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">4</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">5</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">6</button>
+                        </div>
+                        <div class="btn-group" style="height:80px">
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">7</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">8</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">9</button>
+                        </div>
+                        <div class="btn-group" style="height:80px">
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;"> </button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">0</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;"><</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+            
     </div>
 </section>
 <%--<footer>--%>
