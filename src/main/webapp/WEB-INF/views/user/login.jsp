@@ -30,7 +30,7 @@
                         <div id="login_form">
                             <div class="form-group">
                                 <label>전화번호</label>
-                                <input type="tel" name="password" class="form-control" id="telInput"/>
+                                <input type="tel" name="phone_number" class="form-control" id="telInput"/>
                             </div>
                             <div class="form-group">
                                 <label>비밀번호</label>
@@ -86,7 +86,7 @@
         $("#login_btn").on("click", function (e) {
             e.preventDefault();
             var login_info = {
-                account_id: login_form.find("input[name='account_id']").val(),
+                phone_number: login_form.find("input[name='phone_number']").val(),
                 password: login_form.find("input[name='password']").val(),
             }
             login(login_info, function (result) {

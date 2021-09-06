@@ -30,21 +30,32 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private HttpServletRequest request;
 
+//    @Override
+//    public Map<String, Object> register(User user) {
+//        Map<String, Object> map = new HashMap<String, Object>();
+//        if (userMapper.getUserById(user.getAccount_id()) != null
+//                || userMapper.getUserByPhone_number(user.getPhone_number()) != null) {
+//            //만약 입력한 값이 이미 등록된 아이디거나 전화번호이면 회원가입 실패함
+//            return null;
+//        } else {
+//            user.setAuth(1);
+//            userMapper.createUser(user);
+//            User selectUser = userMapper.getUserById(user.getAccount_id());
+//            map.put("is_success", "success");
+//            map.put("user_id", selectUser.getId());
+//            return map;
+//        }
+//    }
+
     @Override
     public Map<String, Object> register(User user) {
         Map<String, Object> map = new HashMap<String, Object>();
-        if (userMapper.getUserById(user.getAccount_id()) != null
-                || userMapper.getUserByPhone_number(user.getPhone_number()) != null) {
-            //만약 입력한 값이 이미 등록된 아이디거나 전화번호이면 회원가입 실패함
-            return null;
-        } else {
-            user.setAuth(1);
-            userMapper.createUser(user);
-            User selectUser = userMapper.getUserById(user.getAccount_id());
-            map.put("is_success", "success");
-            map.put("user_id", selectUser.getId());
-            return map;
-        }
+        user.setAuth(1);
+        userMapper.createUser(user);
+        User selectUser = userMapper.getUserById(user.getAccount_id());
+        map.put("is_success", "success");
+        map.put("user_id", selectUser.getId());
+        return map;
     }
 
     @Override
@@ -77,11 +88,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean login(User user) {
+        System.out.println(user.getPassword());
+        String phone_number = user.getPhone_number().replaceAll("-","");
+        System.out.println(phone_number);
         HttpSession session = request.getSession(); // request 요청을 받고 세션을 생성함.
         if (session.getAttribute("loginUser") != null) {
             session.removeAttribute("loginUser");
         } // 만약 로그인세션이 이미 존재하고 있었으면 그 로그인세션을 삭제
-        User userInfo = userMapper.getUserById(user.getAccount_id());
+        User userInfo = userMapper.getUserByPhone_number(phone_number);
         if (userInfo != null && user.getPassword().equals(userInfo.getPassword())) { // 데이터베이스상에 있는 비밀번호와 일치하면 실행.
             User loginUser = new User();
             loginUser.setId(userInfo.getId());

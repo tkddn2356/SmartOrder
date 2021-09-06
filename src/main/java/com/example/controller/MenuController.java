@@ -67,6 +67,12 @@ public class MenuController {
         return new ResponseEntity<List<Menu>>(menuService.getListByHow_muchOver(number), HttpStatus.OK);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/menus/payment/{id}", method= RequestMethod.GET)
+    public List<Long> getRecentPaymentList(@PathVariable("id") Long id) throws IOException {
+        return menuService.getRecentPaymentList(id);
+    }
+
 
 
 

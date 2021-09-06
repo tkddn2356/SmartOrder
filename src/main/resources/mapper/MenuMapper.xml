@@ -36,6 +36,17 @@
         select * from menu where id = #{id}
     </select>
 
+    <select id="getRecentPaymentList" resultType="Long">
+        select menu_id from payment where user_id = #{user_id} and DATE(created_at) = DATE(#{date});
+    </select>
+
+    <select id="getRecentPaymentById"  resultType="com.example.domain.Payment">
+        select * from payment where user_id = #{user_id} order by id desc limit 1;
+    </select>
+
+
+
+
 
 
 </mapper>

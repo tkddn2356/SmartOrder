@@ -63,8 +63,8 @@
 
         @media (min-width: 768px) {
             .container-searchModal {
-                width: 800px;
-                max-width: 800px;
+                width: 840px;
+                max-width: 840px;
             }
         }
 
@@ -170,16 +170,16 @@
                 음성인식시작
             </a>
         </li>
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" id="micBtn2">--%>
-<%--                마이크ON--%>
-<%--            </a>--%>
-<%--        </li>--%>
-<%--        <li class="nav-item">--%>
-<%--            <a class="nav-link" id="micStopBtn">--%>
-<%--                마이크OFF--%>
-<%--            </a>--%>
-<%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" id="micBtn2">--%>
+        <%--                마이크ON--%>
+        <%--            </a>--%>
+        <%--        </li>--%>
+        <%--        <li class="nav-item">--%>
+        <%--            <a class="nav-link" id="micStopBtn">--%>
+        <%--                마이크OFF--%>
+        <%--            </a>--%>
+        <%--        </li>--%>
 
     </ul>
     <ul class="navbar-nav justify-content-center">
@@ -322,6 +322,7 @@
                 </button>
             </div>
             <div class="modal-body">
+                <p>메뉴정보</p>
                 <p id="orderModalMenuContent">대충 메뉴 설명들</p>
                 <p id="orderModalMenuPrice">가격</p>
                 <p id="orderModalTopping"></p>
@@ -329,7 +330,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">주문</button>
+                <button type="button" class="btn btn-primary" id="orderModalBtn">주문</button>
             </div>
         </div>
     </div>
@@ -383,16 +384,16 @@
 <div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-backdrop="false" style="z-index:1041">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
-    <div class="modal-dialog" role="document" style="max-width: 97%; margin-top: 300px;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="searchModalTitle">검색하신 "" 결과입니다.</h5>
+    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 264px;">
+        <div class="modal-content" style="border:none;">
+            <div class="modal-header" style="padding-bottom: 8px;padding-top: 8px; border-top: 1px solid #e9ecef;">
+                <a class="modal-title" id="searchModalTitle" style="margin-left: auto;">검색하신 "" 결과입니다.</a>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container container-searchModal" style="height: 500px; overflow: auto;">
+                <div class="container container-searchModal" style="height: 746px; overflow: auto;">
                     <div class="row" id="searchModalMenuList">
                         <%--                        <div class="col-md-4 col-lg-3">--%>
                         <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
@@ -418,10 +419,6 @@
                         <%--                        </div>--%>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary">주문</button>
             </div>
         </div>
     </div>
@@ -553,24 +550,55 @@
 <div class="modal" id="choosePayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true"
      style="z-index:1060">
-    <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="min-width: 70%; margin-top: 200px">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="choosePayModalTitle">주문확인</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="modal-header d-block">
+                <div class="d-flex">
+                    <h3 class="modal-title" id="choosePayModalTitle">주문 확인</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h7 class="modal-title mb-2 text-muted">주문내역을 확인해주세요.
+                </h7>
             </div>
-            <div class="modal-body" id="choosePayModalList">
+
+            <div class="modal-body" id="choosePayModalList" style="height: 800px;">
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>제품</th>
+                        <th style="text-align: center">수량</th>
+                        <th style="text-align: center">금액</th>
+                    </tr>
+                    </thead>
+                    <tbody class="board-tbody" id="choosePayList">
+
+
+                    </tbody>
+                </table>
 
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="font-size: 2em">
                 <span>총 주문 금액: </span><span id="choosePayModalPayment"></span><span>원</span>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary" id="choosePayModalBtn">결제</button>
+                <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-top:20px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <p>이전</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card" id="choosePayModalBtn">
+                                <p>결제</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%--                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>--%>
+                <%--                <button type="button" class="btn btn-primary" id="choosePayModalBtn">결제</button>--%>
             </div>
         </div>
     </div>
@@ -628,6 +656,40 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="getRatingModalBtn" data-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="reorderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+     style="z-index:1000">
+    <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
+    <div class="modal-dialog" role="document" style="min-width: 100%; margin-top:350px">
+        <div class="modal-content">
+            <div class="modal-header d-block">
+                <div class="d-flex">
+                    <h3 class="modal-title" id=reorderModalTitle">최근 주문 목록</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <h7 class="modal-title mb-2 text-muted">다시 주문하고 싶은 메뉴를 선택해주세요.
+                </h7>
+            </div>
+            <div class="modal-body">
+                <div id="reorderModalBody" style="height: 500px">
+                    <div class="container container-searchModal" style="height: 746px; overflow: auto;">
+                    <div class="row" id="reorderModalList">
+
+
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="reorderModalBtn" data-dismiss="modal">확인</button>
             </div>
         </div>
     </div>
@@ -741,6 +803,29 @@
 <script>
 
     $(document).ready(function () {
+
+        <c:if test="${loginUser.id != null}">
+        menuService.getRecentPaymentList(${loginUser.id}, function (list) {
+            console.log("recent : " , list)
+            var str = "";
+            for (var i = 0, len = list.length; i < len; i++) {
+                menuService.getMenuById(list[i], function (result) {
+                    str += " <div class='col-md-6 col-lg-4'>";
+                    str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                    str += "<div class='row menu-class'>";
+                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
+                    str += "<div class='col-6'><div class='card-body'>";
+                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    str += "</div></div></div></div></div>";
+                });
+            }
+            $('#reorderModalList').html(str);
+        })
+        $('#reorderModal').modal('show');
+        </c:if>
+
         // $('#numberInputModal').modal('show');
         // testCamera();
 
@@ -934,6 +1019,16 @@
         $('#orderModal').modal('show');
     });
 
+    $(document).on('click', '#orderModalBtn', function () {
+        addSelectedLi($('#orderModalMenuName').text(), $('#orderModalMenuPrice').text(), "", 1);
+        $('#orderModal').modal('hide');
+        // $('#orderModalMenuName').html($(this).find('.menu-name').text());
+        // $('#orderModalMenuContent').html($(this).find('.menu-content').text());
+        // $('#orderModalMenuPrice').html($(this).find('.menu-price').text());
+        // $('#orderModal').modal('show');
+    });
+
+
     $(document).on('click', 'button.menu-topping', function () {
         $('#toppingModal').modal('show');
     });
@@ -1023,14 +1118,15 @@
                 menuService.getListByIs_spicy(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-3 col-lg-2'>";
-                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                        str += "<div class='card-body'>";
+                        str += " <div class='col-md-6 col-lg-4'>";
+                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        str += "<div class='row menu-class'>";
+                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        str += "<div class='col-6'><div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                        str += "</div></div></div>";
+                        str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1039,14 +1135,15 @@
                 menuService.getListByIs_spicy(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-3 col-lg-2'>";
-                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                        str += "<div class='card-body'>";
+                        str += " <div class='col-md-6 col-lg-4'>";
+                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        str += "<div class='row menu-class'>";
+                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        str += "<div class='col-6'><div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                        str += "</div></div></div>";
+                        str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1059,14 +1156,15 @@
                 menuService.getListByIs_hot(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-3 col-lg-2'>";
-                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                        str += "<div class='card-body'>";
+                        str += " <div class='col-md-6 col-lg-4'>";
+                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        str += "<div class='row menu-class'>";
+                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        str += "<div class='col-6'><div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                        str += "</div></div></div>";
+                        str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1075,14 +1173,15 @@
                 menuService.getListByIs_hot(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-3 col-lg-2'>";
-                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                        str += "<div class='card-body'>";
+                        str += " <div class='col-md-6 col-lg-4'>";
+                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        str += "<div class='row menu-class'>";
+                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        str += "<div class='col-6'><div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                        str += "</div></div></div>";
+                        str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1095,14 +1194,15 @@
                 menuService.getListByHow_muchOver(result.Parameters.number[0], function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-3 col-lg-2'>";
-                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                        str += "<div class='card-body'>";
+                        str += " <div class='col-md-6 col-lg-4'>";
+                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        str += "<div class='row menu-class'>";
+                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        str += "<div class='col-6'><div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                        str += "</div></div></div>";
+                        str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1111,14 +1211,15 @@
                 menuService.getListByHow_muchUnder(result.Parameters.number[0], function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-3 col-lg-2'>";
-                        str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                        str += "<img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'>";
-                        str += "<div class='card-body'>";
+                        str += " <div class='col-md-6 col-lg-4'>";
+                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        str += "<div class='row menu-class'>";
+                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        str += "<div class='col-6'><div class='card-body'>";
                         str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                         str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
-                        str += "</div></div></div>";
+                        str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1393,14 +1494,26 @@
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
                 menuService.getMenuById(list.recommend_menus[i], function (result) {
-                    str += " <div class='col-md-3 col-lg-2'>";
-                    str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                    str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
-                    str += "<div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
-                    // str += "<p class='card-text menu-content'>" + result.information + "</p>";
-                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
-                    str += "</div></div></div>";
+                    // str += " <div class='col-md-3 col-lg-2'>";
+                    // str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
+                    // str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
+                    // str += "<div class='card-body'>";
+                    // str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // // str += "<p class='card-text menu-content'>" + result.information + "</p>";
+                    // str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    // str += "</div></div></div>";
+
+                    str += " <div class='col-md-6 col-lg-4'>";
+                    str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                    str += "<div class='row menu-class'>";
+                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                    str += "<div class='col-6'><div class='card-body'>";
+                    str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                    // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                    str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                    str += "</div></div></div></div></div>";
+
+
                 });
             }
             $('#searchModalMenuList').html(str);
@@ -1465,15 +1578,15 @@
             var menuName = $(this).find('.txt_tit').text();
             var menuQuantity = $(this).find('.choose_quantity').val();
             var totalPay = Number($(this).find('.txt_price').text());
-            str += "<div>";
-            str += "<span>" + menuName + " x " + menuQuantity +
-                "</span><span style='float:right'>" + totalPay + "</span><span>원</span>"
-            str += "</div>";
-            // alert("주문한 메뉴 : " + $(this).find('.txt_tit').text() +
-            //     "수량 : " + $(this).find('.choose_quantity').val() +
-            //     "가격 : " + Number($(this).find('.txt_price').text()));
+
+            str += "<tr>";
+            str += "<td>" + menuName + "</td>";
+            str += "<td style='text-align: center'>" + menuQuantity + "</td>";
+            str += "<td style='text-align: center'>" + totalPay + "</td>";
+            str += "</tr>"
+
         })
-        $('#choosePayModalList').html(str);
+        $('#choosePayList').html(str);
         $('#choosePayModalPayment').html($('#totalPayPrice').html());
         $('#choosePayModal').modal('show');
     });
@@ -1482,8 +1595,48 @@
         annyang.abort(); // 마이크 중단
         speech("결제가 완료되었습니다. 감사합니다", true, "end");
         $('#choosePayModal').modal('hide');
+
+        // 로그인 안했을때는 아무것도 x
+        // 로그인 했을때는 payment등록
+        <c:if test="${loginUser.id != null}">
+        $('.choose-item-li').each(function () {
+            var menu_id = "";
+            menuService.getMenuByName($(this).find('.txt_tit').text(), function (menu) {
+                menu_id = menu.id;
+            })
+
+            var payment = {
+                user_id: ${loginUser.id},
+                menu_id: menu_id,
+                menu_count: $(this).find('.choose_quantity').val(),
+                total_price: Number($(this).find('.txt_price').text())
+            }
+            createPayment(payment);
+
+        })
+        </c:if>
+
     });
 
+    function createPayment(payment, callback, error) {
+
+        $.ajax({
+            type: 'post',
+            url: '/user/payment',
+            data: JSON.stringify(payment),
+            contentType: "application/json; charset=utf-8",
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+                if (error) {
+                    error(er);
+                }
+            }
+        });
+    }
 
     // function testCamera() {
     //     var count = 0;
@@ -1620,14 +1773,23 @@
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
                 menuService.getMenuById(list.recommend_menus[i], function (result) {
-                    str += " <div class='col-md-3 col-lg-2'>";
-                    str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                    str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
-                    str += "<div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
-                    // str += "<p class='card-text menu-content'>" + result.information + "</p>";
-                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
-                    str += "</div></div></div>";
+                    // str += " <div class='col-md-3 col-lg-2'>";
+                    // str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
+                    // str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
+                    // str += "<div class='card-body'>";
+                    // str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // // str += "<p class='card-text menu-content'>" + result.information + "</p>";
+                    // str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    // str += "</div></div></div>";
+                    str += " <div class='col-md-6 col-lg-4'>";
+                    str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                    str += "<div class='row menu-class'>";
+                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                    str += "<div class='col-6'><div class='card-body'>";
+                    str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                    // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                    str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                    str += "</div></div></div></div></div>";
                 });
             }
             $('#searchModalMenuList').html(str);

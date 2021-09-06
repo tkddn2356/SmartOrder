@@ -1,11 +1,14 @@
 package com.example.service;
 
 import com.example.domain.Menu;
+import com.example.domain.Payment;
 import com.example.repository.MenuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class MenuServiceImpl implements MenuService{
@@ -41,5 +44,30 @@ public class MenuServiceImpl implements MenuService{
     @Override
     public List<Menu> getListByHow_muchOver(int number) {
         return menuMapper.getListByHow_muchOver(number);
+    }
+
+    @Override
+    public List<Long> getRecentPaymentList(Long id) {
+
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(date);
+//        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+//        String datestr = format.format(calendar.getTime());
+
+        Payment payment = menuMapper.getRecentPaymentById(id);
+
+        if(payment == null){
+            return null;
+        }
+
+        SimpleDateFormat format = new SimpleDateFormat( "yy-MM-dd" , Locale.KOREA );
+        String datestr = format.format(new Date(payment.getCreated_at().getTime()));
+        System.out.println(datestr);
+
+        List<Long> paymentList = menuMapper.getRecentPaymentList(id, datestr);
+
+        return paymentList;
+
+
     }
 }
