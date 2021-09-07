@@ -14,20 +14,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
+
+<style>
+
+</style>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/main">맘스터치</a>
-    <%--    화면 작아졌을 때 생기는 아이콘--%>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #FFBC00; text-align: center; display: inline-block;">
+    <img src="/resources/img/logo-1.png" alt="" width="400" class="img-responsive ">
 </nav>
+
+
 <section>
     <div class="container" style="margin-top:100px">
         <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">로그인</h4>
-                        <div id="login_form">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <div class="card"  style="border-radius: 40px; background-color: #FFBC00">
+                    <div class="card-body" style="margin: 15px; border-radius: 40px; background-color: #ffffff">
+                        <h1 class="card-title text-center" style="font-size: 400%">Login</h1>
+                        <div id="login_form" style="margin: 60px; font-size: 30px;">
                             <div class="form-group">
                                 <label>전화번호</label>
                                 <input type="tel" name="phone_number" class="form-control" id="telInput"/>
@@ -36,42 +43,44 @@
                                 <label>비밀번호</label>
                                 <input type="tel" name="password" class="form-control" id="passwordInput"/>
                             </div>
-                            <div class="form-group text-right">
-                                <button class="btn btn-primary" id="login_btn">로그인</button>
-                                <button class="btn btn-primary" id="join_btn">회원가입</button>
+                            <div class="form-group text-right" style="margin: 40px 0px 30px 30px;">
+                                <button class="btn btn-warning btn-lg" id="login_btn">로그인</button>
+                                <button class="btn btn-basic btn-lg" id="join_btn">회원가입</button>
                             </div>
                         </div>
-                        <div style="text-align: center">
-                            <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 400px">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">1</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">2</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">3</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">4</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">5</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">6</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">7</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">8</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">9</button>
-                                </div>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn"></button>
-                                    <button type="button" class="btn btn-outline-secondary py-3 input-btn">0</button>
-                                    <button type="button" class="btn btn-outline-secondary py-3"
-                                            onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1); changeHyphenTel();">
-                                        &lt;
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3"></div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 40px;">
+        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 40%;">
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">1</button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">2</button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg"style="font-size: 5em;">3</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">4</button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">5</button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">6</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">7</button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">8</button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">9</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;"></button>
+                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">0</button>
+                <button type="button" class="btn btn-outline-secondary py-3 btn-lg" style="font-size: 5em;"
+                        onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1); changeHyphenTel();">
+                    &lt;
+                </button>
+            </div>
         </div>
     </div>
 </section>
