@@ -30,33 +30,33 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private HttpServletRequest request;
 
-    @Override
-    public Map<String, Object> register(User user) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        if (userMapper.getUserById(user.getAccount_id()) != null
-                || userMapper.getUserByPhone_number(user.getPhone_number()) != null) {
-            //만약 입력한 값이 이미 등록된 아이디거나 전화번호이면 회원가입 실패함
-            return null;
-        } else {
-            user.setAuth(1);
-            userMapper.createUser(user);
-            User selectUser = userMapper.getUserById(user.getAccount_id());
-            map.put("is_success", "success");
-            map.put("user_id", selectUser.getId());
-            return map;
-        }
-    }
-
 //    @Override
 //    public Map<String, Object> register(User user) {
 //        Map<String, Object> map = new HashMap<String, Object>();
-//        user.setAuth(1);
-//        userMapper.createUser(user);
-//        User selectUser = userMapper.getUserById(user.getAccount_id());
-//        map.put("is_success", "success");
-//        map.put("user_id", selectUser.getId());
-//        return map;
+//        if (userMapper.getUserById(user.getAccount_id()) != null
+//                || userMapper.getUserByPhone_number(user.getPhone_number()) != null) {
+//            //만약 입력한 값이 이미 등록된 아이디거나 전화번호이면 회원가입 실패함
+//            return null;
+//        } else {
+//            user.setAuth(1);
+//            userMapper.createUser(user);
+//            User selectUser = userMapper.getUserById(user.getAccount_id());
+//            map.put("is_success", "success");
+//            map.put("user_id", selectUser.getId());
+//            return map;
+//        }
 //    }
+
+    @Override
+    public Map<String, Object> register(User user) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        user.setAuth(1);
+        userMapper.createUser(user);
+        User selectUser = userMapper.getUserById(user.getAccount_id());
+        map.put("is_success", "success");
+        map.put("user_id", selectUser.getId());
+        return map;
+    }
 
     @Override
     public Map<String, Object> loginById(User user) {
