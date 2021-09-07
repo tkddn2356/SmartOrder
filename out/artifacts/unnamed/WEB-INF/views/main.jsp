@@ -15,8 +15,11 @@
 
     <style type="text/css">
         html, body {
-            width: 100%; height: 100%;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
         }
+
     </style>
 
 </head>
@@ -26,36 +29,39 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body" style="text-align:center; height: 150px;">
-                    <p class="card-text" style="font-size: 30px;">맘스터치</p>
-                    <p class="card-text">메인페이지 입니다. 화면을 클릭해주세요.</p>
+                <div class="card-body" style="text-align:center; ">
+                    <img src="/resources/img/logo-2.png" alt="" width="80%" class="img-responsive ">
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row" style="margin-top: 200px;">
-        <div class="col-md-4 offset-2">
+    <div class="row" style="margin: 50px; font-size: 30px;">
+        <div class="col-md-3">
+            <img style="width: 100%;" src="/resources/img/Employee-3.png">
+        </div>
+        <div class="col-md-9">
+            <img style="width: 100%;" src="/resources/img/main_guide.png">
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-md-1"></div>
+        <div class="col-md-5">
             <!-- 텍스트 대신에 이미지 넣기 -->
-            <button class="btn btn-secondary btn-lg" type="button" style="width: 100%; height: 100px;">포장</button>
+            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-1.png"></button>
         </div>
-        <div class="col-md-4">
-            <button class="btn btn-primary btn-lg" type="button" style="width: 100%; height: 100px;">매장</button>
+        <div class="col-md-5">
+            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-2.png"></button>
         </div>
+        <div class="col-md-1"></div>
     </div>
 
-    <div style="text-align:center; margin-top: 100px;">
-        <div>
-            <button class="btn btn-light"><a href="/user/login" class="nav-link logout-a">로그인</a></button>
-
-        </div>
-
-        <div>
-            <button class="btn btn-link" id="join_btn">
-                <a href="/user/join" class="nav-link logout-a">회원가입</a>
-                </button>
-        </div>
+    <div style="text-align:center; margin: 50px">
+        <button class="btn btn-warning btn-lg" id="login_btn" style="margin: 50px;"><a href="/user/login" class="nav-link logout-a" style="color:#000;">로그인</a></button>
+        <button class="btn btn-basic btn-lg" id="join_btn" style="margin: 50px;"><a href="/user/join" class="nav-link logout-a" style="color:#000;">회원가입</a></button>
     </div>
+
 </div>
 
 </body>
