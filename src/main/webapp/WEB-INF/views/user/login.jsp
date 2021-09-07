@@ -14,14 +14,56 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
+
+<style>
+    .container {
+        width: 100vw;
+        height: 90vh;
+        padding: 0;
+        background-size: cover;
+    }
+    html, body {
+        margin: 0; padding: 0;
+        background-size: cover;
+
+    }
+
+    #main{
+        width: 100vw;
+        padding: 0;
+        margin: 0 auto;
+        font-size: 0;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .wrapper {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .header {
+        background: yellow;
+        flex: 1;
+        font-size: 13px;
+        width: 100%;
+    }
+
+    .body {
+        font-size: 13px;
+        border: 1px solid orange;
+        background: lightblue;
+        width: 100vw;
+    }
+</style>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/main">맘스터치</a>
-    <%--    화면 작아졌을 때 생기는 아이콘--%>
-</nav>
-<section>
-    <div class="container" style="margin-top:100px">
-        <div class="row">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFBC00; text-align: center; display: inline-block; height: 10%; width: 100%;">
+        <img src="../../../resources/img/logo-1.png" alt="" width="400" height="100%" class="img-responsive ">
+    </nav>
+    <div class="container">
+        <div class="row" style="height: 45%;">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
                 <div class="card">
@@ -41,28 +83,35 @@
                                 <button class="btn btn-primary" id="login_btn">로그인</button>
                                 <button class="btn btn-primary" id="join_btn">회원가입</button>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
+
+        <div class="row" style="width: 100%; height: 55%;">
             <div class="col-xl">
-                <div style="text-align: center;">
+                <div style="text-align: center; height: 100%">
                     <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 100%;height: 100%;">
-                        <div class="btn-group" style="height:80px">
-                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">1</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">2</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">3</button>
+                        <div class="btn-group" style="height:25%">
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">1</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">2</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">3</button>
                         </div>
-                        <div class="btn-group" style="height:80px">
-                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">4</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">5</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">6</button>
+                        <div class="btn-group" style="height:25%">
+                            <button type="button" class="btn login_btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">4</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">5</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">6</button>
                         </div>
-                        <div class="btn-group" style="height:80px">
-                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">7</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">8</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">9</button>
+                        <div class="btn-group" style="height:25%">
+                            <button type="button" class="btn login_btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">7</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">8</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">9</button>
                         </div>
-                        <div class="btn-group" style="height:80px">
-                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;"> </button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">0</button>                                <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;"><</button>
+                        <div class="btn-group" style="height:25%">
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;"> </button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;">0</button>                                
+                            <button type="button" class="btn btn-outline-secondary py-3 input-btn" style="font-size: 2em;"><</button>
                         </div>
                     </div>
 
@@ -70,9 +119,7 @@
 
             </div>
         </div>
-            
     </div>
-</section>
 <%--<footer>--%>
 <%--    <div class="container-fluid text-white"--%>
 <%--         style="margin-top:50px;padding-top:30px;padding-bottom:30px;">--%>
