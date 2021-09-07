@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="/resources/css/test.css">
 
     <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
         @media (min-width: 768px) {
             .container {
                 width: 760px;
@@ -138,11 +144,22 @@
             background: none;
         }
 
+        <!-- 메뉴 목록 -->
+        li.nav-item > a {
+            color: #ffffff;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #495057;
+            background-color: #ffffff;
+            border-radius: 20px 20px 0 0;
+            border: 1px solid #ffffff;
+        }
 
     </style>
 
 </head>
-<nav class="navbar navbar-expand-lg  navbar-dark fixed-top shadow-lg bg-dark">
+<nav class="navbar navbar-expand-lg  navbar-dark fixed-top shadow-lg" style="background-color: #FFBC00">
     <%--    <a class="navbar-brand" href="#">맘스터치</a>--%>
 
     <ul class="navbar-nav mr-auto">
@@ -184,7 +201,9 @@
     </ul>
     <ul class="navbar-nav justify-content-center">
         <li class="nav-item">
-            <a class="navbar-brand" href="#">맘스터치</a>
+            <img src="/resources/img/logo-3.png" alt="" width="400" class="img-responsive center-block">
+            <!--이미지 크기를 화면의 퍼센테이지로 맞추기-->
+            <!--<a class="navbar-brand" href="#">Smart Kiosk</a>-->
         </li>
 
         <%--        <a href='http://localhost:5000/' class='nav-link' style="color:white">처음으로</a>--%>
@@ -216,23 +235,33 @@
 
 </nav>
 
-<body>
+<body class="pt-3">
 
 
 <div class="container" style="margin-top: 90px">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-2"><img src="/resources/img/Employee-1.png" class="img-circle" style="width:90%"></div>
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-10">
-                            <%--                                    <p class="card-text" id="middleResult"></p>--%>
-                            <p class="card-text" id="finalResult"></p>
                             <%--                                    <p class="card-text" id="DetectedIntent"></p>--%>
-                            <p class="card-text" id="FulfillmentText"></p>
+                            <div class="TextImg"  style="position:relative;">
+                                <img src="/resources/img/TextBalloon_left.png" style="width:80%">
+                                <div class="text_left" style="position: absolute;top: 15%;left: 10%;">
+                                    <p class="card-text" id="FulfillmentText"></p>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="TextImg" align="right" >
+                                <img src="/resources/img/TextBalloon_right.png" style="width:70%">
+                                <div class="text_right" style="float: right;position: absolute;top: 60%;left: 35%; right: 10%">
+                                    <p class="card-text" id="finalResult"></p></div>
+                            </div>
+                            <%--                                    <p class="card-text" id="middleResult"></p>--%>
                         </div>
                         <div class="col-md-2" style="text-align: right">
-
                             <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100px"
                                  alt="Card image"/>
                             <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100px"
@@ -246,20 +275,20 @@
 </div>
 
 
-<ul class="nav nav-tabs nav-justified" style="margin-top:30px">
-    <li class="nav-item">
+<ul class="nav nav-tabs nav-justified" style="margin-top:30px;">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link active" id="burgerSetTab" data-toggle="tab" href="#burgerSetList">버거세트</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link" id="chickenTab" data-toggle="tab" href="#chickenList">치킨</a>
     </li>
     <%--    <li class="nav-item">--%>
     <%--        <a class="nav-link" id="burgerTab" data-toggle="tab" href="#burgerList">버거단품</a>--%>
     <%--    </li>--%>
-    <li class="nav-item">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link" id="sideTab" data-toggle="tab" href="#sideList">사이드</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" style="border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background-color: #FFBC00;">
         <a class="nav-link" id="drinkTab" data-toggle="tab" href="#drinkList">드링크</a>
     </li>
 </ul>
@@ -699,99 +728,88 @@
 </body>
 
 <footer>
-    <div class="footer bg-light" style="bottom:0; margin-top: 10px">
-        <div class="container"
-             style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <p style="margin-bottom: 0px">총 주문내역&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                id="totalPayCount">0</span>개</p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <p style="margin-bottom: 0px">총 주문금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-                                id="totalPayPrice">0</span>원</p>
-                    </div>
-                </div>
-            </div>
+    <div class="row" style="font-size: 30px; border: 1px solid #495057">
+        <div class="col-md-6">
+            <p class="text-left" style="margin-bottom:0px; padding: 0px 20px">주문수량 :&nbsp<span id="totalPayCount">0</span>개</p>
         </div>
-
-        <div class="select-list" style="height: 250px; overflow: auto;">
-            <div class="container">
-                <div class="section_seleted_list">
-                    <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
-                        <%--                        <li>--%>
-                        <%--                            <div class="choose_item">--%>
-                        <%--                                <p class="tit">--%>
-                        <%--                                    <span></span>--%>
-                        <%--                                    <span class="txt_tit">싸이버거 세트</span>--%>
-                        <%--                                    <span class="txt_option" style="float:right">추가 : 베이컨, 에그<br></span>--%>
-                        <%--                                </p>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_calc">--%>
-                        <%--                                <div class="input-group" style="width:30%">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
-                        <%--                                    </button>--%>
-                        <%--                                    <input type="text" class="form-control" value="3">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
-                        <%--                                    </button>--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_result">--%>
-                        <%--                                <strong>9,100<span>원</span></strong>--%>
-                        <%--                                <button class="close"><span>X</span></button>--%>
-                        <%--                            </div>--%>
-                        <%--                        </li>--%>
-
-                        <%--                        <li id="coreSelectedLi_2">--%>
-                        <%--                            <div class="choose_item">--%>
-                        <%--                                <p class="tit">--%>
-                        <%--                                    <span></span>--%>
-                        <%--                                    <span class="txt_tit">싸이버거 세트</span>--%>
-                        <%--                                    <span class="txt_option" style="float:right">추가 : 베이컨, 에그<br></span>--%>
-                        <%--                                </p>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_calc">--%>
-                        <%--                                <div class="input-group" style="width:30%">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
-                        <%--                                    </button>--%>
-                        <%--                                    <input type="text" class="form-control" placeholder="1">--%>
-                        <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
-                        <%--                                    </button>--%>
-                        <%--                                </div>--%>
-                        <%--                            </div>--%>
-                        <%--                            <div class="choose_result">--%>
-                        <%--                                <strong>9,100<span>원</span></strong>--%>
-                        <%--                                <button class="close"><span>X</span></button>--%>
-                        <%--                            </div>--%>
-                        <%--                        </li>--%>
-                    </ul>
-                </div>
-            </div>
+        <div class="col-md-6">
+            <p class="text-right" style="margin-bottom:0px; padding: 0px 20px; color: red; font-weight: bolder">&#8361&nbsp&nbsp<span id="totalPayPrice">0000</span>원</p>
         </div>
+    </div>
 
-        <div class="container"
-             style="height: 100px; text-align: center; font-size: 25px; padding-left:0px; padding-top:30px">
-            <div class="row">
-                <div class="col-md-2">
-                    <a href="http://localhost:5000/" class="nav-link" style="font-size: 16px">처음으로</a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#" class="nav-link" style="font-size: 16px">직원호출</a>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" id="allCancel">
-                        전체취소
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card" id="choosePay">
-                        결제하기
+    <div class="footer bg-light" style="bottom:0;">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="select-list" style="height: 250px; overflow: auto;">
+                    <div class="container">
+                        <div class="section_seleted_list">
+                            <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
+                                <%--                        <li>--%>
+                                <%--                            <div class="choose_item">--%>
+                                <%--                                <p class="tit">--%>
+                                <%--                                    <span></span>--%>
+                                <%--                                    <span class="txt_tit">싸이버거 세트</span>--%>
+                                <%--                                    <span class="txt_option" style="float:right">추가 : 베이컨, 에그<br></span>--%>
+                                <%--                                </p>--%>
+                                <%--                            </div>--%>
+                                <%--                            <div class="choose_calc">--%>
+                                <%--                                <div class="input-group" style="width:30%">--%>
+                                <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
+                                <%--                                    </button>--%>
+                                <%--                                    <input type="text" class="form-control" value="3">--%>
+                                <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
+                                <%--                                    </button>--%>
+                                <%--                                </div>--%>
+                                <%--                            </div>--%>
+                                <%--                            <div class="choose_result">--%>
+                                <%--                                <strong>9,100<span>원</span></strong>--%>
+                                <%--                                <button class="close"><span>X</span></button>--%>
+                                <%--                            </div>--%>
+                                <%--                        </li>--%>
+
+                                <%--                        <li id="coreSelectedLi_2">--%>
+                                <%--                            <div class="choose_item">--%>
+                                <%--                                <p class="tit">--%>
+                                <%--                                    <span></span>--%>
+                                <%--                                    <span class="txt_tit">싸이버거 세트</span>--%>
+                                <%--                                    <span class="txt_option" style="float:right">추가 : 베이컨, 에그<br></span>--%>
+                                <%--                                </p>--%>
+                                <%--                            </div>--%>
+                                <%--                            <div class="choose_calc">--%>
+                                <%--                                <div class="input-group" style="width:30%">--%>
+                                <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
+                                <%--                                    </button>--%>
+                                <%--                                    <input type="text" class="form-control" placeholder="1">--%>
+                                <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
+                                <%--                                    </button>--%>
+                                <%--                                </div>--%>
+                                <%--                            </div>--%>
+                                <%--                            <div class="choose_result">--%>
+                                <%--                                <strong>9,100<span>원</span></strong>--%>
+                                <%--                                <button class="close"><span>X</span></button>--%>
+                                <%--                            </div>--%>
+                                <%--                        </li>--%>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-5" style="padding-top:30px">
+                        <a href="http://localhost:5000/" class="nav-link alert-light" style="text-align: center; margin: 10px 0px">처음으로</a>
+                        <a href="#" class="nav-link alert-light" style="text-align: center; margin-top: 30px">직원호출</a>
+                    </div>
+                    <div class="col-md-7" style="margin-top: 10px">
+                        <div id="allCancel" style="text-align: center"><img src="/resources/img/cancel.png"></div>
+                        <div id="choosePay"  style="text-align: center"><img src="/resources/img/payment.png"></div>
+                    </div>
+                </div>
+
+
+            </div>
+
         </div>
     </div>
 </footer>
@@ -1257,7 +1275,8 @@
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
                 str += "<div class='col-md-6 col-lg-4'>";
-                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                str += "<div class='card' style='border: 1px solid; border-radius: 20px; width: 25rem; margin-top:25px;'>"
                 str += "<div class='row menu-class'>";
                 str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
                 str += "<div class='col-6'><div class='card-body'>";
@@ -1824,6 +1843,7 @@
             alert(result);
         })
     });
+
 
 
 </script>
