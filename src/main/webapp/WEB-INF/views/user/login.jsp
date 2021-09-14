@@ -13,37 +13,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .num_btn {
+        font-size: 4em;
+    }
+    .login_input {
+        font-size: 30px;
+    }
 
 </style>
 <body>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #FFBC00; text-align: center; display: inline-block;">
-    <img src="/resources/img/logo-1.png" alt="" width="400" class="img-responsive ">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(#FFBC00, #ffd86b); text-align: center; display: inline-block;">
+    <img src="/resources/img/logo-3.png" alt="" width="700" class="img-responsive ">
 </nav>
 
 
 <section>
-    <div class="container" style="margin-top:100px">
+    <div class="container" style="margin-top:200px">
         <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <div class="card"  style="border-radius: 40px; background-color: #FFBC00">
-                    <div class="card-body" style="margin: 15px; border-radius: 40px; background-color: #ffffff">
-                        <h1 class="card-title text-center" style="font-size: 400%">Login</h1>
+            <div class="col-sm-12">
+                <div class="card"  style="border-radius: 40px; background: linear-gradient(#FFBC00, #ffd86b); ">
+                    <div class="card-body" style="margin: 15px; border-radius: 30px; background-color: #ffffff">
+                        <h1 class="card-title text-center" style="font-size: 4em">Login</h1>
                         <div id="login_form" style="margin: 60px; font-size: 30px;">
                             <div class="form-group">
                                 <label>전화번호</label>
-                                <input type="tel" name="password" class="form-control" id="telInput"/>
+                                <input type="tel" name="password" class="login_input form-control" id="telInput"/>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-top: 50px">
                                 <label>비밀번호</label>
-                                <input type="tel" name="password" class="form-control" id="passwordInput"/>
+                                <input type="tel" name="password" class="login_input form-control" id="passwordInput"/>
                             </div>
-                            <div class="form-group text-right" style="margin: 40px 0px 30px 30px;">
+                            <div class="form-group text-right" style="margin: 100px 0px 30px 30px;">
                                 <button class="btn btn-warning btn-lg" id="login_btn">로그인</button>
                                 <button class="btn btn-basic btn-lg" id="join_btn">회원가입</button>
                             </div>
@@ -52,31 +67,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-2"></div>
         </div>
     </div>
 
-    <div style="text-align: center; margin: 40px;">
-        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 40%;">
+    <div style="text-align: center; margin: 150px 50px;">
+        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 100%;">
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">1</button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">2</button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg"style="font-size: 5em;">3</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">1</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">2</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">3</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">4</button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">5</button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">6</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">4</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">5</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">6</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">7</button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">8</button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">9</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">7</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">8</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">9</button>
             </div>
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;"></button>
-                <button type="button" class="btn btn-outline-secondary py-3 input-btn btn-lg" style="font-size: 5em;">0</button>
-                <button type="button" class="btn btn-outline-secondary py-3 btn-lg" style="font-size: 5em;"
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg"></button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">0</button>
+                <button type="button" class="num_btn btn btn-outline-secondary py-3 btn-lg"
                         onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1); changeHyphenTel();">
                     &lt;
                 </button>

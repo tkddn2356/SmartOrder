@@ -14,11 +14,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
     <style type="text/css">
-        html, body {
-            margin: 0;
-            height: 100%;
-            overflow: hidden;
-        }
+
 
     </style>
 
@@ -36,7 +32,7 @@
         </div>
     </div>
 
-    <div class="row" style="margin: 50px; font-size: 30px;">
+    <div class="row" style="margin: 100px 50px; font-size: 30px;">
         <div class="col-md-3">
             <img style="width: 100%;" src="/resources/img/Employee-3.png">
         </div>
