@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/resources/css/modal.css">
     <link rel="stylesheet" href="/resources/css/test.css">
+    <link rel="stylesheet" href="/resources/css/message.css">
 
     <style>
         html, body {
@@ -144,7 +145,10 @@
             background: none;
         }
 
-        <!-- 메뉴 목록 -->
+        <!--
+        메뉴 목록
+
+        -->
         li.nav-item > a {
             color: #ffffff;
         }
@@ -186,6 +190,9 @@
             <a class="nav-link" id="micBtn">
                 음성인식시작
             </a>
+            <div class="room-list-empty-room">
+                버튼을 눌러 음성인식을 시작해 보세요!
+            </div>
         </li>
         <%--        <li class="nav-item">--%>
         <%--            <a class="nav-link" id="micBtn2">--%>
@@ -223,11 +230,11 @@
             </li>
         </c:if>
         <c:if test="${loginUser.id != null}">
+<%--            <li class="nav-item active">--%>
+<%--                <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>--%>
+<%--            </li>--%>
             <li class="nav-item active">
-                <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>
-            </li>
-            <li class="nav-item active">
-                <a href="#" class="nav-link logout-a" id="logout">로그아웃</a>
+                <a href="#" class="nav-link logout-a" id="logout">[${loginUser.name}님] 로그아웃</a>
             </li>
         </c:if>
 
@@ -247,24 +254,25 @@
                     <div class="row">
                         <div class="col-md-10">
                             <%--                                    <p class="card-text" id="DetectedIntent"></p>--%>
-                            <div class="TextImg"  style="position:relative;">
+                            <div class="TextImg" style="position:relative;">
                                 <img src="/resources/img/TextBalloon_left.png" style="width:80%">
                                 <div class="text_left" style="position: absolute;top: 15%;left: 10%;">
                                     <p class="card-text" id="FulfillmentText"></p>
                                 </div>
                             </div>
                             <p></p>
-                            <div class="TextImg" align="right" >
+                            <div class="TextImg" align="right">
                                 <img src="/resources/img/TextBalloon_right.png" style="width:70%">
-                                <div class="text_right" style="float: right;position: absolute;top: 60%;left: 35%; right: 10%">
+                                <div class="text_right"
+                                     style="float: right;position: absolute;top: 60%;left: 35%; right: 10%">
                                     <p class="card-text" id="finalResult"></p></div>
                             </div>
                             <%--                                    <p class="card-text" id="middleResult"></p>--%>
                         </div>
-                        <div class="col-md-2" style="text-align: right">
-                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100px"
+                        <div class="col-md-2" style="margin:auto">
+                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100%"
                                  alt="Card image"/>
-                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100px"
+                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100%"
                                  alt="Card image"/>
                         </div>
                     </div>
@@ -340,9 +348,9 @@
 <%--<p class="card-text" id="DetectedIntent"></p>--%>
 
 <div class="modal" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-     style="z-index:1050">
+     style="z-index:1080">
     <%--        <div class="modal-dialog" role="document" style="max-width: none;>--%>
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="margin-top:350px">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="orderModalMenuName"></h5>
@@ -351,15 +359,73 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>메뉴정보</p>
                 <p id="orderModalMenuContent">대충 메뉴 설명들</p>
-                <p id="orderModalMenuPrice">가격</p>
-                <p id="orderModalTopping"></p>
-                <button class="btn btn-primary menu-topping">토핑추가</button>
+                <p>영양성분</p>
+
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th style="text-align: center">중량</th>
+                        <th style="text-align: center">칼로리</th>
+                        <th style="text-align: center">나트륨</th>
+                        <th style="text-align: center">당류</th>
+                        <th style="text-align: center">포화지방</th>
+                        <th style="text-align: center">단백질</th>
+                    </tr>
+                    </thead>
+                    <tbody class="board-tbody">
+                    <tr>
+                        <td style="text-align: center">300</td>
+                        <td style="text-align: center">721</td>
+                        <td style="text-align: center">1713</td>
+                        <td style="text-align: center">12</td>
+                        <td style="text-align: center">9</td>
+                        <td style="text-align: center">52</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <p>알레르기 유발성분</p>
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th style="text-align: center">알류</th>
+                        <th style="text-align: center">우유</th>
+                        <th style="text-align: center">대두</th>
+                        <th style="text-align: center">밀</th>
+                        <th style="text-align: center">게</th>
+                        <th style="text-align: center">새우</th>
+                        <th style="text-align: center">돼지고기</th>
+                        <th style="text-align: center">토마토</th>
+                        <th style="text-align: center">닭고기</th>
+                        <th style="text-align: center">쇠고기</th>
+                        <th style="text-align: center">오징어</th>
+                    </tr>
+                    </thead>
+                    <tbody class="board-tbody">
+                    <tr>
+                        <td style="text-align: center">O</td>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center">O</td>
+                        <td style="text-align: center">O</td>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center">O</td>
+                        <td style="text-align: center">O</td>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center">O</td>
+                        <td style="text-align: center"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>가격</p>
+                <p id="orderModalMenuPrice" style="font-size: 1.5em">가격</p>
+<%--                <p id="orderModalTopping"></p>--%>
+<%--                <button class="btn btn-primary menu-topping">토핑추가</button>--%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                <button type="button" class="btn btn-primary" id="orderModalBtn">주문</button>
+                <button type="button" class="btn btn-secondary" id="orderModalBtn">주문</button>
             </div>
         </div>
     </div>
@@ -413,16 +479,16 @@
 <div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-backdrop="false" style="z-index:1041">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
-    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 264px;">
+    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 295px;">
         <div class="modal-content" style="border:none;">
-            <div class="modal-header" style="padding-bottom: 8px;padding-top: 8px; border-top: 1px solid #e9ecef;">
+            <div class="modal-header" style="padding-bottom: 10px;padding-top: 10px; background-color: #FFBC00;border-radius: 20px 20px 0px 0px;">
                 <a class="modal-title" id="searchModalTitle" style="margin-left: auto;">검색하신 "" 결과입니다.</a>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container container-searchModal" style="height: 746px; overflow: auto;">
+                <div class="container container-searchModal" style="height: 740px; overflow: auto;">
                     <div class="row" id="searchModalMenuList">
                         <%--                        <div class="col-md-4 col-lg-3">--%>
                         <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
@@ -534,7 +600,7 @@
 </div>
 
 <div class="modal" id="ratingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-     style="z-index:1060" data-backdrop="false">
+     style="z-index:1000" data-backdrop="false">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
     <div class="modal-dialog" role="document" style="margin-top:230px">
         <div class="modal-content">
@@ -692,7 +758,7 @@
 
 <div class="modal" id="reorderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true"
-     style="z-index:1000">
+     style="z-index:1060">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
     <div class="modal-dialog" role="document" style="min-width: 100%; margin-top:350px">
         <div class="modal-content">
@@ -709,10 +775,10 @@
             <div class="modal-body">
                 <div id="reorderModalBody" style="height: 500px">
                     <div class="container container-searchModal" style="height: 746px; overflow: auto;">
-                    <div class="row" id="reorderModalList">
+                        <div class="row" id="reorderModalList">
 
 
-                    </div>
+                        </div>
                     </div>
 
                 </div>
@@ -730,10 +796,12 @@
 <footer>
     <div class="row" style="font-size: 30px; border: 1px solid #495057">
         <div class="col-md-6">
-            <p class="text-left" style="margin-bottom:0px; padding: 0px 20px">주문수량 :&nbsp<span id="totalPayCount">0</span>개</p>
+            <p class="text-left" style="margin-bottom:0px; padding: 0px 20px">주문수량 :&nbsp<span
+                    id="totalPayCount">0</span>개</p>
         </div>
         <div class="col-md-6">
-            <p class="text-right" style="margin-bottom:0px; padding: 0px 20px; color: red; font-weight: bolder">&#8361&nbsp&nbsp<span id="totalPayPrice">0000</span>원</p>
+            <p class="text-right" style="margin-bottom:0px; padding: 0px 20px; color: red; font-weight: bolder">
+                &#8361&nbsp&nbsp<span id="totalPayPrice">0000</span>원</p>
         </div>
     </div>
 
@@ -798,12 +866,13 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-5" style="padding-top:30px">
-                        <a href="http://localhost:5000/" class="nav-link alert-light" style="text-align: center; margin: 10px 0px">처음으로</a>
+                        <a href="http://localhost:5000/" class="nav-link alert-light"
+                           style="text-align: center; margin: 10px 0px">처음으로</a>
                         <a href="#" class="nav-link alert-light" style="text-align: center; margin-top: 30px">직원호출</a>
                     </div>
                     <div class="col-md-7" style="margin-top: 10px">
                         <div id="allCancel" style="text-align: center"><img src="/resources/img/cancel.png"></div>
-                        <div id="choosePay"  style="text-align: center"><img src="/resources/img/payment.png"></div>
+                        <div id="choosePay" style="text-align: center"><img src="/resources/img/payment.png"></div>
                     </div>
                 </div>
 
@@ -822,9 +891,13 @@
 
     $(document).ready(function () {
 
+        // $('.room-list-empty-room').show();
+        // setTimeout($('.room-list-empty-room').hide(), 5000);
+
+
         <c:if test="${loginUser.id != null}">
         menuService.getRecentPaymentList(${loginUser.id}, function (list) {
-            console.log("recent : " , list)
+            console.log("recent : ", list)
             var str = "";
             for (var i = 0, len = list.length; i < len; i++) {
                 menuService.getMenuById(list[i], function (result) {
@@ -852,6 +925,7 @@
             speech("음성인식 서비스를 시작하겠습니다. 원하시는 메뉴를 말씀하세요");
             // 기본적으로 speech발동되고 말이 끝나면 micTest() 실행됨.
             // micTest();
+            $('.room-list-empty-room').hide();
         });
 
         $('#micBtn2').on("click", function (e) {
@@ -977,7 +1051,7 @@
             utterThis.onend = function (event) {
                 console.log('end');
                 <c:if test="${loginUser.id == null}">
-                speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 별점을 주세요");
+                speech("추천기능을 시작하겠습니다. 다음 메뉴들에 대해 선호도를 입력해주세요");
                 annyang.abort();
                 </c:if>
                 <c:if test="${loginUser.id != null}">
@@ -1033,7 +1107,7 @@
         console.log($(this).attr('id'));
         $('#orderModalMenuName').html($(this).find('.menu-name').text());
         $('#orderModalMenuContent').html($(this).find('.menu-content').text());
-        $('#orderModalMenuPrice').html($(this).find('.menu-price').text());
+        $('#orderModalMenuPrice').html($(this).find('.menu-price').text() + "원");
         $('#orderModal').modal('show');
     });
 
@@ -1843,7 +1917,6 @@
             alert(result);
         })
     });
-
 
 
 </script>
