@@ -13,11 +13,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+
     <style type="text/css">
-        html, body {
-            margin: 0;
-            height: 100%;
-            overflow: hidden;
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
     </style>
@@ -36,28 +41,27 @@
         </div>
     </div>
 
-    <div class="row" style="margin: 50px; font-size: 30px;">
+    <div class="row" style="margin: 100px 0px; font-size: 30px;">
         <div class="col-md-3">
-            <img style="width: 100%;" src="/resources/img/Employee-3.png">
+            <img style="width: 120%;" src="/resources/img/Employee-3.png">
         </div>
         <div class="col-md-9">
             <img style="width: 100%;" src="/resources/img/main_guide.png">
         </div>
     </div>
 
-    <div class="row" style="margin-top: 10px;">
+    <div class="row" style="margin-top: 50px;">
         <div class="col-md-1"></div>
         <div class="col-md-5">
-            <!-- 텍스트 대신에 이미지 넣기 -->
-            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-1.png"></button>
+            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 100%;" src="/resources/img/main-1.png"></button>
         </div>
         <div class="col-md-5">
-            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-2.png"></button>
+            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 100%;" src="/resources/img/main-2.png"></button>
         </div>
         <div class="col-md-1"></div>
     </div>
 
-    <div style="text-align:center; margin: 50px">
+    <div style="text-align:center; margin: 120px 50px">
         <button class="btn btn-warning btn-lg" id="login_btn" style="margin: 50px;"><a href="/user/login" class="nav-link logout-a" style="color:#000;">로그인</a></button>
         <button class="btn btn-basic btn-lg" id="join_btn" style="margin: 50px;"><a href="/user/join" class="nav-link logout-a" style="color:#000;">회원가입</a></button>
     </div>
