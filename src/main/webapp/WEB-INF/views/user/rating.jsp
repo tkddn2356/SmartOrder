@@ -59,29 +59,42 @@
         .rating > input:checked ~ label:before {
             background: none;
         }
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .num_btn {
+            font-size: 4em;
+        }
+        .join_input {
+            font-size: 30px;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/main">맘스터치</a>
-    <%--    화면 작아졌을 때 생기는 아이콘--%>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(#FFBC00, #ffd86b); text-align: center; display: inline-block;">
+    <img src="/resources/img/logo-3.png" alt="" width="700" class="img-responsive ">
 </nav>
 <section>
-    <div class="container" style="margin-top:70px">
+    <div class="container" style="margin-top:200px">
         <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">메뉴 평가</h4>
-                        <h7 class="card-title mb-2 text-muted">해당 메뉴에 별점을 주세요.
-                            입력하신 별점은 추천시스템을 이용하실때 반영이 됩니다.
-                        </h7>
+            <div class="col-sm-12">
+                <div class="card"  style="border-radius: 40px; background: linear-gradient(#FFBC00, #ffd86b); ">
+                    <div class="card-body" style="margin: 15px; border-radius: 30px; background-color: #ffffff">
+                        <h1 class="card-title text-center" style="font-size: 4em">선호도 조사</h1>
+                        <p class="card-title mb-2 text-muted text-center">해당 메뉴에 대한 선호도를 입력해주세요.</p>
+                        <p class="card-title mb-2 text-muted text-center">입력하신 별점은 추천시스템을 이용하실때 반영이 됩니다.</p>
+
+<%--                        <h7 class="card-title mb-2 text-muted">해당 메뉴에 대한 선호도를 입력해주세요.</h7>--%>
+<%--                        <h7 class="card-title mb-2 text-muted">입력하신 별점은 추천시스템을 이용하실때 반영이 됩니다.</h7>--%>
                         <div id="ratingCard">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card" style="width: 25rem; margin:auto; border:none">
                                 <img class="card-img-top" src="/resources/img/thigh_burger.jpg" alt="Card image cap">
                                 <div class="card-body" style="text-align: center">
-                                    <h5 class="card-title">1 / 5</h5>
+                                    <h2 class="card-title">1 / 5</h2>
                                     <div class="review_rating">
                                         <fieldset class="rating">
                                             <input type="radio" id="rating_1_star5" name="에그불고기버거세트" value="5"><label
@@ -96,7 +109,7 @@
                                                 for="rating_1_star1"></label>
                                         </fieldset>
                                     </div>
-                                    <a href="#" class="btn btn-primary" style="margin-top:12px">다음</a>
+                                    <a href="#" class="btn-lg btn-secondary" style="margin-top:12px">다음</a>
                                     <%--                                만약 count가 5이면 버튼이 '다음'에서 '완료'로 바뀜.--%>
                                 </div>
                             </div>
@@ -104,7 +117,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3"></div>
         </div>
     </div>
     <%--    <div class="container" style="margin-top:100px">--%>
@@ -403,11 +415,11 @@
         var viewCount = count+1;
         menuService.getMenuById(menuId, function (result){
             var str = "";
-            str += "<div class='card' style='width: 18rem;'>";
+            str += "<div class='card' style='width: 25rem; margin:auto; border:none'>";
             str += "<img class='card-img-top' src='/resources/img/"+result.img+"'>";
             str += "<div class='card-body' style='text-align: center'>";
-            str += "<h5 class='card-title'>"+viewCount+" / 5</h5>";
-            str += "<div class='review_rating'>";
+            str += "<h2 class='card-title'>"+viewCount+" / 5</h2>";
+            str += "<div class='review_rating' style='height: 40px'>";
             str += "<fieldset class='rating'>";
             str += "<input type='radio' id='rating_1_star5' name='" + result.id + "' value='5'><label for='rating_1_star5'></label>";
             str += "<input type='radio' id='rating_1_star4' name='" + result.id + "' value='4'><label for='rating_1_star4'></label>";
@@ -417,10 +429,10 @@
             str += "</fieldset>";
             str += "</div>";
             if(viewCount <5){
-                str += "<a href='#' class='btn btn-primary' id='ratingNextBtn' style='margin-top:12px'>다음</a>";
+                str += "<a href='#' class='btn-lg btn-secondary' id='ratingNextBtn' style='margin-top:12px'>다음</a>";
             }
             else{
-                str += "<a href='#' class='btn btn-primary' id='ratingCompleteBtn' style='margin-top:12px'>완료</a>";
+                str += "<a href='#' class='btn-lg btn-secondary' id='ratingCompleteBtn' style='margin-top:12px'>완료</a>";
             }
             str += "</div></div>";
             $('#ratingCard').html(str);
@@ -452,7 +464,7 @@
         }
         requestRating(ratingData, function (result) {
             alert("메뉴 평가가 완료되었습니다");
-            document.location.href = "/user/login";
+            document.location.href = "/main";
         });
 
     });

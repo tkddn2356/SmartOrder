@@ -71,33 +71,33 @@
         </div>
     </div>
 
-    <div style="text-align: center; margin: 150px 50px;">
-        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 100%;">
-            <div class="btn-group">
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">1</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">2</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">3</button>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">4</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">5</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">6</button>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">7</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">8</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">9</button>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg"></button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">0</button>
-                <button type="button" class="num_btn btn btn-outline-secondary py-3 btn-lg"
-                        onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1); changeHyphenTel();">
-                    &lt;
-                </button>
-            </div>
-        </div>
-    </div>
+<%--    <div style="text-align: center; margin: 150px 50px;">--%>
+<%--        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 100%;">--%>
+<%--            <div class="btn-group">--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">1</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">2</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">3</button>--%>
+<%--            </div>--%>
+<%--            <div class="btn-group">--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">4</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">5</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">6</button>--%>
+<%--            </div>--%>
+<%--            <div class="btn-group">--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">7</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">8</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">9</button>--%>
+<%--            </div>--%>
+<%--            <div class="btn-group">--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg"></button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">0</button>--%>
+<%--                <button type="button" class="num_btn btn btn-outline-secondary py-3 btn-lg"--%>
+<%--                        onclick="document.getElementById('code').value=document.getElementById('code').value.slice(0, -1); changeHyphenTel();">--%>
+<%--                    &lt;--%>
+<%--                </button>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
 
 </section>
 </body>

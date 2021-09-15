@@ -2,6 +2,7 @@ package com.example.controller;
 
 
 import com.example.domain.Menu;
+import com.example.domain.Payment;
 import com.example.repository.MenuMapper;
 import com.example.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +69,15 @@ public class MenuController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/menus/payment/{id}", method= RequestMethod.GET)
+    @RequestMapping(value = "/menus/recent/payment/{id}", method= RequestMethod.GET)
     public List<Long> getRecentPaymentList(@PathVariable("id") Long id) throws IOException {
         return menuService.getRecentPaymentList(id);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/menus/payment/{id}", method= RequestMethod.GET)
+    public List<Payment> getPaymentList(@PathVariable("id") Long id) throws IOException {
+        return menuService.getPaymentList(id);
     }
 
 

@@ -40,10 +40,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(#FFBC00, #ffd86b); text-align: center; display: inline-block;">
     <img src="/resources/img/logo-3.png" alt="" width="700" class="img-responsive ">
 </nav>
-
-
 <section>
-    <div class="container" style="margin-top:200px">
+    <div class="container" style="margin-top:130px">
         <div class="row">
             <div class="col-sm-12">
                 <div class="card"  style="border-radius: 40px; background: linear-gradient(#FFBC00, #ffd86b); ">
@@ -52,15 +50,11 @@
                         <div id="login_form" style="margin: 60px; font-size: 30px;">
                             <div class="form-group">
                                 <label>전화번호</label>
-<<<<<<< HEAD
-                                <input type="tel" name="phone_number" class="form-control" id="telInput"/>
-=======
-<%--                                <input type="tel" name="password" class="login_input form-control" id="telInput"/>--%>
-<%-->>>>>>> 144bb158f8a86092b0936c4c95e18cccea5dc68d--%>
+                                <input type="tel" name="phone_number" class="login_input form-control" id="telInput"/>
                             </div>
                             <div class="form-group" style="margin-top: 50px">
                                 <label>비밀번호</label>
-                                <input type="tel" name="password" class="login_input form-control" id="passwordInput"/>
+                                <input type="password" name="password" class="login_input form-control" id="passwordInput"/>
                             </div>
                             <div class="form-group text-right" style="margin: 100px 0px 30px 30px;">
                                 <button class="btn btn-warning btn-lg" id="login_btn">로그인</button>
@@ -74,8 +68,8 @@
         </div>
     </div>
 
-    <div style="text-align: center; margin: 150px 50px;">
-        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 100%;">
+    <div style="text-align: center; margin: 60px 50px;">
+        <div class="btn-group-vertical" role="group" aria-label="Basic example" style="width: 90%;">
             <div class="btn-group">
                 <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">1</button>
                 <button type="button" class="num_btn btn btn-outline-secondary py-3 input-btn btn-lg">2</button>

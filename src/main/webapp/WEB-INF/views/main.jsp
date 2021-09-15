@@ -15,6 +15,35 @@
 
     <style type="text/css">
 
+        @media (min-width: 576px) {
+            .container {
+                width: 700px;
+                max-width: 700px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 850px;
+                max-width: 850px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 980px;
+                max-width: 980px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1180px;
+                max-width: 1180px;
+            }
+        }
+
+
 
     </style>
 
@@ -24,7 +53,7 @@
 <div class="container" style="margin-top: 90px">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card" style="border:none">
                 <div class="card-body" style="text-align:center; ">
                     <img src="/resources/img/logo-2.png" alt="" width="80%" class="img-responsive ">
                 </div>
@@ -45,17 +74,17 @@
         <div class="col-md-1"></div>
         <div class="col-md-5">
             <!-- 텍스트 대신에 이미지 넣기 -->
-            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-1.png"></button>
+            <button class="btn btn-lg" type="button" id="takeout" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-1.png"></button>
         </div>
         <div class="col-md-5">
-            <button class="btn btn-lg" type="button" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-2.png"></button>
+            <button class="btn btn-lg" type="button" id="store" style="background-color: #ffffff"><img class="btn-img" style="width: 80%;" src="/resources/img/main-2.png"></button>
         </div>
         <div class="col-md-1"></div>
     </div>
 
     <div style="text-align:center; margin: 50px">
         <button class="btn btn-warning btn-lg" id="login_btn" style="margin: 50px;"><a href="/user/login" class="nav-link logout-a" style="color:#000;">로그인</a></button>
-        <button class="btn btn-basic btn-lg" id="join_btn" style="margin: 50px;"><a href="/user/join" class="nav-link logout-a" style="color:#000;">회원가입</a></button>
+        <button class="btn btn-basic btn-lg" id="join_btn" style="margin: 50px;"><a href="/user/joinQR" class="nav-link logout-a" style="color:#000;">회원가입</a></button>
     </div>
 
 </div>
@@ -65,7 +94,15 @@
 
 <script>
 
-    $(document).on('click', '#mainPage', function () {
+    // $(document).on('click', '#mainPage', function () {
+    //     location.href = "http://localhost:5000/";
+    // });
+
+    $(document).on('click', '#takeout', function () {
+        location.href = "http://localhost:5000/";
+    });
+
+    $(document).on('click', '#store', function () {
         location.href = "http://localhost:5000/";
     });
 

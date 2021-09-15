@@ -127,6 +127,24 @@ var menuService = (function () {
         console.log("user_id = " + user_id);
         $.ajax({
             type: 'get',
+            url: '/menus/recent/payment/' + user_id,
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            success: function (result, status, xhr) {
+                if (callback) {
+                    callback(result);
+                }
+            },
+            error: function (xhr, status, er) {
+
+            }
+        });
+    }
+
+    function getPaymentList(user_id, callback, error) {
+        console.log("user_id = " + user_id);
+        $.ajax({
+            type: 'get',
             url: '/menus/payment/' + user_id,
             async: false,
             contentType: "application/json; charset=utf-8",
@@ -150,7 +168,8 @@ var menuService = (function () {
         getListByIs_hot: getListByIs_hot,
         getListByHow_muchUnder: getListByHow_muchUnder,
         getListByHow_muchOver: getListByHow_muchOver,
-        getRecentPaymentList: getRecentPaymentList
+        getRecentPaymentList: getRecentPaymentList,
+        getPaymentList: getPaymentList
     };
 
 })();

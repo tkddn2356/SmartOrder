@@ -51,6 +51,11 @@ public class UserController {
         return "user/rating";
     }
 
+    @RequestMapping(value = "/user/joinQR", method = RequestMethod.GET)
+    public String joinQR() {
+        return "user/joinQR";
+    }
+
 //    @ResponseBody
 //    @RequestMapping(value = "/user/join", method = RequestMethod.POST, consumes = "application/json")
 //    public ResponseEntity<String> join(@RequestBody User user) {

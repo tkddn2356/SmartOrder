@@ -44,6 +44,10 @@
         select * from payment where user_id = #{user_id} order by id desc limit 1;
     </select>
 
+    <select id="getPaymentList" resultType="com.example.domain.Payment">
+        select * from payment where user_id = #{id}
+    </select>
+
 
 
 

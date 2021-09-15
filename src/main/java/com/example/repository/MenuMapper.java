@@ -20,6 +20,7 @@ public interface MenuMapper {
     public Payment getRecentPaymentById(Long user_id);
 
     public List<Long> getRecentPaymentList(@Param("user_id")Long user_id, @Param("date")String date);
+    public List<Payment> getPaymentList(Long user_id);
 
 
 //    public List<Menu> getListByRelease(Timestamp time);

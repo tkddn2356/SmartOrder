@@ -162,7 +162,9 @@
         }
 
         .menuTab {
-            border: 1px solid #FFBC00; border-radius: 20px 20px 0 0; background: linear-gradient(#FFBC00, #ffe8a8);
+            border: 1px solid #FFBC00;
+            border-radius: 20px 20px 0 0;
+            background: linear-gradient(#FFBC00, #ffe8a8);
         }
 
         .menuTab > .nav-link {
@@ -173,7 +175,8 @@
     </style>
 
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg" style="background: linear-gradient(#FFBC00, #ffd86b)">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg"
+     style="background: linear-gradient(#FFBC00, #ffd86b)">
     <%--    <a class="navbar-brand" href="#">맘스터치</a>--%>
 
     <ul class="navbar-nav mr-auto">
@@ -240,11 +243,14 @@
             </li>
         </c:if>
         <c:if test="${loginUser.id != null}">
+            <%--            <li class="nav-item active">--%>
+            <%--                <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>--%>
+            <%--            </li>--%>
 <%--            <li class="nav-item active">--%>
-<%--                <p3 class="navbar" style="color:white">[${loginUser.name}님]</p3>--%>
+<%--                <a href="#" class="nav-link logout-a" id="logout">[${loginUser.name}님] 로그아웃</a>--%>
 <%--            </li>--%>
             <li class="nav-item active">
-                <a href="#" class="nav-link logout-a" id="logout">[${loginUser.name}님] 로그아웃</a>
+                <a href="#" class="nav-link" id="paymentListBtn">[${loginUser.name}님] 구매이력</a>
             </li>
         </c:if>
 
@@ -257,7 +263,8 @@
 
 <div class="container-fluid" style="margin-top: 60px; padding: 30px">
     <div class="row">
-        <div class="col-md-2" style=" margin: 0; padding: 0"><img src="/resources/img/Employee-1.png" class="img-circle" style="width:90%"></div>
+        <div class="col-md-2" style=" margin: 0; padding: 0"><img src="/resources/img/Employee-1.png" class="img-circle"
+                                                                  style="width:90%"></div>
         <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
@@ -273,27 +280,17 @@
                             <p></p>
                             <div class="TextImg" align="right">
                                 <img src="/resources/img/TextBalloon_right.png" style="width:70%">
-<%--<<<<<<< HEAD--%>
-<%--                                <div class="text_right"--%>
-<%--                                     style="float: right;position: absolute;top: 60%;left: 35%; right: 10%">--%>
-<%--=======--%>
-                                <div class="text_right" style="float: right;position: absolute;top: 60%;left: 35%; right: 12%">
-<%-->>>>>>> 144bb158f8a86092b0936c4c95e18cccea5dc68d--%>
+                                <div class="text_right"
+                                     style="float: right;position: absolute;top: 60%;left: 35%; right: 12%">
                                     <p class="card-text" id="finalResult"></p></div>
                             </div>
                             <%--                                    <p class="card-text" id="middleResult"></p>--%>
                         </div>
-<%--<<<<<<< HEAD--%>
-<%--                        <div class="col-md-2" style="margin:auto">--%>
-<%--                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100%"--%>
-<%--                                 alt="Card image"/>--%>
-<%--                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100%"--%>
-<%--=======--%>
-                        <div class="col-md-2" style="text-align: right; margin: 0; padding: 0">
-                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="margin-top:30px; width:100px"
+
+                        <div class="col-md-2" style="text-align: right; margin: 0; padding: 0; margin:auto">
+                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100%"
                                  alt="Card image"/>
-                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="margin-top:30px; width:100px"
-<%-->>>>>>> 144bb158f8a86092b0936c4c95e18cccea5dc68d--%>
+                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100%"
                                  alt="Card image"/>
                         </div>
                     </div>
@@ -323,7 +320,7 @@
 </ul>
 
 
-<div class="tab-content" style="height: 770px; overflow: auto;">
+<div class="tab-content" style="height: 810px; overflow: auto;">
     <div class="tab-pane fade show active" id="burgerSetList">
         <div class="container">
             <div class="row">
@@ -441,8 +438,8 @@
                 </table>
                 <p>가격</p>
                 <p id="orderModalMenuPrice" style="font-size: 1.5em">가격</p>
-<%--                <p id="orderModalTopping"></p>--%>
-<%--                <button class="btn btn-primary menu-topping">토핑추가</button>--%>
+                <%--                <p id="orderModalTopping"></p>--%>
+                <%--                <button class="btn btn-primary menu-topping">토핑추가</button>--%>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
@@ -500,16 +497,18 @@
 <div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-backdrop="false" style="z-index:1041">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
-    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 295px;">
+    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 370px;">
         <div class="modal-content" style="border:none;">
-            <div class="modal-header" style="padding-bottom: 10px;padding-top: 10px; background-color: #FFBC00;border-radius: 20px 20px 0px 0px;">
-                <a class="modal-title" id="searchModalTitle" style="margin-left: auto;">검색하신 "" 결과입니다.</a>
+            <div class="modal-header"
+                 style="/* padding-bottom: 10px; *//* padding-top: 10px; *//* background-color: #FFBC00; *//* border-radius: 20px 20px 0px 0px; */border: 1px solid #FFBC00;border-radius: 20px 20px 0 0;background: linear-gradient(#FFBC00, #ffe8a8);">
+                <a class="modal-title" id="searchModalTitle" style="margin-left: auto; font-size: 20px">검색하신 ""
+                    결과입니다.</a>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container container-searchModal" style="height: 740px; overflow: auto;">
+                <div class="container container-searchModal" style="height: 725px; overflow: auto;">
                     <div class="row" id="searchModalMenuList">
                         <%--                        <div class="col-md-4 col-lg-3">--%>
                         <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
@@ -702,13 +701,15 @@
                 <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-top:20px">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="card">
-                                <p>이전</p>
+                            <div class="card"
+                                 style="border-radius: 40px;background-color: #e9ecef;border-color: #dee2e6;">
+                                <p style="margin-bottom: 8px;margin-top: 8px;" data-dismiss="modal">이전</p>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="card" id="choosePayModalBtn">
-                                <p>결제</p>
+                            <div class="card" id="choosePayModalBtn"
+                                 style="border-radius: 40px;background-color: #e9ecef;border-color: #dee2e6;">
+                                <p style="margin-bottom: 8px;margin-top: 8px;">결제</p>
                             </div>
                         </div>
                     </div>
@@ -794,10 +795,9 @@
                 </h7>
             </div>
             <div class="modal-body">
-                <div id="reorderModalBody" style="height: 500px">
-                    <div class="container container-searchModal" style="height: 746px; overflow: auto;">
+                <div id="reorderModalBody">
+                    <div class="container container-searchModal" style="height: 500px; overflow: auto;">
                         <div class="row" id="reorderModalList">
-
 
                         </div>
                     </div>
@@ -806,6 +806,111 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="reorderModalBtn" data-dismiss="modal">확인</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="orderNumberModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+     style="z-index:1060">
+    <div class="modal-dialog" role="document" style="margin-top:500px">
+        <div class="modal-content" style="border-radius:50px">
+            <div class="modal-body">
+                <div id="orderNumberModalBody" style="text-align: center; font-size: 30px">
+                    <p style="margin-bottom: 0px">결제가 완료되었습니다</p>
+                    <p style="margin-bottom: 0px">주문번호를 확인해 주세요</p>
+                    <p id="randomOrderNumber"
+                       style="margin-bottom: 60px;margin-top: 60px;font-size: 70px;font-weight: bold;">번호</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="paymentListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true"
+     style="z-index:1060">
+    <div class="modal-dialog" role="document" style="min-width: 70%; margin-top: 200px">
+        <div class="modal-content">
+            <div class="modal-header d-block">
+                <div class="d-flex">
+                    <h3 class="modal-title" id="paymentListModalTitle">구매 이력</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="modal-body" id="paymentListModalList" style="height: 800px;">
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>제품</th>
+                        <th style="text-align: center">수량</th>
+                        <th style="text-align: center">금액</th>
+                        <th style="text-align: center">구매일자</th>
+                        <th style="text-align: center">평가</th>
+                    </tr>
+                    </thead>
+                    <tbody class="board-tbody" id="paymentList">
+                    <tr>
+                        <td> menuName</td>
+                        <td style='text-align: center'> menuQuantity</td>
+                        <td style='text-align: center'>totalPay</td>
+                        <td style='text-align: center'>created_at</td>
+                        <td style='text-align: center'>
+                            <div class="review_rating">
+                                <fieldset class="rating">
+                                    <input type="radio" id='rating_1_star5' name="에그불고기버거세트" value="5"><label for='rating_1_star5'></label>
+                                    <input type="radio" id='rating_1_star4' name="에그불고기버거세트" value="4"><label for='rating_1_star4'></label>
+                                    <input type="radio" id='rating_1_star3' name="에그불고기버거세트" value="3"><label for='rating_1_star3'></label>
+                                    <input type="radio" id='rating_1_star2' name="에그불고기버거세트" value="2"><label for='rating_1_star2'></label>
+                                    <input type="radio" id='rating_1_star1' name="에그불고기버거세트" value="1"><label for='rating_1_star1'></label>
+                                </fieldset>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> menuName</td>
+                        <td style='text-align: center'> menuQuantity</td>
+                        <td style='text-align: center'>totalPay</td>
+                        <td style='text-align: center'>created_at</td>
+                        <td style='text-align: center'>
+                            <div class="review_rating">
+                                <fieldset class="rating">
+                                    <input type="radio" id='rating_1_5' name="d" value="5"><label for='rating_1_5'></label>
+                                    <input type="radio" id='rating_1_4' name="d" value="4"><label for='rating_1_4'></label>
+                                    <input type="radio" id='rating_1_3' name="d" value="3"><label for='rating_1_3'></label>
+                                    <input type="radio" id='rating_1_2' name="d" value="2"><label for='rating_1_2'></label>
+                                    <input type="radio" id='rating_1_1' name="d" value="1"><label for='rating_1_1'></label>
+                                </fieldset>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <div class="container" style="height: 100px; text-align: center; font-size: 25px; padding-top:20px">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card"
+                                 style="border-radius: 40px;background-color: #e9ecef;border-color: #dee2e6;">
+                                <p style="margin-bottom: 8px;margin-top: 8px;" data-dismiss="modal">이전</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card" id="paymentListModallBtn"
+                                 style="border-radius: 40px;background-color: #e9ecef;border-color: #dee2e6;">
+                                <p style="margin-bottom: 8px;margin-top: 8px;" data-dismiss="modal">확인</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -829,7 +934,7 @@
     <div class="footer" style="bottom:0;">
         <div class="row">
             <div class="col-md-8">
-                <div class="select-list" style="height: 250px; overflow: auto; border-right: 1px solid #495057">
+                <div class="select-list" style="height: 310px; overflow: auto; border-right: 1px solid #495057">
                     <div class="section_seleted_list">
                         <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
                             <%--                        <li>--%>
@@ -890,13 +995,15 @@
                         <a href="#" class="nav-link alert-light" style="text-align: center; margin-top: 30px">직원호출</a>
                     </div>
                     <div class="col-md-7" style="margin-top: 10px">
-<%--<<<<<<< HEAD--%>
-<%--                        <div id="allCancel" style="text-align: center"><img src="/resources/img/cancel.png"></div>--%>
-<%--                        <div id="choosePay" style="text-align: center"><img src="/resources/img/payment.png"></div>--%>
-<%--=======--%>
-                        <div id="allCancel" style="text-align: center;"><img src="/resources/img/cancel-4.png" style="width: 100%"></div>
-                        <div id="choosePay"  style="text-align: center;"><img src="/resources/img/payment-3.png" style="width: 100%"></div>
-<%-->>>>>>> 144bb158f8a86092b0936c4c95e18cccea5dc68d--%>
+                        <%--<<<<<<< HEAD--%>
+                        <%--                        <div id="allCancel" style="text-align: center"><img src="/resources/img/cancel.png"></div>--%>
+                        <%--                        <div id="choosePay" style="text-align: center"><img src="/resources/img/payment.png"></div>--%>
+                        <%--=======--%>
+                        <div id="allCancel" style="text-align: center;"><img src="/resources/img/cancel-4.png"
+                                                                             style="width: 100%"></div>
+                        <div id="choosePay" style="text-align: center;"><img src="/resources/img/payment-3.png"
+                                                                             style="width: 100%"></div>
+                        <%-->>>>>>> 144bb158f8a86092b0936c4c95e18cccea5dc68d--%>
                     </div>
                 </div>
 
@@ -914,6 +1021,7 @@
 <script>
 
     $(document).ready(function () {
+
 
         // $('.room-list-empty-room').show();
         // setTimeout($('.room-list-empty-room').hide(), 5000);
@@ -1068,7 +1176,10 @@
 
         } else if (endOfConversation == true && intent == "end") {
             utterThis.onend = function (event) {
+                $('#orderNumberModal').modal('hide');
                 console.log('키오스크끝');
+                logout(function (result) {
+                })
                 location.href = "/main";
             };
         } else if (endOfConversation == true && intent == "Recommend_menu") {
@@ -1129,14 +1240,21 @@
     // 음식 클릭시 modal 생성
     $(document).on('click', '.menu-class', function () {
         console.log($(this).attr('id'));
+        var menu_name = $(this).find('.menu-name').text();
+        var orderModalMenuContent = "";
+        menuService.getMenuByName(menu_name, function (result) {
+            orderModalMenuContent = result.information;
+        })
         $('#orderModalMenuName').html($(this).find('.menu-name').text());
-        $('#orderModalMenuContent').html($(this).find('.menu-content').text());
-        $('#orderModalMenuPrice').html($(this).find('.menu-price').text() + "원");
+        $('#orderModalMenuContent').html(orderModalMenuContent);
+        $('#orderModalMenuPrice').html($(this).find('.menu-price').text() + " 원");
         $('#orderModal').modal('show');
     });
 
     $(document).on('click', '#orderModalBtn', function () {
-        addSelectedLi($('#orderModalMenuName').text(), $('#orderModalMenuPrice').text(), "", 1);
+        var menu_price = $('#orderModalMenuPrice').text();
+        var menu_price = parseInt(menu_price.substr(0, menu_price.length - 2));
+        addSelectedLi($('#orderModalMenuName').text(), menu_price, "", 1);
         $('#orderModal').modal('hide');
         // $('#orderModalMenuName').html($(this).find('.menu-name').text());
         // $('#orderModalMenuContent').html($(this).find('.menu-content').text());
@@ -1664,11 +1782,11 @@
                     str += " <div class='col-md-6 col-lg-4'>";
                     str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
                     str += "<div class='row menu-class'>";
-                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
                     str += "<div class='col-6'><div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
                     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                    str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
                     str += "</div></div></div></div></div>";
 
 
@@ -1750,9 +1868,6 @@
     });
 
     $(document).on('click', '#choosePayModalBtn', function () {
-        annyang.abort(); // 마이크 중단
-        speech("결제가 완료되었습니다. 감사합니다", true, "end");
-        $('#choosePayModal').modal('hide');
 
         // 로그인 안했을때는 아무것도 x
         // 로그인 했을때는 payment등록
@@ -1773,6 +1888,16 @@
 
         })
         </c:if>
+        $('#choosePayModal').modal('hide');
+
+        var randomOrderNumber = Math.floor(Math.random() * 100) + 1;
+        $('#randomOrderNumber').html(randomOrderNumber);
+        $('#orderNumberModal').modal('show');
+
+
+        annyang.abort(); // 마이크 중단
+        speech("결제가 완료되었습니다. 주문번호를 확인해 주세요", true, "end");
+
 
     });
 
@@ -1863,7 +1988,7 @@
     var randomMenuIndex = 0;
     $(document).on('click', '#recTestBtn', function () {
         for (var i = 0; i < 5; i++) {
-            var randomMenuId = Math.floor(Math.random() * 69) + 1;
+            var randomMenuId = Math.floor(Math.random() * 67) + 1;
             if (randomMenu.indexOf(randomMenuId) === -1) {
                 randomMenu.push(randomMenuId);
             } else {
@@ -1931,22 +2056,14 @@
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
                 menuService.getMenuById(list.recommend_menus[i], function (result) {
-                    // str += " <div class='col-md-3 col-lg-2'>";
-                    // str += "<div class='card menu-class' style='width: 10.5rem; margin-top:50px;'>";
-                    // str += "<img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'>";
-                    // str += "<div class='card-body'>";
-                    // str += "<p class='card-text menu-name'>" + result.name + "</p>";
-                    // // str += "<p class='card-text menu-content'>" + result.information + "</p>";
-                    // str += "<p class='card-text menu-price'>" + result.price + "</p>";
-                    // str += "</div></div></div>";
                     str += " <div class='col-md-6 col-lg-4'>";
                     str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
                     str += "<div class='row menu-class'>";
-                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
                     str += "<div class='col-6'><div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
                     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                    str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
                     str += "</div></div></div></div></div>";
                 });
             }
@@ -1982,6 +2099,48 @@
             alert(result);
         })
     });
+
+    $(document).on('click', '#paymentListBtn', function () {
+        <c:if test="${loginUser.id != null}">
+        menuService.getPaymentList(${loginUser.id}, function(list){
+            var str = "";
+            for (var i = 0, len = list.length; i < len; i++) {
+                var menu_name = "";
+                menuService.getMenuById(list[i].menu_id, function(result){
+                    menu_name = result.name;
+                })
+                var timestamp = list[i].created_at;
+                var date = new Date(timestamp);
+                date.setHours(date.getHours() - 9);
+                date = date.getDate()+
+                    "/"+(date.getMonth()+1)+
+                    "/"+date.getFullYear()+
+                    " "+date.getHours()+
+                    ":"+date.getMinutes()+
+                    ":"+date.getSeconds();
+
+                str += "<tr>";
+                str += "<td>"+ menu_name + "</td>";
+                str += "<td style='text-align: center'>"+ list[i].menu_count + "</td>";
+                str += "<td style='text-align: center'>"+ list[i].total_price + "</td>";
+                str += "<td style='text-align: center'>"+ date + "</td>";
+                str += "<td style='text-align: center'>";
+                str += "<div class='review_rating'>";
+                str += "<fieldset class='rating'>";
+                str += "<input type='radio' id='"+list[i].id+"_rating_1_star5' name='" + list[i].id + "' value='5'><label for='"+list[i].id+"_rating_1_star5'></label>";
+                str += "<input type='radio' id='"+list[i].id+"_rating_1_star4' name='" + list[i].id + "' value='5'><label for='"+list[i].id+"_rating_1_star4'></label>";
+                str += "<input type='radio' id='"+list[i].id+"_rating_1_star3' name='" + list[i].id + "' value='5'><label for='"+list[i].id+"_rating_1_star3'></label>";
+                str += "<input type='radio' id='"+list[i].id+"_rating_1_star2' name='" + list[i].id + "' value='5'><label for='"+list[i].id+"_rating_1_star2'></label>";
+                str += "<input type='radio' id='"+list[i].id+"_rating_1_star1' name='" + list[i].id + "' value='5'><label for='"+list[i].id+"_rating_1_star1'></label>";
+                str += "</fieldset></div></td></tr>";
+            }
+            $('#paymentList').html(str);
+        })
+        $('#paymentListModal').modal('show');
+        </c:if>
+    });
+
+
 
 
 </script>

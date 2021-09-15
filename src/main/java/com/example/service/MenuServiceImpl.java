@@ -60,14 +60,26 @@ public class MenuServiceImpl implements MenuService{
             return null;
         }
 
-        SimpleDateFormat format = new SimpleDateFormat( "yy-MM-dd" , Locale.KOREA );
-        String datestr = format.format(new Date(payment.getCreated_at().getTime()));
-        System.out.println(datestr);
+//        SimpleDateFormat format = new SimpleDateFormat( "yy-MM-dd" , Locale.KOREA );
+//        String datestr = format.format(new Date(payment.getCreated_at().getTime()));
+//        System.out.println(datestr);
+
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date(payment.getCreated_at().getTime()));
+        DateFormat df = new SimpleDateFormat("yy-MM-dd");
+
+        cal.add(Calendar.HOUR, -9);
+        String datestr = df.format(cal.getTime());
 
         List<Long> paymentList = menuMapper.getRecentPaymentList(id, datestr);
 
         return paymentList;
 
 
+    }
+
+    @Override
+    public List<Payment> getPaymentList(Long id) {
+        return menuMapper.getPaymentList(id);
     }
 }
