@@ -22,6 +22,10 @@
 
 
     <style>
+        div {
+            width: 100%;
+        }
+
         @media (min-width: 768px) {
             .container {
                 width: 760px;
@@ -42,7 +46,6 @@
                 max-width: 1180px;
             }
         }
-
 
         @media (min-width: 768px) {
             .container-menuList {
@@ -248,7 +251,7 @@
 <body class="pt-3">
 
 
-<div class="container-fluid" style="margin-top: 60px; padding: 30px">
+<div class="container-fluid" style="margin-top: 50px; padding: 20px">
     <div class="row">
         <div class="col-md-2" style=" margin: 0; padding: 0"><img src="/resources/img/Employee-1.png" class="img-circle" style="width:90%"></div>
         <div class="col-md-10">
@@ -258,15 +261,15 @@
                         <div class="col-md-10" style=" margin: 0; padding: 0">
                             <%--                                    <p class="card-text" id="DetectedIntent"></p>--%>
                             <div class="TextImg"  style="position:relative;">
-                                <img src="/resources/img/TextBalloon_left.png" style="width:80%">
-                                <div class="text_left" style="position: absolute;top: 15%;left: 10%;">
+                                <img src="/resources/img/TextBalloon_left.png" style="width:90%">
+                                <div class="text_left" style="position: absolute; top: 15%; left: 10%; padding-right: 32%">
                                     <p class="card-text" id="FulfillmentText"></p>
                                 </div>
                             </div>
                             <p></p>
                             <div class="TextImg" align="right" >
-                                <img src="/resources/img/TextBalloon_right.png" style="width:70%">
-                                <div class="text_right" style="float: right;position: absolute;top: 60%;left: 35%; right: 12%">
+                                <img src="/resources/img/TextBalloon_right.png" style="width:80%">
+                                <div class="text_right" style="float: right;position: absolute;top: 60%; padding-left: 32%; right: 12%">
                                     <p class="card-text" id="finalResult"></p></div>
                             </div>
                             <%--                                    <p class="card-text" id="middleResult"></p>--%>
@@ -285,7 +288,7 @@
 </div>
 
 
-<ul class="nav nav-tabs nav-justified" style="margin-top:10px;">
+<ul class="nav nav-tabs nav-justified" style="margin-top:8px;">
     <li class="menuTab nav-item">
         <a class="nav-link active" id="burgerSetTab" data-toggle="tab" href="#burgerSetList">버거세트</a>
     </li>
@@ -304,7 +307,7 @@
 </ul>
 
 
-<div class="tab-content" style="height: 770px; overflow: auto;">
+<div class="tab-content" style="height: 800px; overflow: auto;">
     <div class="tab-pane fade show active" id="burgerSetList">
         <div class="container">
             <div class="row">
@@ -676,19 +679,20 @@
 </body>
 
 <footer>
-    <div class="row" style="font-size: 30px; border: 1px solid #495057; background: linear-gradient(white,lightgray);">
-        <div class="col-md-6">
-            <p class="text-left" style="margin-bottom:0px; padding: 0px 20px">주문수량 :&nbsp<span id="totalPayCount">0</span>개</p>
-        </div>
-        <div class="col-md-6">
-            <p class="text-right" style="margin-bottom:0px; padding: 0px 20px; color: red; font-weight: bolder">&#8361&nbsp&nbsp<span id="totalPayPrice">0000</span>원</p>
-        </div>
-    </div>
+
 
     <div class="footer" style="bottom:0;">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="select-list" style="height: 250px; overflow: auto; border-right: 1px solid #495057">
+        <div class="row" style="margin: 0;font-size: 30px; border: 1px solid #495057; background: linear-gradient(white,lightgray);">
+            <div class="col-md-6">
+                <p class="text-left" style="margin-bottom:0px; padding: 0px 20px">주문수량 :&nbsp<span id="totalPayCount">0</span>개</p>
+            </div>
+            <div class="col-md-6" style="maargin:0; padding: 0px;">
+                <p class="text-right" style="margin:0px; padding: 0px 20px; color: red; font-weight: bolder">&#8361&nbsp&nbsp<span id="totalPayPrice">0000</span>원</p>
+            </div>
+        </div>
+        <div class="row" style="margin: 0;">
+            <div class="col-md-9" style=" border-right: 1px solid #495057">
+                <div class="select-list" style="height: 300px; overflow: auto;">
                     <div class="section_seleted_list">
                         <ul class="selected-list" id="selectedList" style="list-style:none; padding-left: 0px;">
                             <%--                        <li>--%>
@@ -741,16 +745,14 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="col-md-5" style="padding-top:30px">
-                        <a href="http://localhost:5000/" class="nav-link alert-light" style="text-align: center; margin: 10px 0px">처음으로</a>
-                        <a href="#" class="nav-link alert-light" style="text-align: center; margin-top: 30px">직원호출</a>
-                    </div>
-                    <div class="col-md-7" style="margin-top: 10px">
-                        <div id="allCancel" style="text-align: center;"><img src="/resources/img/cancel-4.png" style="width: 100%"></div>
-                        <div id="choosePay"  style="text-align: center;"><img src="/resources/img/payment-3.png" style="width: 100%"></div>
-                    </div>
+            <div class="col-md-3" style="margin-top: 5px; padding: 0px;">
+                <div class="row" style="margin: 0px">
+                    <div class="col-md-6" style="padding: 0px"><a href="http://localhost:5000/" class="nav-link alert-secondary" style="border-radius: 40px; text-align: center; font-size: 12px;">처음으로</a></div>
+                    <div class="col-md-6" style="padding: 0px"><a href="#" class="nav-link alert-secondary" style="border-radius: 40px; text-align: center; font-size: 12px">직원호출</a></div>
+                </div>
+                <div style="margin-top: 10px">
+                    <div id="allCancel" style="text-align: center;"><img src="/resources/img/cancel-4.png" style="width: 90%"></div>
+                    <div id="choosePay"  style="text-align: center;"><img src="/resources/img/payment-3.png" style="width: 90%"></div>
                 </div>
 
 
@@ -968,16 +970,16 @@
     function addSelectedLi(name, price, topping = "", quantity) {
         var str = "";
         str += "<li class='row choose-item-li'>"
-        str += "<div class='col-4 choose_item'>";
+        str += "<div class='col-5 choose_item'>";
         // str += "<p class='tit'>";</p>
         str += "<div class='txt_tit' style='font-size: 20px;'>" + name + "</div>";
         str += "<div class='txt_option' style='font-size: 16px; margin-top: 5px'>" + topping + "</div></div>";
-        str += "<div class='col-5 choose_calc' style='margin: 0;'>";
-        str += "<div class='input-group' style='width:60%'>";
+        str += "<div class='col-3 choose_calc' style='margin: 0;'>";
+        str += "<div class='input-group'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>+</button>";
         str += "<input type='text' class='form-control choose_quantity' style='text-align: center' value='" + quantity + "'>";
         str += "<button class='btn btn-outline-secondary' type='button' style='width:36px'>-</button></div></div>";
-        str += "<div class='col-3 choose_result' style='font-size: 25px;'>";
+        str += "<div class='col-4 choose_result' style='font-size: 20px;'>";
         str += "<span class='txt_price'>" + price + "</span><span>원</span>";
         str += "<button class='close choose-item-close' style='margin-top:6px'><span>X</span></button></div></li>";
         $('#selectedList').append(str);
@@ -1181,15 +1183,15 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += "<div class='col-md-4 col-lg-3'>";
+                str += "<div class='col-md-3 col-lg-3'>";
                 <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
-                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
                 str += "<div class='menu-class' style='text-align: center'>";
                 str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
                 str += "<div><div class='card-body'>";
-                str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
+                str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
+                str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                 str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
@@ -1261,14 +1263,14 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-6 col-lg-4'>";
-                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                str += "<div class='row menu-class'>";
-                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                str += "<div class='col-6'><div class='card-body'>";
-                str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                str += "<div class='col-md-4 col-lg-3'>";
+                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+                str += "<div class='menu-class' style='text-align: center'>";
+                str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                str += "<div><div class='card-body'>";
+                str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
                 str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
@@ -1280,14 +1282,14 @@
             str += "<div class='container container-menuList'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += " <div class='col-md-6 col-lg-4'>";
-                str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                str += "<div class='row menu-class'>";
-                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                str += "<div class='col-6'><div class='card-body'>";
-                str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                str += "<div class='col-md-4 col-lg-3'>";
+                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+                str += "<div class='menu-class' style='text-align: center'>";
+                str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                str += "<div><div class='card-body'>";
+                str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
                 str += "</div></div></div></div></div>";
             }
             str += "</div></div>";
