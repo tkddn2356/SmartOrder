@@ -736,7 +736,7 @@
             <div class="col-md-4">
                 <div class="row">
                     <div class="col-md-5" style="padding-top:30px">
-                        <a href="http://localhost:5000/" class="nav-link alert-light" style="text-align: center; margin: 10px 0px">처음으로</a>
+                        <a href="/main" class="nav-link alert-light" style="text-align: center; margin: 10px 0px">처음으로</a>
                         <a href="#" class="nav-link alert-light" style="text-align: center; margin-top: 30px">직원호출</a>
                     </div>
                     <div class="col-md-7" style="margin-top: 10px">

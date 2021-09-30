@@ -263,7 +263,7 @@
 
 <div class="container-fluid" style="margin-top: 50px; padding: 20px">
     <div class="row">
-        <div class="col-md-2" style=" margin: 0; padding: 0"><img src="/resources/img/Employee-1.png" class="img-circle" style="width:90%"></div>
+        <div class="col-md-2" style=" margin: 0; margin:auto"><img src="/resources/img/Employee-1.png" class="img-circle" style="width:100%"></div>
         <div class="col-md-10">
             <div class="card">
                 <div class="card-body">
@@ -284,10 +284,10 @@
                             </div>
                             <%--                                    <p class="card-text" id="middleResult"></p>--%>
                         </div>
-                        <div class="col-md-2" style="text-align: right; margin: 0; padding: 0">
-                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="margin-top:30px; width:100px"
+                        <div class="col-md-2" style="text-align: right; margin: 0; padding: 0; margin:auto;">
+                            <img class="card-img" id="micOnImg" src="/resources/img/마이크.gif" style="width:100%"
                                  alt="Card image"/>
-                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="margin-top:30px; width:100px"
+                            <img class="card-img" id="micOffImg" src="resources/img/micstop.gif" style="width:100%"
                                  alt="Card image"/>
                         </div>
                     </div>
@@ -494,18 +494,20 @@
 <div class="modal" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-backdrop="false" style="z-index:1041">
     <%--    <div class="modal-dialog" role="document" style="max-width: none; margin-top: 293px">--%>
-    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 370px;">
+    <div class="modal-dialog" role="document" style="max-width: 100%; margin-top: 315px;">
         <div class="modal-content" style="border:none;">
             <div class="modal-header"
                  style="/* padding-bottom: 10px; *//* padding-top: 10px; *//* background-color: #FFBC00; *//* border-radius: 20px 20px 0px 0px; */border: 1px solid #FFBC00;border-radius: 20px 20px 0 0;background: linear-gradient(#FFBC00, #ffe8a8);">
                 <a class="modal-title" id="searchModalTitle" style="margin-left: auto; font-size: 20px">검색하신 ""
                     결과입니다.</a>
+                <span id="searchModalMicOn" style="position: absolute">on</span>
+                <sapn id="searchModalMicOff" style="position: absolute">off</sapn>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="container container-searchModal" style="height: 725px; overflow: auto;">
+            <div class="modal-body" style="padding-left: 8px;">
+                <div class="container container-searchModal" style="height: 754px; overflow: auto;">
                     <div class="row" id="searchModalMenuList">
                         <%--                        <div class="col-md-4 col-lg-3">--%>
                         <%--                            <div class="card" style="width: 14rem; margin-top:50px;">--%>
@@ -791,7 +793,7 @@
                 <h7 class="modal-title mb-2 text-muted">다시 주문하고 싶은 메뉴를 선택해주세요.
                 </h7>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="padding-left: 8px;">
                 <div id="reorderModalBody">
                     <div class="container container-searchModal" style="height: 500px; overflow: auto;">
                         <div class="row" id="reorderModalList">
@@ -829,7 +831,7 @@
 <div class="modal" id="paymentListModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true"
      style="z-index:1060">
-    <div class="modal-dialog" role="document" style="min-width: 70%; margin-top: 200px">
+    <div class="modal-dialog" role="document" style="min-width: 80%; margin-top: 200px">
         <div class="modal-content">
             <div class="modal-header d-block">
                 <div class="d-flex">
@@ -967,7 +969,7 @@
                             <%--                            <div class="choose_calc">--%>
                             <%--                                <div class="input-group" style="width:30%">--%>
                             <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">+--%>
-                            <%--                                    </button>--%>
+                            <%--                                    </button>-aaa   q-%>
                             <%--                                    <input type="text" class="form-control" placeholder="1">--%>
                             <%--                                    <button class="btn btn-outline-secondary" type="button" style="width:36px">---%>
                             <%--                                    </button>--%>
@@ -984,10 +986,11 @@
             </div>
 
             <div class="col-md-3" style="margin-top: 5px; padding: 0px;">
-                <div class="row" style="margin: 0px">
-                    <div class="col-md-6" style="padding: 0px"><a href="http://localhost:5000/" class="nav-link alert-secondary" style="border-radius: 40px; text-align: center; font-size: 12px;">처음으로</a></div>
-                    <div class="col-md-6" style="padding: 0px"><a href="#" class="nav-link alert-secondary" style="border-radius: 40px; text-align: center; font-size: 12px">직원호출</a></div>
-                </div>
+
+                    <div class="row" style="margin: 0px">
+                        <div style="margin: 0 10px;width: 100%;margin-top: 5px;"><a href="/main" class="nav-link alert-secondary" style="border-radius: 40px; text-align: center; font-size: 12px;">처음으로</a></div>
+                    </div>
+
                 <div style="margin-top: 10px">
                     <div id="allCancel" style="text-align: center;"><img src="/resources/img/cancel-4.png" style="width: 90%"></div>
                     <div id="choosePay"  style="text-align: center;"><img src="/resources/img/payment-3.png" style="width: 90%"></div>
@@ -1019,14 +1022,15 @@
             var str = "";
             for (var i = 0, len = list.length; i < len; i++) {
                 menuService.getMenuById(list[i], function (result) {
-                    str += " <div class='col-md-6 col-lg-4'>";
-                    str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                    str += "<div class='row menu-class'>";
-                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
-                    str += "<div class='col-6'><div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    str += "<div class='col-md-3 col-lg-3'>";
+                    <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                    str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                    str += "<div class='menu-class' style='text-align: center'>";
+                    str += "<div><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap' style='width: 70%'></div>";
+                    str += "<div><div class='card-body'>";
+                    str += "<p class='card-text menu-name' style='margin: 0;'>" + result.name + "</p>";
                     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + result.price + "</p>";
                     str += "</div></div></div></div></div>";
                 });
             }
@@ -1053,6 +1057,19 @@
         $('#micStopBtn').on("click", function (e) {
             annyang.abort(); // 마이크 중단
         });
+
+        $('#searchModalMicOff').on("click", function (e) {
+            annyang.abort(); // 마이크 중단
+            $('#searchModalMicOff').hide();
+            $('#searchModalMicOn').show();
+        });
+
+        $('#searchModalMicOn').on("click", function (e) {
+            micTest();
+            $('#searchModalMicOn').hide();
+            $('#searchModalMicOff').show();
+        });
+
 
         $('#micOffImg').on("click", function (e) {
             micTest()
@@ -1338,15 +1355,25 @@
                 menuService.getListByIs_spicy(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-6 col-lg-4'>";
-                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                        str += "<div class='row menu-class'>";
-                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                        str += "<div class='col-6'><div class='card-body'>";
-                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<div class='col-md-3 col-lg-3'>";
+                        <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                        str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                        str += "<div class='menu-class' style='text-align: center'>";
+                        str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                        str += "<div><div class='card-body'>";
+                        str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                         str += "</div></div></div></div></div>";
+                        // str += " <div class='col-md-6 col-lg-4'>";
+                        // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        // str += "<div class='row menu-class'>";
+                        // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        // str += "<div class='col-6'><div class='card-body'>";
+                        // str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        // str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1355,15 +1382,25 @@
                 menuService.getListByIs_spicy(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-6 col-lg-4'>";
-                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                        str += "<div class='row menu-class'>";
-                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                        str += "<div class='col-6'><div class='card-body'>";
-                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<div class='col-md-3 col-lg-3'>";
+                        <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                        str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                        str += "<div class='menu-class' style='text-align: center'>";
+                        str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                        str += "<div><div class='card-body'>";
+                        str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                         str += "</div></div></div></div></div>";
+                        // str += " <div class='col-md-6 col-lg-4'>";
+                        // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        // str += "<div class='row menu-class'>";
+                        // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        // str += "<div class='col-6'><div class='card-body'>";
+                        // str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        // str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1376,15 +1413,25 @@
                 menuService.getListByIs_hot(2, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-6 col-lg-4'>";
-                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                        str += "<div class='row menu-class'>";
-                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                        str += "<div class='col-6'><div class='card-body'>";
-                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<div class='col-md-3 col-lg-3'>";
+                        <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                        str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                        str += "<div class='menu-class' style='text-align: center'>";
+                        str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                        str += "<div><div class='card-body'>";
+                        str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                         str += "</div></div></div></div></div>";
+                        // str += " <div class='col-md-6 col-lg-4'>";
+                        // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        // str += "<div class='row menu-class'>";
+                        // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        // str += "<div class='col-6'><div class='card-body'>";
+                        // str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        // str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1393,15 +1440,25 @@
                 menuService.getListByIs_hot(1, function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-6 col-lg-4'>";
-                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                        str += "<div class='row menu-class'>";
-                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                        str += "<div class='col-6'><div class='card-body'>";
-                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<div class='col-md-3 col-lg-3'>";
+                        <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                        str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                        str += "<div class='menu-class' style='text-align: center'>";
+                        str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                        str += "<div><div class='card-body'>";
+                        str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                         str += "</div></div></div></div></div>";
+                        // str += " <div class='col-md-6 col-lg-4'>";
+                        // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        // str += "<div class='row menu-class'>";
+                        // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        // str += "<div class='col-6'><div class='card-body'>";
+                        // str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        // str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1414,15 +1471,25 @@
                 menuService.getListByHow_muchOver(result.Parameters.number[0], function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-6 col-lg-4'>";
-                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                        str += "<div class='row menu-class'>";
-                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                        str += "<div class='col-6'><div class='card-body'>";
-                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<div class='col-md-3 col-lg-3'>";
+                        <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                        str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                        str += "<div class='menu-class' style='text-align: center'>";
+                        str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                        str += "<div><div class='card-body'>";
+                        str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                         str += "</div></div></div></div></div>";
+                        // str += " <div class='col-md-6 col-lg-4'>";
+                        // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        // str += "<div class='row menu-class'>";
+                        // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        // str += "<div class='col-6'><div class='card-body'>";
+                        // str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        // str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1431,15 +1498,25 @@
                 menuService.getListByHow_muchUnder(result.Parameters.number[0], function (list) {
                     var str = "";
                     for (var i = 0, len = list.length; i < len; i++) {
-                        str += " <div class='col-md-6 col-lg-4'>";
-                        str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                        str += "<div class='row menu-class'>";
-                        str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
-                        str += "<div class='col-6'><div class='card-body'>";
-                        str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        str += "<div class='col-md-3 col-lg-3'>";
+                        <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                        str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                        str += "<div class='menu-class' style='text-align: center'>";
+                        str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+                        str += "<div><div class='card-body'>";
+                        str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                         // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                        str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                         str += "</div></div></div></div></div>";
+                        // str += " <div class='col-md-6 col-lg-4'>";
+                        // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                        // str += "<div class='row menu-class'>";
+                        // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap'></div>";
+                        // str += "<div class='col-6'><div class='card-body'>";
+                        // str += "<p class='card-text menu-name'>" + list[i].name + "</p>";
+                        // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                        // str += "<p class='card-text menu-price'>" + list[i].price + "</p>";
+                        // str += "</div></div></div></div></div>";
                     }
                     $('#searchModalMenuList').html(str);
                 })
@@ -1473,7 +1550,7 @@
     function getMenuList() {
         menuService.getListByCategory("burgerSet", function (list) {
             var str = "";
-            str += "<div class='container container-menuList'>";
+            str += "<div class='container container-menuList' style='padding-left: 7px'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
                 str += "<div class='col-md-3 col-lg-3'>";
@@ -1532,15 +1609,15 @@
         */
         menuService.getListByCategory("chicken", function (list) {
             var str = "";
-            str += "<div class='container container-menuList'>";
+            str += "<div class='container container-menuList' style='padding-left: 7px'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
                 str += " <div class='col-md-6 col-lg-4'>";
                 str += "<div class='card' style='width: 25rem; margin-top:25px; border-radius: 20px;'>"
                 str += "<div class='row menu-class'>";
-                str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='margin-left: 12px'></div>";
-                str += "<div class='col-6'><div class='card-body'>";
-                str += "<p class='card-text menu-name' style='font-size: 1.3rem;'>" + list[i].name + "</p>";
+                str += "<div class='col-5'><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='margin-left: 12px'></div>";
+                str += "<div class='col-7'><div class='card-body'>";
+                str += "<p class='card-text menu-name' style='font-size: 1.1rem;'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
                 str += "<p class='card-text menu-price' style='font-size: 1.6rem;'>" + list[i].price + "</p>";
                 str += "</div></div></div></div></div>";
@@ -1550,37 +1627,61 @@
         });
         menuService.getListByCategory("side", function (list) {
             var str = "";
-            str += "<div class='container container-menuList'>";
+            str += "<div class='container container-menuList' style='padding-left: 7px'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += "<div class='col-md-4 col-lg-3'>";
-                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+                str += "<div class='col-md-3 col-lg-3'>";
+                <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
                 str += "<div class='menu-class' style='text-align: center'>";
                 str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
                 str += "<div><div class='card-body'>";
-                str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
+                str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
+                str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                 str += "</div></div></div></div></div>";
             }
+            // for (var i = 0, len = list.length; i < len; i++) {
+            //     str += "<div class='col-md-4 col-lg-3'>";
+            //     str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+            //     str += "<div class='menu-class' style='text-align: center'>";
+            //     str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+            //     str += "<div><div class='card-body'>";
+            //     str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
+            //     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+            //     str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
+            //     str += "</div></div></div></div></div>";
+            // }
             str += "</div></div>";
             $('#sideList').html(str);
         });
         menuService.getListByCategory("drink", function (list) {
             var str = "";
-            str += "<div class='container container-menuList'>";
+            str += "<div class='container container-menuList' style='padding-left: 7px'>";
             str += "<div class='row'>";
             for (var i = 0, len = list.length; i < len; i++) {
-                str += "<div class='col-md-4 col-lg-3'>";
-                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+                str += "<div class='col-md-3 col-lg-3'>";
+                <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
                 str += "<div class='menu-class' style='text-align: center'>";
                 str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
                 str += "<div><div class='card-body'>";
-                str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
+                str += "<p class='card-text menu-name' style='margin: 0;'>" + list[i].name + "</p>";
                 // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
+                str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + list[i].price + "</p>";
                 str += "</div></div></div></div></div>";
             }
+            // for (var i = 0, len = list.length; i < len; i++) {
+            //     str += "<div class='col-md-4 col-lg-3'>";
+            //     str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 15rem;'>"
+            //     str += "<div class='menu-class' style='text-align: center'>";
+            //     str += "<div><img class='card-img-top' src='/resources/img/" + list[i].img + "' alt='Card image cap' style='width: 70%'></div>";
+            //     str += "<div><div class='card-body'>";
+            //     str += "<p class='card-text menu-name' style='font-size: 1.2rem; margin: 0;'>" + list[i].name + "</p>";
+            //     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+            //     str += "<p class='card-text menu-price' style='font-size: 2rem'>" + list[i].price + "</p>";
+            //     str += "</div></div></div></div></div>";
+            // }
             str += "</div></div>";
             $('#drinkList').html(str);
         });
@@ -1762,14 +1863,25 @@
                     // str += "<p class='card-text menu-price'>" + result.price + "</p>";
                     // str += "</div></div></div>";
 
-                    str += " <div class='col-md-6 col-lg-4'>";
-                    str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                    str += "<div class='row menu-class'>";
-                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
-                    str += "<div class='col-6'><div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // str += " <div class='col-md-6 col-lg-4'>";
+                    // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                    // str += "<div class='row menu-class'>";
+                    // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
+                    // str += "<div class='col-6'><div class='card-body'>";
+                    // str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                    // str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    // str += "</div></div></div></div></div>";
+
+                    str += "<div class='col-md-3 col-lg-3'>";
+                    <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                    str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                    str += "<div class='menu-class' style='text-align: center'>";
+                    str += "<div><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap' style='width: 70%'></div>";
+                    str += "<div><div class='card-body'>";
+                    str += "<p class='card-text menu-name' style='margin: 0;'>" + result.name + "</p>";
                     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + result.price + "</p>";
                     str += "</div></div></div></div></div>";
 
 
@@ -2039,14 +2151,25 @@
             var str = "";
             for (var i = 0, len = list.recommend_menus.length; i < len; i++) {
                 menuService.getMenuById(list.recommend_menus[i], function (result) {
-                    str += " <div class='col-md-6 col-lg-4'>";
-                    str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
-                    str += "<div class='row menu-class'>";
-                    str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
-                    str += "<div class='col-6'><div class='card-body'>";
-                    str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // str += " <div class='col-md-6 col-lg-4'>";
+                    // str += "<div class='card' style='width: 25rem; margin-top:25px;'>"
+                    // str += "<div class='row menu-class'>";
+                    // str += "<div class='col-6'><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap'></div>";
+                    // str += "<div class='col-6'><div class='card-body'>";
+                    // str += "<p class='card-text menu-name'>" + result.name + "</p>";
+                    // // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
+                    // str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    // str += "</div></div></div></div></div>";
+
+                    str += "<div class='col-md-3 col-lg-3'>";
+                    <!--str += "<div class='card' style='width: 25rem; margin-top:25px;'>" -->
+                    str += "<div class='card' style='border-radius: 20px; margin-top:25px; width: 12rem;'>"
+                    str += "<div class='menu-class' style='text-align: center'>";
+                    str += "<div><img class='card-img-top' src='/resources/img/" + result.img + "' alt='Card image cap' style='width: 70%'></div>";
+                    str += "<div><div class='card-body'>";
+                    str += "<p class='card-text menu-name' style='margin: 0;'>" + result.name + "</p>";
                     // str += "<p class='card-text menu-content'>" + list[i].information + "</p>";
-                    str += "<p class='card-text menu-price'>" + result.price + "</p>";
+                    str += "<p class='card-text menu-price' style='font-size: 1.6rem'>" + result.price + "</p>";
                     str += "</div></div></div></div></div>";
                 });
             }

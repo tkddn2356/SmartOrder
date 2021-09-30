@@ -117,7 +117,7 @@
         });
 
         $("#join_btn").on("click", function (e) {
-            document.location.href = "/user/join"
+            document.location.href = "/user/joinQR"
         });
 
     });
